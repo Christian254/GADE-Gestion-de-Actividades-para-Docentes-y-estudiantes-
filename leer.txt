@@ -1,0 +1,16 @@
+Tema: Control de Actividades Desarrolladas en la FIA 
+Nombre propuesto: GADE (Gestion de Actividades para Docentes y estudiantes)
+Logo: Que se encarge kike del logo
+
+
+
+Datos: 
+version min: API 19 (Android 4.4 KitKat)
+version max: API 26 (Android 8.0 )
+
+
+nota: solo medio inicialize la parte de seguridad, no encripte contraseña ni usuarios
+y falta de terminar de hacer el crud para esas tablas faltan borrar y actualizar esas tablas
+falta agregar que se cree la base de datos completa pues, entonces hay que ingresar el Script
+generado por powerDesigner y adaptarlo a SQLite creo que de eso se va a encargar kike.... 
+ya con eso nos podemos dividir cuantas clases o CRUD van a hacer cada uno

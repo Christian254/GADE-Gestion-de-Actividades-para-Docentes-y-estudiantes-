@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">GADE @PDM115</string>
+    <string name="inicio">INICIO</string>
+    <string name="username">usuario</string>
+    <string name="password">contraseña</string>
+    <string name="login">Entrar</string>
+    <string name="inicializar">incializar usuarios</string>
+    <string name="salir">salir</string>
+    <string name="verUsuarios">ver usuarios</string>
+    <string name="lista">lista</string>
+    <string name="name">nombre</string>
+    <string name="header">Usuarios</string>
+    <string name="userNormal">Usuario Normal</string>
+    <string name="userAdmin">Administrador</string>
+    <string name="agregarU">agregar usuario</string>
+</resources>
