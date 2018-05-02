@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         String nombre = txtusername.getText().toString().trim();
         String contra = txtpassword.getText().toString().trim();
         if(nombre.isEmpty() || contra.isEmpty()){
-            Toast.makeText(this,"No seas loco digita algo",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Digite sus credenciales",Toast.LENGTH_SHORT).show();
         }else if (contra.length()>=4){
             String us="";
             String pas="";
