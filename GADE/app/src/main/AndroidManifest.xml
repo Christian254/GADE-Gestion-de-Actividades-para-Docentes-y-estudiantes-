@@ -19,7 +19,11 @@
         <activity android:name=".IndexActivity" />
         <activity android:name=".MainActivity$AdminActivity" />
         <activity android:name=".view.UsersActivity" />
-        <activity android:name=".view.NewUserActivity"></activity>
+        <activity android:name=".view.NewUserActivity" />
+        <activity android:name=".UsuarioNormal.SolicitarLocalActivity" />
+        <activity android:name=".UsuarioNormal.ModificarReservaActivity" />
+        <activity android:name=".UsuarioNormal.ConsultarReservaActivity" />
+        <activity android:name=".UsuarioNormal.EliminarReservaActivity"></activity>
     </application>
 
 </manifest>
