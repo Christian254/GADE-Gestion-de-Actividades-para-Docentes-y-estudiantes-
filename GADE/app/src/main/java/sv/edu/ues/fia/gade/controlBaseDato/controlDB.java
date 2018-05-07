@@ -3,11 +3,13 @@ package sv.edu.ues.fia.gade.controlBaseDato;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.model.AccesoUsuario;
 import sv.edu.ues.fia.gade.model.Escuela;
 import sv.edu.ues.fia.gade.model.OpcionCrud;
@@ -33,10 +35,15 @@ public class controlDB extends SQLiteOpenHelper{
     public static final String table_nameA = "ACCESO";
     public static final String COl_1A = "UERNAME";
     public static final String COl_2A = "ID";
+    private static final String[]camposReserva = new String [] {"idreserva","estado"};
+
+
 
 
     public controlDB(Context context){
         super(context, DATABASE_NAME, null, 1);
+
+
     }
 
     @Override
@@ -91,6 +98,13 @@ public class controlDB extends SQLiteOpenHelper{
 
         }
     }
+    public void abrir() throws SQLException
+    {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        return; }
+
+
 
 
 
@@ -366,6 +380,26 @@ public class controlDB extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from  ESCUELA WHERE IDESCUELA= "+id,null);
         return cursor;
+    }
+
+
+    //CRUD para las reservas
+    public Reserva consultarReserva(String idReserva)
+    {
+        String [] id = {idReserva};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("reserva", camposReserva, "idReserva = ?", id, null, null, null);
+        if(cursor.moveToFirst())
+        {
+            Reserva reserva = new Reserva();
+            reserva.setIdReserva(cursor.getInt(0));
+            reserva.setEstado(cursor.getInt(1));
+            return  reserva;
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }
