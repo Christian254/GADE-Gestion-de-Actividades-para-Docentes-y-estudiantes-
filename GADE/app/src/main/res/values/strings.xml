@@ -16,11 +16,26 @@
     <string name="title_admin">Gestion de Admin. de locales</string>
     <string name="adminLocal">administrador:</string>
     <string name="nombreAdmin">nombre</string>
-    <string name="nombreEscuela">Escuela:</string>
-    <string name="idEscuela">idEcuela</string>
+
     <string name="local">id local</string>
     <string name="nombreLocal">local:</string>
     <string name="idAdmin">id admin</string>
     <string name="idCupo">cupo</string>
     <string name="nombreAdministrador">administrador</string>
+
+    <string name="escuelaInsertar">Insertar Escuela</string>
+    <string name="escuelaActualizar">Actualizar Escuela</string>
+    <string name="escuelaConsultar">Consultar Escuela</string>
+    <string name="escuelaEliminar">Eliminar Escuela</string>
+
+    <string name="nombreEscuela">Escuela:</string>
+    <string name="idEscuela">Código:</string>
+    <string name="insertarEscuela">Insertar Escuela</string>
+
+
+    <string name="opciones">Opciones:</string>
+    <string name="limpiar">Limpiar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

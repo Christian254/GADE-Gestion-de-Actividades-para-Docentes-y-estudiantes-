@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 import sv.edu.ues.fia.gade.model.AccesoUsuario;
+import sv.edu.ues.fia.gade.model.Escuela;
 import sv.edu.ues.fia.gade.model.OpcionCrud;
 import sv.edu.ues.fia.gade.model.Usuario;
 
@@ -90,6 +91,8 @@ public class controlDB extends SQLiteOpenHelper{
 
         }
     }
+
+
 
     public boolean insertUser(String username, String password, int tipo){
         boolean retorno = false;
@@ -333,21 +336,26 @@ public class controlDB extends SQLiteOpenHelper{
 
     /*Dato que necesitaba para hacer pruebas */
     // ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null,primary key IDESCUELA
-    public boolean insertEscuela(int idEscuela,String nombre){
-        boolean retorno = false;
+
+    public String insertEscuela(Escuela escuela){
+        String regInsertado = "Registro Escuela #";
+        long contador = 0;
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("IDESCUELA",idEscuela);
-        contentValues.put("NOMESCUELA",nombre);
-        long resul = db.insert("ESCUELA",null,contentValues);
+        contentValues.put("IDESCUELA",escuela.getIdentificadorEscuela());
+        contentValues.put("NOMESCUELA", escuela.getNombreEscuela());
+        contador = db.insert("ESCUELA",null,contentValues);
         db.close();
-        if (resul ==-1){
-            retorno=false;
+
+        if(contador == -1 || contador == 0){
+            regInsertado = "Error al insertar Escuela. Registro duplicado.";
         }else{
-            retorno=true;
+            regInsertado = regInsertado + contador;
         }
-        return retorno;
+        return regInsertado;
     }
+
     public Cursor getDataEscuela(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from  ESCUELA WHERE NOMESCUELA= "+id,null);

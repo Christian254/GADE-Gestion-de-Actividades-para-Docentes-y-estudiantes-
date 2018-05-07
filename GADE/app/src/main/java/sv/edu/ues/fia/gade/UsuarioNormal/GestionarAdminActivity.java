@@ -31,9 +31,9 @@ public class GestionarAdminActivity extends AppCompatActivity {
         txt2= (TextInputEditText)findViewById(R.id.nomAdmin);
         txt3= (TextInputEditText)findViewById(R.id.idEsc);
         db = new controlDB(this);
-        db.insertEscuela(1,"Ing sistemas");
-        db.insertEscuela(2,"Ing Electrica");
-        db.insertEscuela(3,"Ing Mecanica");
+        //db.insertEscuela(1,"Ing sistemas");
+        //db.insertEscuela(2,"Ing Electrica");
+        //db.insertEscuela(3,"Ing Mecanica");
         antiguoNombre=" ";
     }
 

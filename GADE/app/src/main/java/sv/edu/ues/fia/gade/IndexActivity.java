@@ -22,6 +22,7 @@ public class IndexActivity extends ListActivity {
         String tipo = getIntent().getExtras().getString("tipo");
         t = Integer.parseInt(tipo.toString().trim());
         cargarMenu(t);
+
         setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu));
     }
     /*Metodo para poner si x==1 es usuario normal y si x==2 usuaio administrador
@@ -29,8 +30,8 @@ public class IndexActivity extends ListActivity {
     **/
     private void cargarMenu(int t) {
         if(t==2){ //si es administrador podra:
-            String[] menu1= {"Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Gestionar Administrador","Gestionar Local"};
-            String[] valores1={"SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","GestionarAdminActivity","GestionarLocalActivity"};
+            String[] menu1= {"Gestionar Escuela","Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Gestionar Administrador","Gestionar Local"};
+            String[] valores1={"EscuelaGestionarActivity","SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","GestionarAdminActivity","GestionarLocalActivity"};
             this.menu=menu1;
             this.valores=valores1;
         }else{
@@ -44,15 +45,19 @@ public class IndexActivity extends ListActivity {
     @Override
     protected  void  onListItemClick(ListView listView, View view, int position, long id)
     {
-        String nombreValue=valores[position];
-        try {
-            Class<?> clase = Class.forName("sv.edu.ues.fia.gade.UsuarioNormal."+nombreValue);
-            Intent inte = new Intent(this,clase);
-            this.startActivity(inte);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+            String nombreValue=valores[position];
+            try {
+
+                Class<?> clase = Class.forName("sv.edu.ues.fia.gade.UsuarioNormal."+nombreValue);
+                Intent inte = new Intent(this,clase);
+                this.startActivity(inte);
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
     }
+
+
 
 
 }

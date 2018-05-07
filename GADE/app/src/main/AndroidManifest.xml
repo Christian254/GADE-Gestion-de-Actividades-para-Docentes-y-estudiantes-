@@ -28,7 +28,8 @@
         <activity android:name=".UsuarioNormal.GestionarAdminActivity" />
         <activity android:name=".UsuarioNormal.ConsultarAdminActivity" />
         <activity android:name=".UsuarioNormal.GestionarLocalActivity" />
-        <activity android:name=".UsuarioNormal.ConsultarLocalesActivity"></activity>
+        <activity android:name=".UsuarioNormal.ConsultarLocalesActivity" />
+        <activity android:name=".UsuarioNormal.EscuelaGestionarActivity"></activity>
     </application>
 
 </manifest>
