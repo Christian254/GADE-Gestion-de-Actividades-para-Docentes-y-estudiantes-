@@ -46,18 +46,18 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table ACCESO  (USERNAME TEXT not null, ID INTEGER not null, primary key (USERNAME, ID))");
 
             //Tablas que faltaban.
-            db.execSQL("create table ACTIVIDAD(IDACTIVIDAD INTEGER not null, IDTIPOACTIVIDAD INTEGER not null, IDDOCENTE INTEGER not null, NOMACTIVIDAD TEXT not null, primary key(IDACTIVIDAD, IDTIPOACTIVIDAD, IDDOCENTE))");
+            db.execSQL("create table ACTIVIDAD(IDACTIVIDAD INTEGER not null, IDTIPOACTIVIDAD INTEGER not null, IDDOCENTE INTEGER not null, NOMACTIVIDAD TEXT not null, primary key(IDACTIVIDAD))");
             db.execSQL("create table TIPOACTIVIDAD(IDTIPOACTIVIDAD INTEGER not null,NOMTIPOACTIVIDAD TEXT not null,primary key (IDTIPOACTIVIDAD))");
-            db.execSQL("create table DOCENTE(IDDOCENTE INTEGER not null,IDESCUELA INTEGER not null,NOMDOCENTE TEXT not null,primary key (IDDOCENTE, IDESCUELA))");
+            db.execSQL("create table DOCENTE(IDDOCENTE INTEGER not null,IDESCUELA INTEGER not null,NOMDOCENTE TEXT not null,primary key (IDDOCENTE))");
             db.execSQL("create table ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null,primary key (IDESCUELA))");
-            db.execSQL("create table ADMINISTRADOR(IDADMIN INTEGER not null, IDESCUELA INTEGER not null, NOMADMIN TEXT not null, primary key(IDADMIN, IDESCUELA))");
+            db.execSQL("create table ADMINISTRADOR(IDADMIN INTEGER not null, IDESCUELA INTEGER not null, NOMADMIN TEXT not null, primary key(IDADMIN))");
             db.execSQL("create table CICLO(IDCICLO INTEGER not null,CICLODESDE DATE not null, CICLOHASTA DATE not null, primary key (IDCICLO))");
             db.execSQL("create table HORARIO(IDHORARIO INTEGER not null,HORARIODESDE DATE not null,HORARIOHASTA DATE not null,primary key (IDHORARIO))");
-            db.execSQL("create table LOCAL(IDLOCAL INTEGER not null,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null,primary key (IDLOCAL, IDADMIN))");
+            db.execSQL("create table LOCAL(IDLOCAL INTEGER not null,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null,primary key (IDLOCAL))");
             db.execSQL("create table RESERVA(IDRESERVA INTEGER not null,ESTADO INTEGER not null,IDACTIVIDAD INTEGER not null,primary key (IDRESERVA))");
             db.execSQL("create table DISPONIBLE(IDHORARIO INTEGER not null,IDLOCAL INTEGER not null,IDCICLO INTEGER not null,IDRESERVA INTEGER not null, DISPONIBLE  INTEGER not null, primary key (IDHORARIO, IDLOCAL, IDCICLO, IDRESERVA))");
-            db.execSQL("create table ESTUDIANTE(CARNET INTEGER not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET, IDESCUELA))");
-            db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD, CARNET)) ");
+            db.execSQL("create table ESTUDIANTE(CARNET INTEGER not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET))");
+            db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD)) ");
 
 
         }catch (Exception e){
