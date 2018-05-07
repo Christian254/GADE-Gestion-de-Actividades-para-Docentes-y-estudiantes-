@@ -49,11 +49,11 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table ACTIVIDAD(IDACTIVIDAD INTEGER not null, IDTIPOACTIVIDAD INTEGER not null, IDDOCENTE INTEGER not null, NOMACTIVIDAD TEXT not null, primary key(IDACTIVIDAD))");
             db.execSQL("create table TIPOACTIVIDAD(IDTIPOACTIVIDAD INTEGER not null,NOMTIPOACTIVIDAD TEXT not null,primary key (IDTIPOACTIVIDAD))");
             db.execSQL("create table DOCENTE(IDDOCENTE INTEGER not null,IDESCUELA INTEGER not null,NOMDOCENTE TEXT not null,primary key (IDDOCENTE))");
-            db.execSQL("create table ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null,primary key (IDESCUELA))");
-            db.execSQL("create table ADMINISTRADOR(IDADMIN INTEGER not null, IDESCUELA INTEGER not null, NOMADMIN TEXT not null, primary key(IDADMIN))");
+            db.execSQL("create table ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null unique,primary key (IDESCUELA))");
+            db.execSQL("create table ADMINISTRADOR(IDADMIN INTEGER primary key, IDESCUELA INTEGER not null, NOMADMIN TEXT not null)");
             db.execSQL("create table CICLO(IDCICLO INTEGER not null,CICLODESDE DATE not null, CICLOHASTA DATE not null, primary key (IDCICLO))");
             db.execSQL("create table HORARIO(IDHORARIO INTEGER not null,HORARIODESDE DATE not null,HORARIOHASTA DATE not null,primary key (IDHORARIO))");
-            db.execSQL("create table LOCAL(IDLOCAL INTEGER not null,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null,primary key (IDLOCAL))");
+            db.execSQL("create table LOCAL(IDLOCAL INTEGER primary key autoincrement,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null)");
             db.execSQL("create table RESERVA(IDRESERVA INTEGER not null,ESTADO INTEGER not null,IDACTIVIDAD INTEGER not null,primary key (IDRESERVA))");
             db.execSQL("create table DISPONIBLE(IDHORARIO INTEGER not null,IDLOCAL INTEGER not null,IDCICLO INTEGER not null,IDRESERVA INTEGER not null, DISPONIBLE  INTEGER not null, primary key (IDHORARIO, IDLOCAL, IDCICLO, IDRESERVA))");
             db.execSQL("create table ESTUDIANTE(CARNET INTEGER not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET))");
@@ -214,7 +214,7 @@ public class controlDB extends SQLiteOpenHelper{
         }
     }
 
-    private Cursor getData(String opcion, int i) {
+    public Cursor getData(String opcion, int i) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from "+opcion+ " WHERE ID= "+i,null);
         return cursor;
@@ -229,6 +229,137 @@ public class controlDB extends SQLiteOpenHelper{
             return null;
         }
     }
+
+    /*CRUD PARA ADMINISTRADOR Y LOCALES XD
+    *  ADMINISTRADOR(IDADMIN INTEGER not null, IDESCUELA INTEGER not null, NOMADMIN TEXT not null, primary key(IDADMIN))");
+    * LOCAL(IDLOCAL INTEGER not null,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null,primary key (IDLOCAL))");
+    * */
+
+    public boolean insertAdministrador(int id,int idEscuela,String nombre){
+        boolean retorno = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDADMIN",id);
+        contentValues.put("IDESCUELA",idEscuela);
+        contentValues.put("NOMADMIN",nombre);
+        long resul = db.insert("ADMINISTRADOR",null,contentValues);
+        db.close();
+        if (resul ==-1){
+            retorno=false;
+        }else{
+            retorno=true;
+        }
+        return retorno;
+    }
+
+    public Cursor getDataAdministrador(int i) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from ADMINISTRADOR WHERE IDADMIN= "+i,null);
+        return cursor;
+    }
+
+    public boolean updateAdmin(int id, int escuela,String nombre){
+        boolean retorno = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDESCUELA",escuela);
+        contentValues.put("NOMADMIN",nombre);
+        int res = db.update("ADMINISTRADOR",contentValues,"IDADMIN =?",new String[]{String.valueOf(id)});
+        if (res>0){
+            retorno=true;
+        }
+        return retorno;
+    }
+
+    public int deleteAdmin(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int res = db.delete("ADMINISTRADOR","IDADMIN = ?",new String[]{id});
+
+        return res;
+    }
+
+
+    //CRUD LOCALES
+    //LOCAL(IDLOCAL INTEGER not null,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null,primary key (IDLOCAL))");
+    public boolean insertLocal(int id,int idAdmin,String numLocal,int cupo){
+        boolean retorno = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDLOCAL",id);
+        contentValues.put("IDADMIN",idAdmin);
+        contentValues.put("NUMLOCAL",numLocal);
+        contentValues.put("CUPO",cupo);
+        long resul = db.insert("LOCAL",null,contentValues);
+        db.close();
+        if (resul ==-1){
+            retorno=false;
+        }else{
+            retorno=true;
+        }
+        return retorno;
+    }
+
+    public Cursor getDataLocal(int i) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from LOCAL WHERE IDLOCAL= "+i,null);
+        return cursor;
+    }
+
+    public boolean updateLocal(int id,int idAdmin,String numLocal,int cupo){
+        boolean retorno = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDADMIN",idAdmin);
+        contentValues.put("NUMLOCAL",numLocal);
+        contentValues.put("CUPO",cupo);
+        int res = db.update("LOCAL",contentValues,"IDLOCAL =?",new String[]{String.valueOf(id)});
+        if (res>0){
+            retorno=true;
+        }
+        return retorno;
+    }
+
+    public int deleteLocal(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int res = db.delete("LOCAL","IDLOCAL = ?",new String[]{id});
+
+        return res;
+    }
+
+
+
+
+    /*FIN DE LOS CRUD PARA ADMINISTRADOR Y LOCALES*/
+
+    /*Dato que necesitaba para hacer pruebas */
+    // ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null,primary key IDESCUELA
+    public boolean insertEscuela(int idEscuela,String nombre){
+        boolean retorno = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDESCUELA",idEscuela);
+        contentValues.put("NOMESCUELA",nombre);
+        long resul = db.insert("ESCUELA",null,contentValues);
+        db.close();
+        if (resul ==-1){
+            retorno=false;
+        }else{
+            retorno=true;
+        }
+        return retorno;
+    }
+    public Cursor getDataEscuela(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from  ESCUELA WHERE NOMESCUELA= "+id,null);
+        return cursor;
+    }
+
+    public Cursor getDataEscuela(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from  ESCUELA WHERE IDESCUELA= "+id,null);
+        return cursor;
+    }
+
 }
 
 

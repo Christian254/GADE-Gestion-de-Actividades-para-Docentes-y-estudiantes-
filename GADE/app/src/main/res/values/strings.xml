@@ -13,4 +13,14 @@
     <string name="userNormal">Usuario Normal</string>
     <string name="userAdmin">Administrador</string>
     <string name="agregarU">agregar usuario</string>
+    <string name="title_admin">Gestion de Admin. de locales</string>
+    <string name="adminLocal">administrador:</string>
+    <string name="nombreAdmin">nombre</string>
+    <string name="nombreEscuela">Escuela:</string>
+    <string name="idEscuela">idEcuela</string>
+    <string name="local">id local</string>
+    <string name="nombreLocal">local:</string>
+    <string name="idAdmin">id admin</string>
+    <string name="idCupo">cupo</string>
+    <string name="nombreAdministrador">administrador</string>
 </resources>

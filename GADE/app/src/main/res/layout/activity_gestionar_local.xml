@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sv.edu.ues.fia.gade.UsuarioNormal.GestionarAdminActivity">
+    tools:context="sv.edu.ues.fia.gade.UsuarioNormal.GestionarLocalActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="@string/adminLocal"/>
+            android:text="@string/local"/>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/idAdmin1"
+                android:id="@+id/idlocal1"
                 android:hint="id"
                 android:inputType="number"
                 android:maxLines="1"/>
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="@string/nombreAdmin"
+            android:text="@string/nombreLocal"
             />
 
         <android.support.design.widget.TextInputLayout
@@ -67,8 +67,8 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/nomAdmin"
-                android:hint="@string/nombreAdmin"
+                android:id="@+id/nomLocal"
+                android:hint="@string/nombreLocal"
                 android:inputType="text"
                 android:maxLines="1"/>
         </android.support.design.widget.TextInputLayout>
@@ -80,14 +80,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="@string/nombreEscuela"
+            android:text="@string/nombreAdministrador"
             />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:id="@+id/spinner1"
+            android:id="@+id/spin"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_below="@+id/nombreAdmin"
@@ -96,8 +96,39 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/idEsc"
-                android:hint="@string/idEscuela"
+                android:id="@+id/idAdmin2"
+                android:hint="@string/idAdmin"
+                android:inputType="number"
+                android:maxLines="1"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/spinner1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/spin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/idCupo"
+            />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/spinne"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/spin"
+            android:layout_toRightOf="@+id/spinner1"
+            >
+            <android.support.design.widget.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/idCupo"
+                android:hint="@string/idCupo"
                 android:inputType="number"
                 android:maxLines="1"/>
         </android.support.design.widget.TextInputLayout>
@@ -148,4 +179,5 @@
             android:onClick="borrar"
             />
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

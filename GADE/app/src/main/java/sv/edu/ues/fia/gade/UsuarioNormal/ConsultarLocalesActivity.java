@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
-public class ConsultarAdminActivity extends AppCompatActivity {
+public class ConsultarLocalesActivity extends AppCompatActivity {
 
     private controlDB db;
     private ListView lista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consultar_admin);
+        setContentView(R.layout.activity_consultar_locales);
         db = new controlDB(this);
-        lista = (ListView)findViewById(R.id.listaAdmins);
-        Cursor c = db.getData("ADMINISTRADOR");
+        lista = (ListView)findViewById(R.id.listaLocales);
+        Cursor c = db.getData("LOCAL");
         ArrayList<String> datos = new ArrayList<String>();
         datos.add("\tDatos");
         if(c!=null && c.getCount()>0){
@@ -33,3 +33,4 @@ public class ConsultarAdminActivity extends AppCompatActivity {
         lista.setAdapter(adapter);
     }
 }
+
