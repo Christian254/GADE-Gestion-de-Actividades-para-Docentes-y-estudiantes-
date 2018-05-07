@@ -13,7 +13,7 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class ConsultarReservaActivity extends Activity {
     controlDB helper;
-    EditText editId;
+    EditText editId, buscar;
     EditText editEstado;
 
     @Override
@@ -21,6 +21,7 @@ public class ConsultarReservaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_reserva);
         helper = new controlDB(this);
+        buscar = (EditText) findViewById(R.id.editId);
         editId = (EditText) findViewById(R.id.editIdR);
         editEstado = (EditText) findViewById(R.id.editEstado);
     }
@@ -28,11 +29,11 @@ public class ConsultarReservaActivity extends Activity {
     public void consultaReserva(View v)
     {
         helper.abrir();
-        Reserva reserva = helper.consultarReserva(editId.getText().toString());
+        Reserva reserva = helper.consultarReserva(buscar.getText().toString());
         helper.close();
         if(reserva==null)
         {
-            Toast.makeText(this, "La reserva con id "+ editId.getText().toString() + " no fue encontrada",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "La reserva con id "+ buscar.getText().toString() + " no fue encontrada",Toast.LENGTH_LONG).show();
         }
         else
         {

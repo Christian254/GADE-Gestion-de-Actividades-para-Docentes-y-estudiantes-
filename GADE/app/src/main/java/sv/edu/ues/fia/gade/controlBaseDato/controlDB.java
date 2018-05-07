@@ -220,6 +220,8 @@ public class controlDB extends SQLiteOpenHelper{
             for (Usuario u : users){
                 insertUser(u.getUsername(),u.getClave(),u.getTipo());
             }
+            insertEscuela(1,"eisi");
+            insertarReservas(1,1,1);
 
 
             return true;
@@ -376,6 +378,25 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     //CRUD para las reservas
+    public  boolean insertarReservas(int idReserva, int estado, int idActividad)
+    {
+        boolean retorno = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDRESERVA", idReserva);
+        contentValues.put("ESTADO", estado);
+        contentValues.put("IDACTIVIDAD", idActividad);
+        long resul = db.insert("RESERVA",null,contentValues);
+        db.close();
+        if (resul ==-1){
+            retorno=false;
+        }else{
+            retorno=true;
+        }
+        return retorno;
+    }
+
+
     public Reserva consultarReserva(String idReserva)
     {
         String [] id = {idReserva};
@@ -393,6 +414,7 @@ public class controlDB extends SQLiteOpenHelper{
             return null;
         }
     }
+
 
 }
 

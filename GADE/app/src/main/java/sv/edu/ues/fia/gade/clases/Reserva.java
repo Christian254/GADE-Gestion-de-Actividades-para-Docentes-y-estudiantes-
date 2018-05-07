@@ -7,13 +7,15 @@ package sv.edu.ues.fia.gade.clases;
 public class Reserva {
     private int idReserva;
     private int estado;
+    private int idActividad;
 
-    public Reserva() {
-    }
-
-    public Reserva(int idReserva, int estado) {
+    public Reserva(int idReserva, int estado, int idActividad) {
         this.idReserva = idReserva;
         this.estado = estado;
+        this.idActividad = idActividad;
+    }
+
+    public Reserva() {
     }
 
     public int getIdReserva() {
@@ -30,5 +32,13 @@ public class Reserva {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public int getIdActividad() {
+        return idActividad;
+    }
+
+    public void setIdActividad(int idActividad) {
+        this.idActividad = idActividad;
     }
 }
