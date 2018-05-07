@@ -36,6 +36,7 @@ public class controlDB extends SQLiteOpenHelper{
     public static final String COl_1A = "UERNAME";
     public static final String COl_2A = "ID";
     private static final String[]camposReserva = new String [] {"idreserva","estado"};
+    private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
 
 
 
@@ -369,6 +370,23 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return regInsertado;
     }
+
+    public Escuela consultarEscuela(int idEscuela){
+        String idEsc = String.valueOf(idEscuela);
+        String[] id = {idEsc};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("escuela", camposEscuela, "idescuela = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Escuela escuela = new Escuela();
+            escuela.setIdentificadorEscuela(cursor.getInt(0));
+            escuela.setNombreEscuela(cursor.getString(1));
+            return escuela;
+        }else{
+            return null;
+        }
+
+    }
+
 
     public Cursor getDataEscuela(String id) {
         SQLiteDatabase db = this.getWritableDatabase();

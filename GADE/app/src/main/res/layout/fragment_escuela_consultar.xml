@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
+
+    <RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#f8e678"
+            android:gravity="center"
+            android:text="@string/escuelaConsultar"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <TableRow>
+        <TextView android:text="@string/idEscuela"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp" />
+        <EditText
+            android:id="@+id/idEscuela"
+            android:inputType="number"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btnConsultarEscuelaDatos"
+            android:text="@string/escuelaConsultar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btnLimpiarEscuelaDatos"
+            android:text="@string/limpiar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/nombreEscuela"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp" />
+        <EditText
+            android:id="@+id/nomEscuela"
+            android:inputType="text"
+            android:maxLength="70"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:enabled ="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:longClickable="false"/>
+    </TableRow>
+
+</TableLayout>
