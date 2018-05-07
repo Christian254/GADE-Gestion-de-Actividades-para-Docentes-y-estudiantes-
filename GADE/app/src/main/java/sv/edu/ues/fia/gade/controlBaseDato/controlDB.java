@@ -59,17 +59,6 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table ESTUDIANTE(CARNET INTEGER not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET, IDESCUELA))");
             db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD, CARNET)) ");
 
-            /*
-
-
-
-
-
-
-
-
-            */
-
 
         }catch (Exception e){
 
@@ -165,7 +154,6 @@ public class controlDB extends SQLiteOpenHelper{
             return null;
         }
     }
-    //METODO PARA SELECCIONAR CUALQUIER TABLA SIEMPRE Y CUANDO SU IDENTIFICADOR SEA ID
 
     public Cursor getData(String tabla){
         try {
@@ -232,10 +220,10 @@ public class controlDB extends SQLiteOpenHelper{
         return cursor;
     }
 
-    public Cursor getDataUsuarios() {
+    public Cursor getDataUsuarios(String usuario) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("Select * from USUARIO inner join  ACCESO ON USUARIO.USERNAME = ACCESO.USERNAME inner join OPCION on ACCESO.id=OPCION.ID",null);
+            Cursor cursor = db.rawQuery("Select * from USUARIO inner join  ACCESO ON USUARIO.USERNAME = ACCESO.USERNAME inner join OPCION on ACCESO.id=OPCION.ID WHERE ACCESO.USERNAME =\""+usuario.toString().trim()+"\"" ,null);
             return cursor;
         }catch(Exception e){
             return null;

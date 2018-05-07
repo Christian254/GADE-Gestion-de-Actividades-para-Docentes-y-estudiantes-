@@ -57,14 +57,14 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(this,IndexActivity.class);
                         i.putExtra("user",us);
                         i.putExtra("passwor",pas);
-                        i.putExtra("tipo",tip);
+                        i.putExtra("tipo",String.valueOf(tip));
                         startActivity(i);
                         finish();
                     }else if(tip==2){
-                        Intent i = new Intent(this,AdminActivity.class);
+                        Intent i = new Intent(this,IndexActivity.class);
                         i.putExtra("user",us);
                         i.putExtra("passwor",pas);
-                        i.putExtra("tipo",tip);
+                        i.putExtra("tipo",String.valueOf(tip));
                         startActivity(i);
                         finish();
                     }

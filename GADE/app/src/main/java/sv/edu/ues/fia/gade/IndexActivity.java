@@ -12,14 +12,33 @@ import android.widget.ListView;
 
 
 public class IndexActivity extends ListActivity {
-    String[] menu= {"Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas"};
-    String[] valores={"SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity"};
-
+    private String[] menu;
+    private String[] valores;
+    int t=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String tipo = getIntent().getExtras().getString("tipo");
+        t = Integer.parseInt(tipo.toString().trim());
+        cargarMenu(t);
         setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu));
+    }
+    /*Metodo para poner si x==1 es usuario normal y si x==2 usuaio administrador
+    *Por facilidad lo deje asi repetir lo que podra hacer un usuario normal y administrador
+    **/
+    private void cargarMenu(int t) {
+        if(t==2){ //si es administrador podra:
+            String[] menu1= {"Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Gestionar Administrador"};
+            String[] valores1={"SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","GestionarAdminActivity"};
+            this.menu=menu1;
+            this.valores=valores1;
+        }else{
+            String[] menu1= {"Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Consultar administradores"};
+            String[] valores1={"SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","ConsultarAdminActivity"};
+            this.menu=menu1;
+            this.valores=valores1;
+        }
     }
 
     @Override

@@ -23,7 +23,10 @@
         <activity android:name=".UsuarioNormal.SolicitarLocalActivity" />
         <activity android:name=".UsuarioNormal.ModificarReservaActivity" />
         <activity android:name=".UsuarioNormal.ConsultarReservaActivity" />
-        <activity android:name=".UsuarioNormal.EliminarReservaActivity"></activity>
+        <activity android:name=".UsuarioNormal.EliminarReservaActivity" />
+        <activity android:name=".view.VerUserActivity" />
+        <activity android:name=".UsuarioNormal.GestionarAdminActivity" />
+        <activity android:name=".UsuarioNormal.ConsultarAdminActivity"></activity>
     </application>
 
 </manifest>

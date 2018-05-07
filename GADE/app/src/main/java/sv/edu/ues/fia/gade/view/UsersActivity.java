@@ -1,10 +1,13 @@
 package sv.edu.ues.fia.gade.view;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -27,11 +30,11 @@ public class UsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
         db = new controlDB(this);
-        usuarios = db.getDataUsuarios();
-        ArrayList<Adaptador> adap = new ArrayList<>();
+        usuarios = db.getData("USUARIO");
+        ArrayList<Usuario> adap = new ArrayList<>();
         if(usuarios!=null && usuarios.getCount()>0){
             while (usuarios.moveToNext()){
-                adap.add(new Adaptador(new Usuario(usuarios.getString(0),usuarios.getString(1),usuarios.getInt(2)),new AccesoUsuario(usuarios.getInt(4),usuarios.getString(3)),new OpcionCrud(usuarios.getString(6),usuarios.getInt(5),usuarios.getInt(7))));
+                adap.add(new Usuario(usuarios.getString(0),usuarios.getString(1),usuarios.getInt(2)));
             }
         }
 
@@ -41,5 +44,38 @@ public class UsersActivity extends AppCompatActivity {
         lista.addHeaderView(header);
         lista.setAdapter(adapter);
 
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //verUser("1","d",2);
+                TextView t = (TextView)view.findViewById(R.id.tx);
+                TextView s = (TextView)view.findViewById(R.id.tx2);
+                String tip=null;
+                int x = Integer.parseInt(s.getText().toString());
+                if(x==2){
+                    tip="Administrador";
+                }else{
+                    tip="Usuario normal";
+                }
+                verUser(t.getHint().toString(),t.getText().toString(),tip);
+            }
+        });
+
     }
+
+
+    public void verUser(String id,String clave,String tipo){
+        Intent i = new Intent(this, VerUserActivity.class);
+        i.putExtra("id",id);
+        i.putExtra("clave",clave);
+        i.putExtra("tipo",tipo);
+        startActivity(i);
+//        finish();
+    }
+
+
+
 }
+
+
+

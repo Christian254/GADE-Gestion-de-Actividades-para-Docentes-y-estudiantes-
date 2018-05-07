@@ -22,9 +22,9 @@ import sv.edu.ues.fia.gade.model.Usuario;
 public class UsersAdapter extends BaseAdapter {
 
     protected Activity activity;
-    protected ArrayList<Adaptador> items;
+    protected ArrayList<Usuario> items;
 
-    public UsersAdapter(Activity activity,ArrayList<Adaptador> items) {
+    public UsersAdapter(Activity activity,ArrayList<Usuario> items) {
         this.activity=activity;
         this.items=items;
     }
@@ -38,7 +38,7 @@ public class UsersAdapter extends BaseAdapter {
         items.clear();
     }
 
-    public void addAll(ArrayList<Adaptador> p){
+    public void addAll(ArrayList<Usuario> p){
         for(int i=0;i<p.size();i++){
             items.add(p.get(i));
         }
@@ -63,16 +63,22 @@ public class UsersAdapter extends BaseAdapter {
             LayoutInflater inf = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.list_row_users,null);
         }
-        Adaptador f = items.get(position);
+        Usuario f = items.get(position);
         TextView texto = (TextView)v.findViewById(R.id.tx);
-        texto.setText(f.getUsuario().getUsername());
-        String ids = String.valueOf(f.getUsuario().getTipo());
+        texto.setText(f.getUsername());
+        String ids = String.valueOf(f.getUsername());
         texto.setHint(ids);
-        TextView saldo = (TextView)v.findViewById(R.id.tx2);
-        saldo.setText(String.valueOf(f.getAcces().getIdOpcion()));
+        TextView texto2 = (TextView)v.findViewById(R.id.tx2);
+        texto2.setText(String.valueOf(f.getTipo()));
+        String ti=null;
+        if(f.getTipo()==2){
+            ti="Administrador";
+        }else{
+            ti="Usuario normal";
+        }
 
         TextView texto3 = (TextView)v.findViewById(R.id.tx3);
-        texto3.setText(f.getOp().getNombreCRUD());
+        texto3.setText(ti);
         return v;
     }
 
