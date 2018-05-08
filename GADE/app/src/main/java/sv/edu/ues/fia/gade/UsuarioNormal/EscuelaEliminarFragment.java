@@ -17,13 +17,14 @@ import sv.edu.ues.fia.gade.model.Escuela;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EscuelaActualizarFragment extends Fragment implements View.OnClickListener {
+public class EscuelaEliminarFragment extends Fragment implements View.OnClickListener {
+
     private controlDB db;
-    EditText edtIdEs, edtNomEs;
-    Button btnLimpiar, btnAct;
+    EditText editIdEscuela;
+    Button btnLimpiar, btnEliminar;
 
 
-    public EscuelaActualizarFragment() {
+    public EscuelaEliminarFragment() {
         // Required empty public constructor
     }
 
@@ -32,16 +33,14 @@ public class EscuelaActualizarFragment extends Fragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_escuela_actualizar, container, false);
+        View v = inflater.inflate(R.layout.fragment_escuela_eliminar, container, false);
 
-        db = new controlDB(v.getContext());
-        edtIdEs = (EditText) v.findViewById(R.id.idEscuela);
-        edtNomEs = (EditText) v.findViewById(R.id.nomEscuela);
-
-        btnAct = (Button) v.findViewById(R.id.btnActualizarEscuelaDatos);
-        btnAct.setOnClickListener(this);
-
+        editIdEscuela = (EditText) v.findViewById(R.id.idEscuela);
         btnLimpiar = (Button) v.findViewById(R.id.btnLimpiarEscuelaDatos);
+        btnEliminar = (Button) v.findViewById(R.id.btnEliminarEscuelaDatos);
+        db = new controlDB(getActivity());
+
+        btnEliminar.setOnClickListener(this);
         btnLimpiar.setOnClickListener(this);
 
         return v;
@@ -50,16 +49,15 @@ public class EscuelaActualizarFragment extends Fragment implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnActualizarEscuelaDatos:
+            case R.id.btnEliminarEscuelaDatos:
+                String regElim;
                 Escuela escuela = new Escuela();
-                escuela.setIdentificadorEscuela(Integer.valueOf(edtIdEs.getText().toString()));
-                escuela.setNombreEscuela(edtNomEs.getText().toString());
-                String regAc = db.updateEscuela(escuela);
-                Toast.makeText(v.getContext(),regAc,Toast.LENGTH_SHORT).show();
+                escuela.setIdentificadorEscuela(Integer.valueOf(editIdEscuela.getText().toString()));
+                regElim = db.deleteEscuela(escuela);
+                Toast.makeText(v.getContext(), regElim, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnLimpiarEscuelaDatos:
-                edtIdEs.setText("");
-                edtNomEs.setText("");
+                editIdEscuela.setText("");
                 break;
         }
     }

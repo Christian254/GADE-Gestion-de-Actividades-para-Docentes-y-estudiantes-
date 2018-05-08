@@ -9,7 +9,7 @@ import android.widget.Button;
 import sv.edu.ues.fia.gade.R;
 
 public class EscuelaGestionarActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnEscuelaIns, btnEscuelaAc, btnEscuelaCon;
+    Button btnEscuelaIns, btnEscuelaAc, btnEscuelaCon, btnEscuelaEli;
 
 
     @Override
@@ -19,11 +19,13 @@ public class EscuelaGestionarActivity extends AppCompatActivity implements View.
         btnEscuelaIns = (Button) findViewById(R.id.btnInsertarEscuela);
         btnEscuelaAc = (Button) findViewById(R.id.btnActualizarEscuela);
         btnEscuelaCon = (Button) findViewById(R.id.btnConsultarEscuela);
+        btnEscuelaEli = (Button) findViewById(R.id.btnEliminarEscuela);
 
 
         btnEscuelaIns.setOnClickListener(this);
         btnEscuelaAc.setOnClickListener(this);
         btnEscuelaCon.setOnClickListener(this);
+        btnEscuelaEli.setOnClickListener(this);
 
     }
 
@@ -47,6 +49,12 @@ public class EscuelaGestionarActivity extends AppCompatActivity implements View.
                 FragmentTransaction transactionCon = getSupportFragmentManager().beginTransaction();
                 transactionCon.replace(R.id.contenedorFragmentsEscuela, conEsFrag);
                 transactionCon.commit();
+                break;
+            case R.id.btnEliminarEscuela:
+                EscuelaEliminarFragment eliEsFrag = new EscuelaEliminarFragment();
+                FragmentTransaction transactionEli = getSupportFragmentManager().beginTransaction();
+                transactionEli.replace(R.id.contenedorFragmentsEscuela, eliEsFrag);
+                transactionEli.commit();
                 break;
         }
     }

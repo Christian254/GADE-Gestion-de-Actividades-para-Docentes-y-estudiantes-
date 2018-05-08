@@ -37,6 +37,7 @@ public class controlDB extends SQLiteOpenHelper{
     public static final String COl_2A = "ID";
     private static final String[]camposReserva = new String [] {"idreserva","estado"};
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
+    public static final String delete_escuela = "CREATE TRIGGER if not exists delete_escuela AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
 
 
 
@@ -69,6 +70,9 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD)) ");
 
 
+            /* Trigger */
+            db.execSQL(delete_escuela); // delete trigger
+
         }catch (Exception e){
 
         }
@@ -98,6 +102,7 @@ public class controlDB extends SQLiteOpenHelper{
         }catch (Exception e){
 
         }
+
     }
     public void abrir() throws SQLException
     {
@@ -192,6 +197,7 @@ public class controlDB extends SQLiteOpenHelper{
             users.add(new Usuario("Alberto","jA3f2",1));
             users.add(new Usuario("Carlos","Ch1q2",1));
             users.add(new Usuario("walter","1234",2));
+            users.add(new Usuario("Katlheen","1234",2));
 
             option.add(new OpcionCrud("CREAR USUARIO",1,1));
             option.add(new OpcionCrud("EDITAR USUARIO",2,2));
@@ -224,7 +230,6 @@ public class controlDB extends SQLiteOpenHelper{
             for (Usuario u : users){
                 insertUser(u.getUsername(),u.getClave(),u.getTipo());
             }
-            insertEscuela(1,"eisi");
             insertarReservas(1,1,1);
 
 
@@ -387,6 +392,41 @@ public class controlDB extends SQLiteOpenHelper{
             return null;
         }
 
+    }
+
+    public String updateEscuela(Escuela escuela){
+        String regAc = "Registro Actualizado #";
+        String idEscuela = String.valueOf(escuela.getIdentificadorEscuela());
+        String[] id = {idEscuela};
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("nomescuela",escuela.getNombreEscuela());
+        int resultado = db.update("escuela",cv,"idescuela = ?",id);
+
+        if(resultado>0){
+            regAc += idEscuela;
+        }else{
+            regAc = "No se encuentra registro Escuela para ser actualizado";
+        }
+        return regAc;
+    }
+    
+
+    public String deleteEscuela(Escuela escuela){
+        String regEscuelaElim = "Registro eliminado, escuela #";
+        SQLiteDatabase db = this.getWritableDatabase();
+        String idEscuela = String.valueOf(escuela.getIdentificadorEscuela());
+        String[] id = {idEscuela};
+
+        int res = db.delete("escuela", "idescuela = ?",id);
+
+        if(res>0){
+            regEscuelaElim += idEscuela;
+        }else{
+            regEscuelaElim = "Este registro no existe";
+        }
+        return regEscuelaElim;
     }
 
 

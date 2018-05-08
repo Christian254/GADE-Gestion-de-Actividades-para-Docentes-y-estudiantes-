@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingTop="30dip"
@@ -11,10 +12,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:background="@color/colorDelete"
             android:gravity="center"
-            android:text="@string/escuelaActualizar"
-            android:textSize="30sp"
-            android:background="@color/colorUpdate" />
+            android:text="@string/escuelaEliminar"
+            android:textSize="30sp" />
     </RelativeLayout>
 
     <TableRow>
@@ -43,8 +44,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
         <Button
-            android:id="@+id/btnActualizarEscuelaDatos"
-            android:text="@string/escuelaActualizar"
+            android:id="@+id/btnEliminarEscuelaDatos"
+            android:text="@string/escuelaEliminar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
@@ -61,17 +62,4 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
     </TableRow>
-
-    <TableRow>
-        <TextView android:text="@string/nombreEscuela"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp" />
-        <EditText
-            android:id="@+id/nomEscuela"
-            android:inputType="text"
-            android:maxLength="70"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
-    </TableRow>
-
 </TableLayout>
