@@ -31,5 +31,9 @@ public class ModificarReservaActivity extends Activity {
         String regAct = helper.modificarReserva(reserva);
         Toast.makeText(this,regAct,Toast.LENGTH_SHORT).show();
     }
+    public void limpiarTexto(View v){
+        editRes.setText("");
+        editAct.setText("");
+    }
 
 }

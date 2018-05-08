@@ -12,7 +12,7 @@
         android:id="@+id/editIdReserva"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="number"
         android:enabled="true"
         android:maxLength="7" />
 
@@ -24,7 +24,7 @@
         android:id="@+id/editIdActividad"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="number"
         android:enabled="true"
         android:maxLength="7" />
 

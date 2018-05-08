@@ -25,5 +25,8 @@
         <Button
             android:onClick="modificarReserva"
             android:text="@string/actualizar" />
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
     </TableRow>
 </TableLayout>

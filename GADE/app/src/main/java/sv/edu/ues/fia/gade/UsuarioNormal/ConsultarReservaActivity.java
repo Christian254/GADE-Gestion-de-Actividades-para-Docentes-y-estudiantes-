@@ -48,6 +48,8 @@ public class ConsultarReservaActivity extends Activity {
     public void limpiarTexto(View v){
         editId.setText("");
         editEstado.setText("");
+        editAct.setText("");
+        buscar.setText("");
 
     }
 
