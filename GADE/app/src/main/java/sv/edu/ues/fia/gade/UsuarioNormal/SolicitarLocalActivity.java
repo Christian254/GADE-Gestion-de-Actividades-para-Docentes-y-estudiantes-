@@ -14,25 +14,23 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class SolicitarLocalActivity extends Activity {
     controlDB helper;
-    EditText editId;
+    EditText editIdReserva, editIdAct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitar_local);
-        editId = (EditText) findViewById(R.id.editIdReserva);
+        helper = new controlDB(this);
+        editIdReserva = (EditText) findViewById(R.id.editIdReserva);
+        editIdAct = (EditText) findViewById(R.id.editIdActividad);
     }
 
-    public void insertarReservas(View v)
+    public void insertarReserva(View v)
     {
-        int idreserva= Integer.parseInt(editId.getText().toString());
-        String regInsertados="registro insertado";
         Reserva reserva = new Reserva();
-        reserva.setIdReserva(1);
+        reserva.setIdReserva(Integer.parseInt(editIdReserva.getText().toString()));
         reserva.setEstado(2);
-        reserva.setIdActividad(1);
-        helper.abrir();
-        // helper.insertarReservas(reserva);
-        helper.close();
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        reserva.setIdActividad(Integer.parseInt(editIdAct.getText().toString()));
+        String regInsert= helper.insertReserva(reserva);
+        Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
     }
 }

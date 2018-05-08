@@ -3,45 +3,36 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ID Reserva"/>
-
+        android:text="@string/numReserva" />
     <EditText
         android:id="@+id/editIdReserva"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:enabled="true"
         android:maxLength="7" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Estado" />
-
+        android:text="@string/idActividad" />
     <EditText
-        android:id="@+id/editEstadoS"
-        android:layout_width="fill_parent"
+        android:id="@+id/editIdActividad"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:cursorVisible="false"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:hint="pendiente"
         android:inputType="text"
-        android:longClickable="false" />
+        android:enabled="true"
+        android:maxLength="7" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="insertarReserva"
+        android:text="@string/insertar" />
 
-        <Button
-            android:id="@+id/botonInsertarReserva"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="insertarReservas"
-            android:text="insertar" />
-    </LinearLayout>
 </LinearLayout>

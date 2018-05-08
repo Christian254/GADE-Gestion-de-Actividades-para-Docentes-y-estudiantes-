@@ -41,4 +41,13 @@ public class Reserva {
     public void setIdActividad(int idActividad) {
         this.idActividad = idActividad;
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "idReserva=" + idReserva +
+                ", estado=" + estado +
+                ", idActividad=" + idActividad +
+                '}';
+    }
 }

@@ -14,7 +14,8 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 public class ConsultarReservaActivity extends Activity {
     controlDB helper;
     EditText editId, buscar;
-    EditText editEstado;
+    EditText editEstado, editAct;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class ConsultarReservaActivity extends Activity {
         buscar = (EditText) findViewById(R.id.editId);
         editId = (EditText) findViewById(R.id.editIdR);
         editEstado = (EditText) findViewById(R.id.editEstado);
+        editAct = (EditText) findViewById(R.id.editActividad);
     }
 
     public void consultaReserva(View v)
@@ -39,6 +41,7 @@ public class ConsultarReservaActivity extends Activity {
         {
             editId.setText(String.valueOf(reserva.getIdReserva()));
             editEstado.setText(String.valueOf(reserva.getEstado()));
+            editAct.setText(String.valueOf(reserva.getIdActividad()));
         }
 
     }

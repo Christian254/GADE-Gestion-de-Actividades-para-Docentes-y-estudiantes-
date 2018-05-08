@@ -35,7 +35,7 @@ public class controlDB extends SQLiteOpenHelper{
     public static final String table_nameA = "ACCESO";
     public static final String COl_1A = "UERNAME";
     public static final String COl_2A = "ID";
-    private static final String[]camposReserva = new String [] {"idreserva","estado"};
+    private static final String[]camposReserva = new String [] {"idreserva","estado", "idactividad"};
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
     public static final String delete_escuela = "CREATE TRIGGER if not exists delete_escuela AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
 
@@ -230,7 +230,7 @@ public class controlDB extends SQLiteOpenHelper{
             for (Usuario u : users){
                 insertUser(u.getUsername(),u.getClave(),u.getTipo());
             }
-            insertarReservas(1,1,1);
+           // insertarReservas(1,1,1);
 
 
             return true;
@@ -444,22 +444,25 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     //CRUD para las reservas
-    public  boolean insertarReservas(int idReserva, int estado, int idActividad)
+    public  String insertReserva(Reserva reserva)
     {
-        boolean retorno = false;
+        String regInsertado = "Registro Reserva #";
+        long contador = 0;
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("IDRESERVA", idReserva);
-        contentValues.put("ESTADO", estado);
-        contentValues.put("IDACTIVIDAD", idActividad);
-        long resul = db.insert("RESERVA",null,contentValues);
+        contentValues.put("IDRESERVA",reserva.getIdReserva());
+        contentValues.put("ESTADO", reserva.getEstado());
+        contentValues.put("IDACTIVIDAD", reserva.getIdActividad());
+        contador = db.insert("RESERVA",null,contentValues);
         db.close();
-        if (resul ==-1){
-            retorno=false;
+
+        if(contador == -1 || contador == 0){
+            regInsertado = "Ya existe la reserva";
         }else{
-            retorno=true;
+            regInsertado = regInsertado + contador;
         }
-        return retorno;
+        return regInsertado;
     }
 
 
@@ -473,12 +476,47 @@ public class controlDB extends SQLiteOpenHelper{
             Reserva reserva = new Reserva();
             reserva.setIdReserva(cursor.getInt(0));
             reserva.setEstado(cursor.getInt(1));
+            reserva.setIdActividad(cursor.getInt(2));
             return  reserva;
         }
         else
         {
             return null;
         }
+    }
+
+    public String modificarReserva(Reserva reserva)
+    {
+        String registroActualizado = "El Registro #";
+        String idReserva = String.valueOf(reserva.getIdReserva());
+        String [] id = {idReserva};
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues  = new ContentValues();
+        contentValues.put("IDACTIVIDAD", reserva.getIdActividad());
+        int resultado = db.update("RESERVA",contentValues,"IDRESERVA = ?",id);
+
+        if(resultado>0){
+            registroActualizado += idReserva + " se actualizo";
+        }else{
+            registroActualizado = "No se encuentra registro";
+        }
+        return registroActualizado;
+    }
+
+    public String eliminarReserva(Reserva reserva)
+    {
+        String regEliminado = "Se elimino la reserva #";
+        SQLiteDatabase db = this.getWritableDatabase();
+        String idReserva = String.valueOf(reserva.getIdReserva());
+        String [] id = {idReserva};
+        int res = db.delete("RESERVA", "IDRESERVA = ?",id);
+
+        if(res>0){
+            regEliminado += idReserva;
+        }else{
+            regEliminado = "Este registro no existe";
+        }
+        return regEliminado;
     }
 
 
