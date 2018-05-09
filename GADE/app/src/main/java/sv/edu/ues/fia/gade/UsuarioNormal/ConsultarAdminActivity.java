@@ -23,7 +23,6 @@ public class ConsultarAdminActivity extends AppCompatActivity {
         lista = (ListView)findViewById(R.id.listaAdmins);
         Cursor c = db.getData("ADMINISTRADOR");
         ArrayList<String> datos = new ArrayList<String>();
-        datos.add("\tDatos");
         if(c!=null && c.getCount()>0){
             while (c.moveToNext()){
                 datos.add(c.getString(0)+": "+c.getString(2));

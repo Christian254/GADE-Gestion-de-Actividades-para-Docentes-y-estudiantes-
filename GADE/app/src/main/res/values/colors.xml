@@ -7,4 +7,5 @@
     <color name="colorUpdate">#B2D2E5</color>
     <color name="colorDelete">#E2A5AD</color>
     <color name="colorQuery">#f4eaac</color>
+    <color name="blanco">#FFF</color>
 </resources>

@@ -27,9 +27,6 @@ public class GestionarLocalActivity extends AppCompatActivity {
         txt3= (TextInputEditText)findViewById(R.id.idAdmin2);
         txt4= (TextInputEditText)findViewById(R.id.idCupo);
         db = new controlDB(this);
-        //db.insertEscuela(1,"Ing sistemas");
-        //db.insertEscuela(2,"Ing Electrica");
-        //db.insertEscuela(3,"Ing Mecanica");
         antiguoNombre=" ";
     }
 
@@ -146,4 +143,11 @@ public class GestionarLocalActivity extends AppCompatActivity {
             Toast.makeText(this,"Ocurrio un error inesperado",Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
+
+
+
+
 }
