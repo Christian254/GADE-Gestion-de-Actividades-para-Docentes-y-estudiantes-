@@ -446,7 +446,7 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     //CRUD para las reservas
-    public  String insertReserva(Reserva reserva, Alumno alumno)
+    public  String insertReserva(Reserva reserva, Alumno alumno, Docente docente)
     {
         String regInsertado = "Registro Reserva #";
         long contador = 0;
@@ -463,7 +463,8 @@ public class controlDB extends SQLiteOpenHelper{
             regInsertado = "Ya existe la reserva";
         }else{
             insertAlum(alumno);
-            regInsertado = regInsertado + contador + " " + alumno.getCarnet();
+            insertDocente(docente);
+            regInsertado = regInsertado + contador + " " + alumno.getCarnet() + " "+docente.getNombreDoc() ;
 
         }
         return regInsertado;
