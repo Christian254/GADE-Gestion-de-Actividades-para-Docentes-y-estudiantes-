@@ -11,11 +11,11 @@ import sv.edu.ues.fia.gade.R;
 public class EscuelaGestionarActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnEscuelaIns, btnEscuelaAc, btnEscuelaCon, btnEscuelaEli;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escuela_gestionar);
+
         btnEscuelaIns = (Button) findViewById(R.id.btnInsertarEscuela);
         btnEscuelaAc = (Button) findViewById(R.id.btnActualizarEscuela);
         btnEscuelaCon = (Button) findViewById(R.id.btnConsultarEscuela);

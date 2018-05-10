@@ -29,9 +29,16 @@
     <string name="escuelaEliminar">Eliminar Escuela</string>
 
     <string name="nombreEscuela">Escuela:</string>
-    <string name="idEscuela">Código:</string>
+    <string name="idEscuela">Código Escuela:</string>
     <string name="insertarEscuela">Insertar Escuela</string>
 
+    <string name="estudianteInsertar">Insertar Estudiante</string>
+    <string name="estudianteActualizar">Actualizar Estudiante</string>
+    <string name="estudianteConsultar">Consultar Estudiante</string>
+    <string name="estudianteEliminar">Eliminar Estudiante</string>
+
+    <string name="idEstudiante">Estudiante:</string>
+    <string name="nombreEstudiante">Estudiante:</string>
 
     <string name="opciones">Opciones:</string>
     <string name="limpiar">Limpiar</string>

@@ -30,8 +30,8 @@ public class IndexActivity extends ListActivity {
     **/
     private void cargarMenu(int t) {
         if(t==2){ //si es administrador podra:
-            String[] menu1= {"Gestionar Escuela","Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Gestionar Administrador","Gestionar Local"};
-            String[] valores1={"EscuelaGestionarActivity","SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","GestionarAdminActivity","GestionarLocalActivity"};
+            String[] menu1= {"Gestionar Escuela", "Gestionar Estudiante" ,"Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Gestionar Administrador","Gestionar Local"};
+            String[] valores1={"EscuelaGestionarActivity", "EstudianteGestionarActivity" ,"SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","GestionarAdminActivity","GestionarLocalActivity"};
             this.menu=menu1;
             this.valores=valores1;
         }else{
