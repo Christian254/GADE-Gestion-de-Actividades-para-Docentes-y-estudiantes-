@@ -5,11 +5,19 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sv.edu.ues.fia.gade.R;
+import sv.edu.ues.fia.gade.adapter.SpinnerAdapter;
+import sv.edu.ues.fia.gade.adapter.SpinnerAdminAdapter;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
+import sv.edu.ues.fia.gade.model.Escuela;
 
 public class GestionarLocalActivity extends AppCompatActivity {
 
@@ -17,7 +25,7 @@ public class GestionarLocalActivity extends AppCompatActivity {
     TextView esc;
     private controlDB db;
     private static String antiguoNombre;
-
+    private Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +35,39 @@ public class GestionarLocalActivity extends AppCompatActivity {
         txt3= (TextInputEditText)findViewById(R.id.idAdmin2);
         txt4= (TextInputEditText)findViewById(R.id.idCupo);
         db = new controlDB(this);
+        List<Escuela> admin = new ArrayList<Escuela>();
+        Cursor c = db.getData("ADMINISTRADOR");
+        if(c!=null && c.getCount()>0){
+            while (c.moveToNext()){
+                int id = c.getInt(0);
+                String nombreEsc = c.getString(2);
+                admin.add(new Escuela(id,nombreEsc));
+            }
+        }else{
+            admin.add(new Escuela(0,"none"));
+        }
+
+        spinner = (Spinner) findViewById(R.id.spinner);
+
+        spinner.setAdapter(new SpinnerAdminAdapter(this,admin));
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
+            {
+                int idEsc = ((Escuela) adapterView.getItemAtPosition(position)).getIdentificadorEscuela();
+                txt3.setText(String.valueOf(idEsc));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView)
+            {
+                //nothing
+            }
+        });
+
+
         antiguoNombre=" ";
     }
 

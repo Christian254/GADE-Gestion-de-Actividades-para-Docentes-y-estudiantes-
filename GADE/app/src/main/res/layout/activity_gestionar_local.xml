@@ -95,7 +95,7 @@
                     />
 
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15sp"
                     android:id="@+id/spin"
@@ -112,6 +112,16 @@
                         android:inputType="number"
                         android:maxLines="1"/>
                 </android.support.design.widget.TextInputLayout>
+
+                <Spinner
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/nombreAdmin"
+                    android:id="@+id/spinner"
+                    android:layout_alignParentRight="true"
+                    android:overlapAnchor="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </Spinner>
 
 
                 <TextView

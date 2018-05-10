@@ -6,14 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sv.edu.ues.fia.gade.R;
+import sv.edu.ues.fia.gade.adapter.SpinnerAdapter;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 import sv.edu.ues.fia.gade.model.Escuela;
 import sv.edu.ues.fia.gade.model.Usuario;
@@ -23,6 +26,7 @@ public class GestionarAdminActivity extends AppCompatActivity {
     TextInputEditText txt1,txt2,txt3;
     TextView esc;
     private controlDB db;
+    private Spinner spinner;
     private static String antiguoNombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,39 @@ public class GestionarAdminActivity extends AppCompatActivity {
         db.insertEscuela(new Escuela(1,"Ing de Sistemas"));
         db.insertEscuela(new Escuela(2,"Ing de mecanica"));
         db.insertEscuela(new Escuela(3,"Ing de Electrica"));
+        List<Escuela> escuelas = new ArrayList<Escuela>();
+        Cursor c = db.getData("ESCUELA");
+        if(c!=null && c.getCount()>0){
+            while (c.moveToNext()){
+                int id = c.getInt(0);
+                String nombreEsc = c.getString(1);
+                escuelas.add(new Escuela(id,nombreEsc));
+            }
+        }else{
+            escuelas.add(new Escuela(0,"none"));
+        }
+
+        spinner = (Spinner) findViewById(R.id.spinner);
+
+        spinner.setAdapter(new SpinnerAdapter(this,escuelas));
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
+            {
+                int idEsc = ((Escuela) adapterView.getItemAtPosition(position)).getIdentificadorEscuela();
+                txt3.setText(String.valueOf(idEsc));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView)
+            {
+                //nothing
+            }
+        });
+
+
         antiguoNombre=" ";
     }
 
