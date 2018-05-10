@@ -34,7 +34,6 @@
         android:text="@string/carnetEst" />
 
     <EditText
-        android:id="@+id/editCarnet"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:enabled="true"
@@ -47,7 +46,6 @@
         android:text="@string/NombreEstudiante" />
 
     <EditText
-        android:id="@+id/editNombreEst"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:enabled="true"
@@ -60,7 +58,6 @@
         android:text="@string/nomDocente" />
 
     <EditText
-        android:id="@+id/editNombreDocente"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:enabled="true"
@@ -68,7 +65,6 @@
         android:maxLength="7" />
 
     <Button
-        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="insertarReserva"

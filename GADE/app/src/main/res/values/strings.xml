@@ -45,11 +45,12 @@
     <string name="carnetEst">Carnet de Estudiante</string>
 
 
-
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="NombreEstudiante">nombre del estudiante</string>
     <string name="nomDocente">Nombre del docente</string>
     <string name="desarrollador1">Pantalla por: Walter Marroquin</string>
     <string name="icono">icono</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
