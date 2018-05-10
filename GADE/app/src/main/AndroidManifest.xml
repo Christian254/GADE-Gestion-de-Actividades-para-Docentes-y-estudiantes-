@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/andp"
+        android:icon="@drawable/ues1"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/andp"
+        android:roundIcon="@drawable/ues1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">

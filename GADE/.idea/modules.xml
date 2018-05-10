@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GADE.iml" filepath="$PROJECT_DIR$/GADE.iml" />
-      <module fileurl="file://C:\Users\HP\Desktop\PDM_PII\GADE2.0\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\GADE.iml" filepath="C:\Users\HP\Desktop\PDM_PII\GADE2.0\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\GADE.iml" />
       <module fileurl="file://C:\Users\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\GADE.iml" filepath="C:\Users\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\GADE.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\HP\Desktop\PDM_PII\GADE2.0\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" filepath="C:\Users\HP\Desktop\PDM_PII\GADE2.0\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" />
       <module fileurl="file://C:\Users\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" filepath="C:\Users\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" />
     </modules>
   </component>
