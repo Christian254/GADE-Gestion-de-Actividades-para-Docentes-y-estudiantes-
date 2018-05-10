@@ -50,11 +50,15 @@ public class EscuelaEliminarFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnEliminarEscuelaDatos:
-                String regElim;
-                Escuela escuela = new Escuela();
-                escuela.setIdentificadorEscuela(Integer.valueOf(editIdEscuela.getText().toString()));
-                regElim = db.deleteEscuela(escuela);
-                Toast.makeText(v.getContext(), regElim, Toast.LENGTH_SHORT).show();
+                if(editIdEscuela.getText().toString().isEmpty()){
+                    Toast.makeText(v.getContext(), "Campo obligatorio a rellenar.", Toast.LENGTH_SHORT).show();
+                }else{
+                    String regElim;
+                    Escuela escuela = new Escuela();
+                    escuela.setIdentificadorEscuela(Integer.valueOf(editIdEscuela.getText().toString()));
+                    regElim = db.deleteEscuela(escuela);
+                    Toast.makeText(v.getContext(), regElim, Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnLimpiarEscuelaDatos:
                 editIdEscuela.setText("");

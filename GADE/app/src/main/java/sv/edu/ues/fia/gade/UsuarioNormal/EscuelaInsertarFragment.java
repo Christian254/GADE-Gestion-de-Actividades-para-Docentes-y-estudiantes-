@@ -52,13 +52,17 @@ public class EscuelaInsertarFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnInsertarEscuelaDatos:
-                int idEscuela = Integer.valueOf(editIdEscuela.getText().toString());
-                String nomEscuela = editNomEscuela.getText().toString();
-                Escuela escuela = new Escuela();
-                escuela.setIdentificadorEscuela(idEscuela);
-                escuela.setNombreEscuela(nomEscuela);
-                String regInsertados=db.insertEscuela(escuela);
-                Toast.makeText(v.getContext(), regInsertados, Toast.LENGTH_SHORT).show();
+                if(editIdEscuela.getText().toString().isEmpty() || editNomEscuela.getText().toString().isEmpty()){
+                    Toast.makeText(v.getContext(), "Campos vacíos, obligatorio rellenarlos.", Toast.LENGTH_SHORT).show();
+                }else{
+                    int idEscuela = Integer.valueOf(editIdEscuela.getText().toString());
+                    String nomEscuela = editNomEscuela.getText().toString();
+                    Escuela escuela = new Escuela();
+                    escuela.setIdentificadorEscuela(idEscuela);
+                    escuela.setNombreEscuela(nomEscuela);
+                    String regInsertados=db.insertEscuela(escuela);
+                    Toast.makeText(v.getContext(), regInsertados, Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnLimpiarEscuelaDatos:
                 editIdEscuela.setText("");

@@ -49,13 +49,17 @@ public class EscuelaConsultarFragment extends Fragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnConsultarEscuelaDatos:
-                Escuela escuela = db.consultarEscuela(Integer.valueOf(editIdEscuela.getText().toString()));
-                if (escuela == null){
+                if(editIdEscuela.getText().toString().isEmpty()){
+                    Toast.makeText(v.getContext(), "Campo vacío, rellenar antes de enviar.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Escuela escuela = db.consultarEscuela(Integer.valueOf(editIdEscuela.getText().toString()));
+                    if (escuela == null){
+                        Toast.makeText(v.getContext(), "No existe el registro de escuela", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        editNomEscuela.setText(escuela.getNombreEscuela());
+                    }
                 }
-                else{
-                    editNomEscuela.setText(escuela.getNombreEscuela());
-                }
-
 
                 break;
             case R.id.btnLimpiarEscuelaDatos:

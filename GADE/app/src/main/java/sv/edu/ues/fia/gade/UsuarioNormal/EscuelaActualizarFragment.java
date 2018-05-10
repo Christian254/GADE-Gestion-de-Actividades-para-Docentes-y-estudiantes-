@@ -51,11 +51,16 @@ public class EscuelaActualizarFragment extends Fragment implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnActualizarEscuelaDatos:
-                Escuela escuela = new Escuela();
-                escuela.setIdentificadorEscuela(Integer.valueOf(edtIdEs.getText().toString()));
-                escuela.setNombreEscuela(edtNomEs.getText().toString());
-                String regAc = db.updateEscuela(escuela);
-                Toast.makeText(v.getContext(),regAc,Toast.LENGTH_SHORT).show();
+
+                if(edtIdEs.getText().toString().isEmpty()){
+                    Toast.makeText(v.getContext(), "Campos vacíos, rellenar antes de enviar.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Escuela escuela = new Escuela();
+                    escuela.setIdentificadorEscuela(Integer.valueOf(edtIdEs.getText().toString()));
+                    escuela.setNombreEscuela(edtNomEs.getText().toString());
+                    String regAc = db.updateEscuela(escuela);
+                    Toast.makeText(v.getContext(),regAc,Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnLimpiarEscuelaDatos:
                 edtIdEs.setText("");
