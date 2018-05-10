@@ -146,7 +146,6 @@
                     android:background="@drawable/btn1"
                     android:layout_marginTop="30sp"
                     android:layout_below="@+id/spinner1"
-                    android:id="@+id/btnGuardar1"
                     android:text="Guardar"
                     android:textColor="@color/blanco"
                     android:onClick="guardar"
@@ -161,7 +160,6 @@
                     android:textColor="@color/blanco"
                     android:layout_marginTop="30sp"
                     android:layout_below="@+id/btnBuscar1"
-                    android:id="@+id/btnActualizar1"
                     android:text="Actualizar"
                     android:onClick="actualizar"
                     />
