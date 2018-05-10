@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import sv.edu.ues.fia.gade.R;
+import sv.edu.ues.fia.gade.clases.Alumno;
+import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class SolicitarLocalActivity extends Activity {
     controlDB helper;
-    EditText editIdReserva, editIdAct;
+    EditText editIdReserva, editIdAct,editAlumno, editEscuela, editNombre, editNomDoc, editIdDoc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,11 @@ public class SolicitarLocalActivity extends Activity {
         helper = new controlDB(this);
         editIdReserva = (EditText) findViewById(R.id.editIdReserva);
         editIdAct = (EditText) findViewById(R.id.editIdActividad);
+        editAlumno = (EditText) findViewById(R.id.editCarnet);
+        editEscuela = (EditText) findViewById(R.id.editIdEscuela);
+        editNombre = (EditText) findViewById(R.id.editNomEst);
+        editIdDoc = (EditText) findViewById(R.id.editIdDoc);
+        editNomDoc = (EditText) findViewById(R.id.editNomDoc);
     }
 
     public void insertarReserva(View v)
@@ -30,7 +37,18 @@ public class SolicitarLocalActivity extends Activity {
         reserva.setIdReserva(Integer.parseInt(editIdReserva.getText().toString()));
         reserva.setEstado(2);
         reserva.setIdActividad(Integer.parseInt(editIdAct.getText().toString()));
-        String regInsert= helper.insertReserva(reserva);
+
+        Alumno alumno = new Alumno();
+        alumno.setCarnet(editAlumno.getText().toString());
+        alumno.setNombre(editNombre.getText().toString());
+        alumno.setIdEscuela(Integer.parseInt(editEscuela.getText().toString()));
+
+        Docente docente = new Docente();
+        docente.setIdDocente(Integer.parseInt(editIdDoc.getText().toString()));
+        docente.setIdEscuela(Integer.parseInt(editEscuela.getText().toString()));
+        docente.setNombreDoc(editNomDoc.getText().toString());
+
+        String regInsert= helper.insertReserva(reserva, alumno, docente);
         Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
     }
 }
