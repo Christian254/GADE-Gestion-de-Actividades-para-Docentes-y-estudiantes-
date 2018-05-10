@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import sv.edu.ues.fia.gade.clases.Alumno;
+import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.model.AccesoUsuario;
 import sv.edu.ues.fia.gade.model.Escuela;
@@ -66,7 +68,7 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table LOCAL(IDLOCAL INTEGER primary key autoincrement,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null)");
             db.execSQL("create table RESERVA(IDRESERVA INTEGER not null,ESTADO INTEGER not null,IDACTIVIDAD INTEGER not null,primary key (IDRESERVA))");
             db.execSQL("create table DISPONIBLE(IDHORARIO INTEGER not null,IDLOCAL INTEGER not null,IDCICLO INTEGER not null,IDRESERVA INTEGER not null, DISPONIBLE  INTEGER not null, primary key (IDHORARIO, IDLOCAL, IDCICLO, IDRESERVA))");
-            db.execSQL("create table ESTUDIANTE(CARNET INTEGER not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET))");
+            db.execSQL("create table ESTUDIANTE(CARNET TEXT not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET))");
             db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD)) ");
 
 
@@ -444,7 +446,7 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     //CRUD para las reservas
-    public  String insertReserva(Reserva reserva)
+    public  String insertReserva(Reserva reserva, Alumno alumno)
     {
         String regInsertado = "Registro Reserva #";
         long contador = 0;
@@ -460,7 +462,9 @@ public class controlDB extends SQLiteOpenHelper{
         if(contador == -1 || contador == 0){
             regInsertado = "Ya existe la reserva";
         }else{
-            regInsertado = regInsertado + contador;
+            insertAlum(alumno);
+            regInsertado = regInsertado + contador + " " + alumno.getCarnet();
+
         }
         return regInsertado;
     }
@@ -520,6 +524,47 @@ public class controlDB extends SQLiteOpenHelper{
     }
 
 
+
+    public  String insertAlum(Alumno alumno)    //lo necesitaba
+    {
+        String regInsertado = "Alumno: ";
+        long contador = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("CARNET",alumno.getCarnet());
+        contentValues.put("IDESCUELA", alumno.getIdEscuela());
+        contentValues.put("NOMESTUDIANTE", alumno.getNombre());
+        contador = db.insert("ESTUDIANTE",null,contentValues);
+        db.close();
+
+        if(contador == -1 || contador == 0){
+            regInsertado = "Ya existe el alumno." + alumno.getCarnet();
+        }else{
+            regInsertado = regInsertado + contador;
+        }
+        return regInsertado;
+    }
+
+    public  String insertDocente(Docente docente)
+    {
+        String regInsertado = "Docente: ";
+        long contador = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDDOCENTE",docente.getIdDocente());
+        contentValues.put("IDESCUELA", docente.getIdEscuela());
+        contentValues.put("NOMDOCENTE", docente.getNombreDoc());
+        contador = db.insert("DOCENTE",null,contentValues);
+        if(contador == -1 || contador == 0){
+            regInsertado = "Ya existe el docente." + docente.getIdDocente();
+        }else{
+            regInsertado = regInsertado + contador;
+        }
+        return regInsertado;
+
+    }
 }
 
 
