@@ -42,7 +42,8 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
-    public static final String delete_escuela = "CREATE TRIGGER if not exists delete_escuela AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
+    public static final String delete_escuela_administrador = "CREATE TRIGGER if not exists delete_escuela_administrador AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
+    public static final String delete_escuela_estudiante = "CREATE TRIGGER if not exists delete_escuela_estudiante AFTER DELETE ON escuela for each row BEGIN DELETE FROM estudiante WHERE idescuela = old.idescuela; END";
 
 
 
@@ -76,7 +77,8 @@ public class controlDB extends SQLiteOpenHelper{
 
 
             /* Trigger */
-            db.execSQL(delete_escuela); // delete trigger
+            db.execSQL(delete_escuela_administrador); // delete trigger
+            db.execSQL(delete_escuela_estudiante); // delete trigger
 
         }catch (Exception e){
 
@@ -592,7 +594,20 @@ public class controlDB extends SQLiteOpenHelper{
 
     }
 
+    public String deleteAlumno(String carnet){
+        String regEl = "Registro a eliminar con carnet: ";
+        String id[] = {carnet};
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        int res = db.delete("estudiante","carnet = ?", id);
+        if(res>0){
+            regEl += res;
+        }else{
+            regEl = "No existe, carnet.";
+        }
+        return regEl;
+
+    }
 
 
     public  String insertDocente(Docente docente)   // también lo necesitaba

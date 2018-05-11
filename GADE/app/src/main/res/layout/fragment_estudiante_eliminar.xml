@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UsuarioNormal.EstudianteEliminarFragment"
-    android:background="@android:color/holo_orange_dark">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
 
+    <RelativeLayout>
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/colorDelete"
+            android:gravity="center"
+            android:text="@string/estudianteEliminar"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <TableRow>
+        <TextView android:text="@string/carnetEst"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp" />
+        <EditText
+            android:id="@+id/carnetEst"
+            android:inputType="number"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+        <TextView
+            android:layout_gravity="center"
+            android:text="@string/opciones" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btnEliminarEstudianteDatos"
+            android:text="@string/estudianteEliminar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/btnLimpiarEstudianteDatos"
+            android:text="@string/limpiar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </TableRow>
+</TableLayout>
