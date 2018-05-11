@@ -39,6 +39,7 @@ public class controlDB extends SQLiteOpenHelper{
     public static final String COl_2A = "ID";
     private static final String[]camposReserva = new String [] {"idreserva","estado", "idactividad"};
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
+    private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     public static final String delete_escuela = "CREATE TRIGGER if not exists delete_escuela AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
 
 
@@ -526,6 +527,9 @@ public class controlDB extends SQLiteOpenHelper{
 
 
 
+    /* Alumno */
+    // db.execSQL("create table ESTUDIANTE(CARNET TEXT not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET))");
+
     public  String insertAlum(Alumno alumno)    //lo necesitaba
     {
         String regInsertado = "Alumno: ";
@@ -546,6 +550,29 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return regInsertado;
     }
+
+
+
+    public Alumno consultarAlumno(String carnet){
+        String id[] = {carnet};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("estudiante", camposEstudiante, "carnet = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Alumno estudiante = new Alumno();
+
+            estudiante.setCarnet(cursor.getString(0));
+            estudiante.setIdEscuela(cursor.getInt(1));
+            estudiante.setNombre(cursor.getString(2));
+
+            return estudiante;
+
+        }else{
+            return null;
+        }
+
+    }
+
+
 
     public  String insertDocente(Docente docente)
     {

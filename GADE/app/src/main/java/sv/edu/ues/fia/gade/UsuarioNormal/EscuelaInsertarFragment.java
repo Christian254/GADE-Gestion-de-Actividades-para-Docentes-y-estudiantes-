@@ -42,7 +42,6 @@ public class EscuelaInsertarFragment extends Fragment implements View.OnClickLis
         btnInsertar.setOnClickListener(this);
         db = new controlDB(getActivity());
 
-
         return v;
     }
 
