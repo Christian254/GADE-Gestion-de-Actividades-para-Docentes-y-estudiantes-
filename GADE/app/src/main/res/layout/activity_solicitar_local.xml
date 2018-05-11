@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,6 +33,29 @@
         android:inputType="number"
         android:enabled="true"
         android:maxLength="7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nomActividad"/>
+    <EditText
+        android:id="@+id/editNomActividad"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="20"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tipoActividad"/>
+    <EditText
+        android:id="@+id/editTipoActividad"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,8 +126,6 @@
         android:layout_height="wrap_content"
         android:onClick="insertarReserva"
         android:text="@string/insertar" />
-
-
-
-
 </LinearLayout>
+</ScrollView>
+

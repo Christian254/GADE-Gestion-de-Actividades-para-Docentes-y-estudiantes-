@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Alumno;
 import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Reserva;
@@ -447,7 +448,7 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     //CRUD para las reservas
-    public  String insertReserva(Reserva reserva, Alumno alumno, Docente docente)
+    public  String insertReserva(Reserva reserva, Alumno alumno, Docente docente, Actividad actividad)
     {
         String regInsertado = "Registro Reserva #";
         long contador = 0;
@@ -465,7 +466,8 @@ public class controlDB extends SQLiteOpenHelper{
         }else{
             insertAlum(alumno);
             insertDocente(docente);
-            regInsertado = regInsertado + contador + " " + alumno.getCarnet() + " "+docente.getNombreDoc() ;
+            insertActividad(actividad);
+            regInsertado = regInsertado + contador + " " + alumno.getCarnet() + " "+docente.getNombreDoc() +" Actividad" + actividad.getIdActividad() ;
 
         }
         return regInsertado;
@@ -551,6 +553,7 @@ public class controlDB extends SQLiteOpenHelper{
         return regInsertado;
     }
 
+<<<<<<< HEAD
 
 
     public Alumno consultarAlumno(String carnet){
@@ -575,6 +578,9 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     public  String insertDocente(Docente docente)
+=======
+    public  String insertDocente(Docente docente)   // también lo necesitaba
+>>>>>>> 888c619db1965f46cc90306272a68a7a59eb1488
     {
         String regInsertado = "Docente: ";
         long contador = 0;
@@ -592,6 +598,26 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return regInsertado;
 
+    }
+
+    public String insertActividad(Actividad actividad)
+    {
+        String regInsertado = "Actividad: ";
+        long contador = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDACTIVIDAD",actividad.getIdActividad());
+        contentValues.put("IDTIPOACTIVIDAD", actividad.getTipoActividad());
+        contentValues.put("IDDOCENTE", actividad.getIdDocente());
+        contentValues.put("NOMACTIVIDAD", actividad.getNomActividad());
+        contador = db.insert("ACTIVIDAD", null,contentValues);
+        if(contador == -1 || contador == 0){
+            regInsertado = "Ya existe la actividad." + actividad.getIdActividad();
+        }else{
+            regInsertado = regInsertado + contador;
+        }
+        return regInsertado;
     }
 }
 

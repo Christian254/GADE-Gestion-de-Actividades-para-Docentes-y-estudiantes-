@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import sv.edu.ues.fia.gade.R;
+import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Alumno;
 import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Reserva;
@@ -16,7 +17,7 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class SolicitarLocalActivity extends Activity {
     controlDB helper;
-    EditText editIdReserva, editIdAct,editAlumno, editEscuela, editNombre, editNomDoc, editIdDoc;
+    EditText editIdReserva, editIdAct,editAlumno, editEscuela, editNombre, editNomDoc, editIdDoc, editTipoAct, editNombreAct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,8 @@ public class SolicitarLocalActivity extends Activity {
         editNombre = (EditText) findViewById(R.id.editNomEst);
         editIdDoc = (EditText) findViewById(R.id.editIdDoc);
         editNomDoc = (EditText) findViewById(R.id.editNomDoc);
+        editTipoAct = (EditText) findViewById(R.id.editTipoActividad);
+        editNombreAct = (EditText) findViewById(R.id.editNomActividad);
     }
 
     public void insertarReserva(View v)
@@ -48,7 +51,14 @@ public class SolicitarLocalActivity extends Activity {
         docente.setIdEscuela(Integer.parseInt(editEscuela.getText().toString()));
         docente.setNombreDoc(editNomDoc.getText().toString());
 
-        String regInsert= helper.insertReserva(reserva, alumno, docente);
+        Actividad actividad = new Actividad();
+        actividad.setIdActividad(Integer.parseInt(editIdAct.getText().toString()));
+        actividad.setIdDocente(Integer.parseInt(editIdDoc.getText().toString()));
+        actividad.setTipoActividad(Integer.parseInt(editTipoAct.getText().toString()));
+        actividad.setNomActividad(editNombreAct.getText().toString());
+
+
+        String regInsert= helper.insertReserva(reserva, alumno, docente, actividad);
         Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
     }
 }
