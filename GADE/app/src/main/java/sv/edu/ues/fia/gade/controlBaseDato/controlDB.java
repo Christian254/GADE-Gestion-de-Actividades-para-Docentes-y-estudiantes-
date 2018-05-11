@@ -554,7 +554,23 @@ public class controlDB extends SQLiteOpenHelper{
         return regInsertado;
     }
 
+    public String updateAlumno(Alumno estudiante){
+        String regAc = "Registro actualizado #";
+        String id[] = {estudiante.getCarnet()};
 
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("idescuela", estudiante.getIdEscuela());
+        cv.put("nomestudiante", estudiante.getNombre());
+        int contador = db.update("estudiante", cv, "carnet = ?", id);
+
+        if(contador>0){
+            regAc = regAc + contador;
+        }else{
+            regAc = "Registro no existe. Verificar carnet";
+        }
+        return regAc;
+    }
 
 
     public Alumno consultarAlumno(String carnet){
