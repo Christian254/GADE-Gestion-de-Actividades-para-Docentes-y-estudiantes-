@@ -8,13 +8,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import sv.edu.ues.fia.gade.R;
+import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class ConsultarReservaActivity extends Activity {
     controlDB helper;
     EditText editId, buscar;
-    EditText editEstado, editAct;
+    EditText editEstado, editAct, editNomActividad;
 
 
     @Override
@@ -26,6 +27,7 @@ public class ConsultarReservaActivity extends Activity {
         editId = (EditText) findViewById(R.id.editIdR);
         editEstado = (EditText) findViewById(R.id.editEstado);
         editAct = (EditText) findViewById(R.id.editActividad);
+        editNomActividad = (EditText) findViewById(R.id.editNomAct);
     }
 
     public void consultaReserva(View v)
@@ -43,6 +45,10 @@ public class ConsultarReservaActivity extends Activity {
             editEstado.setText(String.valueOf(reserva.getEstado()));
             editAct.setText(String.valueOf(reserva.getIdActividad()));
         }
+        helper.abrir();
+        Actividad actividad = helper.consultarActividad(String.valueOf(reserva.getIdActividad()));
+        helper.close();
+        editNomActividad.setText(actividad.getNomActividad());
 
     }
     public void limpiarTexto(View v){

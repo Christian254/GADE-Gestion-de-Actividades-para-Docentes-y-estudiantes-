@@ -41,6 +41,7 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposReserva = new String [] {"idreserva","estado", "idactividad"};
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
+    private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
     public static final String delete_escuela = "CREATE TRIGGER if not exists delete_escuela AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
 
 
@@ -553,7 +554,7 @@ public class controlDB extends SQLiteOpenHelper{
         return regInsertado;
     }
 
-<<<<<<< HEAD
+
 
 
     public Alumno consultarAlumno(String carnet){
@@ -577,10 +578,9 @@ public class controlDB extends SQLiteOpenHelper{
 
 
 
-    public  String insertDocente(Docente docente)
-=======
+
     public  String insertDocente(Docente docente)   // también lo necesitaba
->>>>>>> 888c619db1965f46cc90306272a68a7a59eb1488
+
     {
         String regInsertado = "Docente: ";
         long contador = 0;
@@ -600,7 +600,7 @@ public class controlDB extends SQLiteOpenHelper{
 
     }
 
-    public String insertActividad(Actividad actividad)
+    public String insertActividad(Actividad actividad) // lo necesitaba
     {
         String regInsertado = "Actividad: ";
         long contador = 0;
@@ -618,6 +618,27 @@ public class controlDB extends SQLiteOpenHelper{
             regInsertado = regInsertado + contador;
         }
         return regInsertado;
+    }
+
+    public  Actividad consultarActividad(String act)
+    {
+        String [] idAct = {act};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("actividad", camposActividad, "idactividad = ?", idAct, null, null, null);
+        if (cursor.moveToFirst())
+        {
+            Actividad actividad = new Actividad();
+
+            actividad.setIdActividad(cursor.getInt(0));
+            actividad.setTipoActividad(cursor.getInt(1));
+            actividad.setIdDocente(cursor.getInt(2));
+            actividad.setNomActividad(cursor.getString(3));
+
+            return actividad;
+        }
+        else {
+            return null;
+        }
     }
 }
 

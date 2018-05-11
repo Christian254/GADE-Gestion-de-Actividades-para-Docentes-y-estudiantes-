@@ -48,7 +48,7 @@ public class SolicitarLocalActivity extends Activity {
 
         if(idReserva.isEmpty() || idAct.isEmpty() || alumnoCarnet.isEmpty() || alumnoNombre.isEmpty() || idEscuela.isEmpty() || idDocente.isEmpty() || docenteNombre.isEmpty() ||tipoActividad.isEmpty() || nombreActividad.isEmpty())
         {
-            Toast.makeText(this,"Todos lo campos son obligatorios",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Todos los campos son obligatorios",Toast.LENGTH_SHORT).show();
         }
         else {
 
