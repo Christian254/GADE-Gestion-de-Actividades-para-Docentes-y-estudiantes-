@@ -36,29 +36,47 @@ public class SolicitarLocalActivity extends Activity {
 
     public void insertarReserva(View v)
     {
-        Reserva reserva = new Reserva();
-        reserva.setIdReserva(Integer.parseInt(editIdReserva.getText().toString()));
-        reserva.setEstado(2);
-        reserva.setIdActividad(Integer.parseInt(editIdAct.getText().toString()));
+        String idReserva = editIdReserva.getText().toString().trim();
+        String idAct = editIdAct.getText().toString().trim();
+        String alumnoCarnet = editAlumno.getText().toString().trim();
+        String alumnoNombre = editNombre.getText().toString().trim();
+        String idEscuela = editEscuela.getText().toString().trim();
+        String idDocente = editIdDoc.getText().toString().trim();
+        String docenteNombre = editNomDoc.getText().toString().trim();
+        String tipoActividad = editTipoAct.getText().toString().trim();
+        String nombreActividad = editNombreAct.getText().toString().trim();
 
-        Alumno alumno = new Alumno();
-        alumno.setCarnet(editAlumno.getText().toString());
-        alumno.setNombre(editNombre.getText().toString());
-        alumno.setIdEscuela(Integer.parseInt(editEscuela.getText().toString()));
-
-        Docente docente = new Docente();
-        docente.setIdDocente(Integer.parseInt(editIdDoc.getText().toString()));
-        docente.setIdEscuela(Integer.parseInt(editEscuela.getText().toString()));
-        docente.setNombreDoc(editNomDoc.getText().toString());
-
-        Actividad actividad = new Actividad();
-        actividad.setIdActividad(Integer.parseInt(editIdAct.getText().toString()));
-        actividad.setIdDocente(Integer.parseInt(editIdDoc.getText().toString()));
-        actividad.setTipoActividad(Integer.parseInt(editTipoAct.getText().toString()));
-        actividad.setNomActividad(editNombreAct.getText().toString());
+        if(idReserva.isEmpty() || idAct.isEmpty() || alumnoCarnet.isEmpty() || alumnoNombre.isEmpty() || idEscuela.isEmpty() || idDocente.isEmpty() || docenteNombre.isEmpty() ||tipoActividad.isEmpty() || nombreActividad.isEmpty())
+        {
+            Toast.makeText(this,"Todos lo campos son obligatorios",Toast.LENGTH_SHORT).show();
+        }
+        else {
 
 
-        String regInsert= helper.insertReserva(reserva, alumno, docente, actividad);
-        Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
+            Reserva reserva = new Reserva();
+            reserva.setIdReserva(Integer.parseInt(idReserva));
+            reserva.setEstado(2);
+            reserva.setIdActividad(Integer.parseInt(idAct));
+
+            Alumno alumno = new Alumno();
+            alumno.setCarnet(alumnoCarnet);
+            alumno.setNombre(alumnoNombre);
+            alumno.setIdEscuela(Integer.parseInt(idEscuela));
+
+            Docente docente = new Docente();
+            docente.setIdDocente(Integer.parseInt(idDocente));
+            docente.setIdEscuela(Integer.parseInt(idEscuela));
+            docente.setNombreDoc(docenteNombre);
+
+            Actividad actividad = new Actividad();
+            actividad.setIdActividad(Integer.parseInt(idAct));
+            actividad.setIdDocente(Integer.parseInt(idDocente));
+            actividad.setTipoActividad(Integer.parseInt(tipoActividad));
+            actividad.setNomActividad(nombreActividad);
+
+
+            String regInsert = helper.insertReserva(reserva, alumno, docente, actividad);
+            Toast.makeText(this, regInsert, Toast.LENGTH_SHORT).show();
+        }
     }
 }
