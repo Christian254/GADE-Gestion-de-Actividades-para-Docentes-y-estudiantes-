@@ -37,7 +37,7 @@
     <string name="estudianteConsultar">Consultar Estudiante</string>
     <string name="estudianteEliminar">Eliminar Estudiante</string>
 
-    <string name="idEstudiante">Estudiante:</string>
+    <string name="carnet">Carnet:</string>
     <string name="nombreEstudiante">Estudiante:</string>
 
     <string name="opciones">Opciones:</string>
