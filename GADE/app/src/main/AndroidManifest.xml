@@ -30,7 +30,13 @@
         <activity android:name=".UsuarioNormal.GestionarLocalActivity" />
         <activity android:name=".UsuarioNormal.ConsultarLocalesActivity" />
         <activity android:name=".UsuarioNormal.EscuelaGestionarActivity" />
-        <activity android:name=".UsuarioNormal.EstudianteGestionarActivity"></activity>
+        <activity android:name=".UsuarioNormal.EstudianteGestionarActivity" />
+        <activity android:name=".UsuarioNormal.GestionarHorarioActivity" />
+        <activity android:name=".UsuarioNormal.InsertarHorarioActivity" />
+        <activity android:name=".UsuarioNormal.ConsultarHorarioActivity" />
+        <activity android:name=".UsuarioNormal.ActualizarHorarioActivity" />
+        <activity android:name=".UsuarioNormal.EliminarHorarioActivity" />
+        <activity android:name=".UsuarioNormal.MostrarHorarioActivity"></activity>
     </application>
 
 </manifest>

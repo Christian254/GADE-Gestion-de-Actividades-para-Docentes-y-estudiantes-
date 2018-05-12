@@ -42,6 +42,7 @@
 
     <string name="opciones">Opciones:</string>
     <string name="limpiar">Limpiar</string>
+    <string name="consultar">Consultar</string>
 
 
     <string name="insertar">Insertar</string>
@@ -50,6 +51,10 @@
     <string name="actualizar">Actualizar</string>
     <string name="eliminar">Eliminar</string>
     <string name="carnetEst">Carnet de Estudiante</string>
+
+    <string name="idHorario">Id de horario</string>
+    <string name="horarioDesde">Hora de inicio</string>
+    <string name="horarioHasta">Hora de finalización</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

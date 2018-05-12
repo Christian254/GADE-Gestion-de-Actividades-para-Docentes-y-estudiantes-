@@ -3,9 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GADE.iml" filepath="$PROJECT_DIR$/GADE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../../pdm115/Documents/GitHub/GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-/GADE/GADE.iml" filepath="$PROJECT_DIR$/../../../../../pdm115/Documents/GitHub/GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-/GADE/GADE.iml" />
+      <module fileurl="file://C:\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\GADE.iml" filepath="C:\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\GADE.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../../pdm115/Documents/GitHub/GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-/GADE/app/app.iml" filepath="$PROJECT_DIR$/../../../../../pdm115/Documents/GitHub/GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-/GADE/app/app.iml" />
+      <module fileurl="file://C:\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" filepath="C:\pdm115\Documents\GitHub\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" />
+      <module fileurl="file://C:\Users\compaq\Documents\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" filepath="C:\Users\compaq\Documents\GADE-Gestion-de-Actividades-para-Docentes-y-estudiantes-\GADE\app\app.iml" />
     </modules>
   </component>
 </project>
