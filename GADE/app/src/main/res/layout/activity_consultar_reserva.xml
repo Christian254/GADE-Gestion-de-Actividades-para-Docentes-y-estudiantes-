@@ -89,6 +89,25 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/nomDocente"/>
+    <EditText
+        android:id="@+id/editNombreDocente"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NombreEstudiante"/>
+    <EditText
+        android:id="@+id/editNomEstudiante"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Local" />
     <EditText
         android:layout_width="100dp"
