@@ -44,6 +44,7 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposHorario = new String [] {"idHorario","horarioDesde", "horarioHasta"};
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
+    private static final String [] camposDocente = new String[] {"iddocente","idescuela","nomdocente"};
     public static final String delete_escuela_administrador = "CREATE TRIGGER if not exists delete_escuela_administrador AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
     public static final String delete_escuela_estudiante = "CREATE TRIGGER if not exists delete_escuela_estudiante AFTER DELETE ON escuela for each row BEGIN DELETE FROM estudiante WHERE idescuela = old.idescuela; END";
 
@@ -541,6 +542,7 @@ public class controlDB extends SQLiteOpenHelper{
         hora.put("HORARIODESDE", horario.getHorarioDesde());
         hora.put("HORARIOHASTA", horario.getHorarioHasta());
         contador=db.insert("HORARIO", null, hora);
+        db.close();
 
         if(contador==-1 || contador==0)
         {
@@ -696,6 +698,26 @@ public class controlDB extends SQLiteOpenHelper{
 
     }
 
+    public Docente consultarDocente(String idDocente)
+    {
+        String [] id = {idDocente};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("docente", camposDocente, "iddocente = ?", id, null, null, null);
+        if(cursor.moveToFirst())
+        {
+            Docente docente = new Docente();
+            docente.setIdDocente(cursor.getInt(0));
+            docente.setIdEscuela(cursor.getInt(1));
+            docente.setNombreDoc(cursor.getString(2));
+            return  docente;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
     public String insertActividad(Actividad actividad) // lo necesitaba
     {
         String regInsertado = "Actividad: ";
@@ -716,7 +738,7 @@ public class controlDB extends SQLiteOpenHelper{
         return regInsertado;
     }
 
-    public  Actividad consultarActividad(String act)
+    public  Actividad consultarActividad(String act) // lo necesitaba
     {
         String [] idAct = {act};
         SQLiteDatabase db = this.getReadableDatabase();

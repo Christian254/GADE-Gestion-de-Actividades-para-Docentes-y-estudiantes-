@@ -22,9 +22,8 @@ public class ConsultarLocalesActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consultar_locales);
         db = new controlDB(this);
-        lista = (ListView)findViewById(R.id.listaLocales);
+        ListView listView = getListView();
         Cursor c = db.getData("LOCAL");
         ArrayList<String> datos = new ArrayList<String>();
         if(c!=null && c.getCount()>0){
@@ -34,8 +33,20 @@ public class ConsultarLocalesActivity extends ListActivity {
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,datos);
-        lista.setAdapter(adapter);
+        setListAdapter(adapter);
     }
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        try {
+            Class<?> clase = Class.forName("sv.edu.ues.fia.gade.UsuarioNormal.MostrarHorarioActivity");
+            Intent inte = new Intent(this, clase);
+            this.startActivity(inte);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
 

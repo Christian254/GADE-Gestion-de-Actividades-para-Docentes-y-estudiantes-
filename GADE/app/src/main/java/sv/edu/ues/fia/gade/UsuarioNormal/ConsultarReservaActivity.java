@@ -9,13 +9,16 @@ import android.widget.Toast;
 
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.clases.Actividad;
+import sv.edu.ues.fia.gade.clases.Alumno;
+import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
+import sv.edu.ues.fia.gade.model.Escuela;
 
 public class ConsultarReservaActivity extends Activity {
     controlDB helper;
     EditText editId, buscar;
-    EditText editEstado, editAct, editNomActividad;
+    EditText editEstado, editAct, editNomActividad, editNomDoc;
 
 
     @Override
@@ -28,6 +31,7 @@ public class ConsultarReservaActivity extends Activity {
         editEstado = (EditText) findViewById(R.id.editEstado);
         editAct = (EditText) findViewById(R.id.editActividad);
         editNomActividad = (EditText) findViewById(R.id.editNomAct);
+        editNomDoc = (EditText) findViewById(R.id.editNombreDocente);
     }
 
     public void consultaReserva(View v)
@@ -44,11 +48,25 @@ public class ConsultarReservaActivity extends Activity {
             editId.setText(String.valueOf(reserva.getIdReserva()));
             editEstado.setText(String.valueOf(reserva.getEstado()));
             editAct.setText(String.valueOf(reserva.getIdActividad()));
+
+            helper.abrir();
+            Actividad actividad = helper.consultarActividad(String.valueOf(reserva.getIdActividad()));
+            String id_docente = String.valueOf(actividad.getIdDocente());
+            helper.close();
+            editNomActividad.setText(actividad.getNomActividad());
+
+            helper.abrir();
+            Docente docente = helper.consultarDocente(id_docente);
+            int id_escuela = docente.getIdEscuela();
+            helper.close();
+            editNomDoc.setText(docente.getNombreDoc());
+
+
+
+
         }
-        helper.abrir();
-        Actividad actividad = helper.consultarActividad(String.valueOf(reserva.getIdActividad()));
-        helper.close();
-        editNomActividad.setText(actividad.getNomActividad());
+
+
 
     }
     public void limpiarTexto(View v){
