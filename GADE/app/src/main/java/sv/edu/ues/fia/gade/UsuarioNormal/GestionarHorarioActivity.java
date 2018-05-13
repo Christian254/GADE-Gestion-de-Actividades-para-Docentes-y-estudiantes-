@@ -9,10 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class GestionarHorarioActivity extends ListActivity {
     String[] menu = {"Insertar Horario", "Eliminar Horario", "Consultar Horario",
-            "Actualizar Horario","Mostrar Horario"};
+            "Actualizar Horario","Mostrar Horario","Mostrar Ciclo"};
     String[]
             activities = {"InsertarHorarioActivity", "EliminarHorarioActivity", "ConsultarHorarioActivity",
-            "ActualizarHorarioActivity","MostrarHorarioActivity"};
+            "ActualizarHorarioActivity","MostrarHorarioActivity","MostrarCicloActivity"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

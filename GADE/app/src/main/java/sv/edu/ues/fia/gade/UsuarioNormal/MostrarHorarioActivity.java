@@ -27,7 +27,7 @@ public class MostrarHorarioActivity extends Activity {
     public void mostrarLista(){
         controlDB helper=new controlDB(this);
         if (helper!=null){
-            SQLiteDatabase db = helper.getReadableDatabase();
+            SQLiteDatabase db = helper.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT * FROM HORARIO",null);
             if (cursor.moveToFirst()){
                 do {

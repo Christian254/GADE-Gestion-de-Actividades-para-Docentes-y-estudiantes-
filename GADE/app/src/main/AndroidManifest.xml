@@ -36,7 +36,8 @@
         <activity android:name=".UsuarioNormal.ConsultarHorarioActivity" />
         <activity android:name=".UsuarioNormal.ActualizarHorarioActivity" />
         <activity android:name=".UsuarioNormal.EliminarHorarioActivity" />
-        <activity android:name=".UsuarioNormal.MostrarHorarioActivity"></activity>
+        <activity android:name=".UsuarioNormal.MostrarHorarioActivity" />
+        <activity android:name=".UsuarioNormal.MostrarCicloActivity"></activity>
     </application>
 
 </manifest>

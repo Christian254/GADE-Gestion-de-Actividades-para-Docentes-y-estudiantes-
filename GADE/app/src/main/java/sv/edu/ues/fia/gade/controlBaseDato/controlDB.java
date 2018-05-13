@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Alumno;
+import sv.edu.ues.fia.gade.clases.Ciclo;
 import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Horario;
 import sv.edu.ues.fia.gade.clases.Reserva;
@@ -42,6 +43,7 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposReserva = new String [] {"idreserva","estado", "idactividad"};
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
     private static final String[]camposHorario = new String [] {"idHorario","horarioDesde", "horarioHasta"};
+    private static final String[]camposCiclo = new String [] {"idHorario","numCiclo"};
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
     private static final String [] camposDocente = new String[] {"iddocente","idescuela","nomdocente"};
@@ -70,7 +72,7 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table DOCENTE(IDDOCENTE INTEGER not null,IDESCUELA INTEGER not null,NOMDOCENTE TEXT not null,primary key (IDDOCENTE))");
             db.execSQL("create table ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null unique,primary key (IDESCUELA))");
             db.execSQL("create table ADMINISTRADOR(IDADMIN INTEGER primary key, IDESCUELA INTEGER not null, NOMADMIN TEXT not null)");
-            db.execSQL("create table CICLO(IDCICLO INTEGER not null,CICLODESDE DATE not null, CICLOHASTA DATE not null, primary key (IDCICLO))");
+            db.execSQL("create table CICLO(IDCICLO INTEGER not null,NUMCICLO DATE not null, primary key (IDCICLO))");
             db.execSQL("create table HORARIO(IDHORARIO INTEGER not null,HORARIODESDE DATE not null,HORARIOHASTA DATE not null,primary key (IDHORARIO))");
             db.execSQL("create table LOCAL(IDLOCAL INTEGER primary key autoincrement,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null)");
             db.execSQL("create table RESERVA(IDRESERVA INTEGER not null,ESTADO INTEGER not null,IDACTIVIDAD INTEGER not null,primary key (IDRESERVA))");
@@ -202,12 +204,16 @@ public class controlDB extends SQLiteOpenHelper{
         try {
             ArrayList<Usuario> users = new ArrayList<>();
             ArrayList<OpcionCrud> option = new ArrayList<>();
+            ArrayList<Ciclo> ciclos = new ArrayList<>();
             ArrayList<AccesoUsuario> accesoUsuarios = new ArrayList<>();
             users.add(new Usuario("Herman","gD21d",1));
             users.add(new Usuario("Alberto","jA3f2",1));
             users.add(new Usuario("Carlos","Ch1q2",1));
             users.add(new Usuario("walter","1234",2));
             users.add(new Usuario("Katlheen","1234",2));
+
+            ciclos.add(new Ciclo(1,"Ciclo 1"));
+            ciclos.add(new Ciclo(2,"Ciclo 2"));
 
             option.add(new OpcionCrud("CREAR USUARIO",1,1));
             option.add(new OpcionCrud("EDITAR USUARIO",2,2));
@@ -239,6 +245,9 @@ public class controlDB extends SQLiteOpenHelper{
 
             for (Usuario u : users){
                 insertUser(u.getUsername(),u.getClave(),u.getTipo());
+            }
+            for (Ciclo c : ciclos){
+                insertarCiclo(c.getIdCiclo(),c.getNumCiclo());
             }
            // insertarReservas(1,1,1);
 
@@ -596,6 +605,32 @@ public class controlDB extends SQLiteOpenHelper{
         }
 
     }
+    public boolean insertarCiclo(int idCiclo, String numCiclo){
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean retorno=false;
+        long contador=0;
+        ContentValues hora = new ContentValues();
+        hora.put("IDCICLO", idCiclo);
+        hora.put("NUMCICLO", numCiclo);
+        contador=db.insert("CICLO", null, hora);
+        db.close();
+        if (contador ==-1){
+            retorno=false;
+        }else{
+            retorno=true;
+        }
+        return retorno;
+    }
+    public Cursor getDataCiclo() {
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("Select * from  CICLO", null);
+            return cursor;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 
 
 

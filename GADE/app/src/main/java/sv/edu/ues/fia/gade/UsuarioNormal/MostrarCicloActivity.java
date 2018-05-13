@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
-public class ConsultarLocalesActivity extends ListActivity {
+public class MostrarCicloActivity extends ListActivity {
 
     private controlDB db;
     private ListView lista;
@@ -24,11 +24,12 @@ public class ConsultarLocalesActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         db = new controlDB(this);
         ListView listView = getListView();
-        Cursor c = db.getData("LOCAL");
+
+        Cursor c = db.getDataCiclo();
         ArrayList<String> datos = new ArrayList<String>();
         if(c!=null && c.getCount()>0){
             while (c.moveToNext()){
-                datos.add(c.getString(0)+": "+c.getString(2));
+                datos.add(c.getString(0)+": "+c.getString(1));
             }
         }
 
@@ -39,7 +40,7 @@ public class ConsultarLocalesActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
 
         try {
-            Class<?> clase = Class.forName("sv.edu.ues.fia.gade.UsuarioNormal.MostrarCicloActivity");
+            Class<?> clase = Class.forName("sv.edu.ues.fia.gade.UsuarioNormal.MostrarHorarioActivity");
             Intent inte = new Intent(this, clase);
             this.startActivity(inte);
         } catch (ClassNotFoundException e) {
@@ -49,4 +50,3 @@ public class ConsultarLocalesActivity extends ListActivity {
 
 
 }
-
