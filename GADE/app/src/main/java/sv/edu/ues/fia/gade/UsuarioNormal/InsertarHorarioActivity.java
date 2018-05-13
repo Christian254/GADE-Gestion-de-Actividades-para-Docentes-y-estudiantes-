@@ -10,7 +10,8 @@ import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.clases.Horario;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
-public class InsertarHorarioActivity extends Activity {
+public class InsertarHorarioActivity extends Activity
+{
 
     controlDB helper;
     EditText editIdHorario, editHorarioDesde, editHorarioHasta;

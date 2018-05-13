@@ -1,7 +1,7 @@
 package sv.edu.ues.fia.gade.clases;
 
 /**
- * Created by Christian on 10/5/2018.
+ * Created by MauryOG on 10/5/2018.
  */
 
 public class Docente {
@@ -9,7 +9,8 @@ public class Docente {
     private  int idEscuela;
     private  String nombreDoc;
 
-    public Docente(int idDocente, int idEscuela, String nombreDoc) {
+    public Docente(int idDocente, int idEscuela, String nombreDoc)
+    {
         this.idDocente = idDocente;
         this.idEscuela = idEscuela;
         this.nombreDoc = nombreDoc;
