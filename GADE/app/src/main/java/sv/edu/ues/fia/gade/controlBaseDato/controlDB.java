@@ -44,7 +44,7 @@ public class controlDB extends SQLiteOpenHelper{
     public static final String COl_2A = "ID";
     private static final String[]camposReserva = new String [] {"idreserva","estado", "idactividad"};
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
-    private static final String[]camposHorario = new String [] {"idHorario","horarioDesde", "horarioHasta"};
+    private static final String[]camposHorario = new String [] {"idHorario","dia","horarioDesde", "horarioHasta"};
     private static final String[]camposCiclo = new String [] {"idHorario","numCiclo"};
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
@@ -75,7 +75,7 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null unique,primary key (IDESCUELA))");
             db.execSQL("create table ADMINISTRADOR(IDADMIN INTEGER primary key, IDESCUELA INTEGER not null, NOMADMIN TEXT not null)");
             db.execSQL("create table CICLO(IDCICLO INTEGER not null,NUMCICLO DATE not null, primary key (IDCICLO))");
-            db.execSQL("create table HORARIO(IDHORARIO INTEGER not null,HORARIODESDE DATE not null,HORARIOHASTA DATE not null,primary key (IDHORARIO))");
+            db.execSQL("create table HORARIO(IDHORARIO INTEGER not null,DIA TEXT not null, HORARIODESDE DATE not null,HORARIOHASTA DATE not null,primary key (IDHORARIO))");
             db.execSQL("create table LOCAL(IDLOCAL INTEGER primary key autoincrement,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null)");
             db.execSQL("create table RESERVA(IDRESERVA INTEGER not null,ESTADO INTEGER not null,IDACTIVIDAD INTEGER not null,primary key (IDRESERVA))");
             db.execSQL("create table DISPONIBLE(IDHORARIO INTEGER not null,IDLOCAL INTEGER not null,IDCICLO INTEGER not null,IDRESERVA INTEGER not null, DISPONIBLE  INTEGER not null, primary key (IDHORARIO, IDLOCAL, IDCICLO, IDRESERVA))");
@@ -550,6 +550,7 @@ public class controlDB extends SQLiteOpenHelper{
         long contador=0;
         ContentValues hora = new ContentValues();
         hora.put("IDHORARIO", horario.getIdHorario());
+        hora.put("DIA",horario.getDia());
         hora.put("HORARIODESDE", horario.getHorarioDesde());
         hora.put("HORARIOHASTA", horario.getHorarioHasta());
         contador=db.insert("HORARIO", null, hora);
@@ -573,8 +574,9 @@ public class controlDB extends SQLiteOpenHelper{
         if(cursor.moveToFirst()){
             Horario horario = new Horario();
             horario.setIdHorario(cursor.getInt(0));
-            horario.setHorarioDesde(cursor.getString(1));
-            horario.setHorarioHasta(cursor.getString(2));
+            horario.setDia(cursor.getString(1));
+            horario.setHorarioDesde(cursor.getString(2));
+            horario.setHorarioHasta(cursor.getString(3));
             return horario;
         }else{
             return null;
@@ -584,6 +586,7 @@ public class controlDB extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         String[] id = {String.valueOf(horario.getIdHorario())};
         ContentValues cv = new ContentValues();
+        cv.put("DIA", horario.getDia());
         cv.put("HORARIODESDE", horario.getHorarioDesde());
         cv.put("HORARIOHASTA", horario.getHorarioHasta());
         int res=db.update("HORARIO", cv, "IDHORARIO = ?", id);

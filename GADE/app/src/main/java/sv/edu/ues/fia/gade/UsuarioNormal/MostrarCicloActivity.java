@@ -29,7 +29,7 @@ public class MostrarCicloActivity extends ListActivity {
         ArrayList<String> datos = new ArrayList<String>();
         if(c!=null && c.getCount()>0){
             while (c.moveToNext()){
-                datos.add(c.getString(0)+": "+c.getString(1));
+                datos.add(c.getString(1));
             }
         }
 

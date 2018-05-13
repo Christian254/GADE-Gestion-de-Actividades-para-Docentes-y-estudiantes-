@@ -31,14 +31,14 @@ public class MostrarHorarioActivity extends Activity {
             Cursor cursor = db.rawQuery("SELECT * FROM HORARIO",null);
             if (cursor.moveToFirst()){
                 do {
-                    horario.add(new Horario(cursor.getInt(0),cursor.getString(1),cursor.getString(2)));
+                    horario.add(new Horario(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3)));
                 }while (cursor.moveToNext());
             }
         }
 
         String[] arreglo=new String[horario.size()];
         for (int i=0;i<arreglo.length;i++){
-            arreglo[i]=horario.get(i).getHorarioDesde()+"-"+horario.get(i).getHorarioHasta();
+            arreglo[i]=horario.get(i).getDia()+"    "+horario.get(i).getHorarioDesde()+"-"+horario.get(i).getHorarioHasta();
         }
         ArrayAdapter<String> adaptador=new ArrayAdapter<String>(MostrarHorarioActivity.this,android.R.layout.simple_list_item_1,arreglo);
         listView.setAdapter(adaptador);

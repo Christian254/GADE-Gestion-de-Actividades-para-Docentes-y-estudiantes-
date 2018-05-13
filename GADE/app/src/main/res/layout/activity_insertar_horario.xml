@@ -12,6 +12,13 @@
             android:maxLength="7" />
     </TableRow>
     <TableRow>
+        <TextView android:text="@string/dia" />
+        <EditText
+            android:id="@+id/editDia"
+            android:inputType="text"
+            android:maxLength="12" />
+    </TableRow>
+    <TableRow>
         <TextView android:text="@string/horarioDesde" />
         <EditText
             android:id="@+id/editHorarioDesde"
