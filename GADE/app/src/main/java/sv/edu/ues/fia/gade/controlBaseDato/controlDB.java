@@ -1,5 +1,6 @@
 package sv.edu.ues.fia.gade.controlBaseDato;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,6 +16,7 @@ import sv.edu.ues.fia.gade.clases.Ciclo;
 import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Horario;
 import sv.edu.ues.fia.gade.clases.Reserva;
+import sv.edu.ues.fia.gade.clases.TipoActividad;
 import sv.edu.ues.fia.gade.model.AccesoUsuario;
 import sv.edu.ues.fia.gade.model.Escuela;
 import sv.edu.ues.fia.gade.model.OpcionCrud;
@@ -733,11 +735,46 @@ public class controlDB extends SQLiteOpenHelper{
 
     }
 
+    public String eliminarDocente(Docente docente)
+    {
+        String regEliminado = "Se elimino el docente #";
+        SQLiteDatabase db = this.getWritableDatabase();
+        String idDocente = String.valueOf(docente.getIdDocente());
+        String [] id = {idDocente};
+        int res = db.delete("DOCENTE", "IDDOCENTE = ?",id);
+
+        if(res>0){
+            regEliminado += idDocente;
+        }else{
+            regEliminado = "Este registro no existe";
+        }
+        return regEliminado;
+    }
+
+    public String actualizarDocente(Docente docente)
+    {
+        String registroActualizado = "El Registro #";
+        String idDocente = String.valueOf(docente.getIdDocente());
+        String [] id = {idDocente};
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues  = new ContentValues();
+        contentValues.put("IDDOCENTE", docente.getIdDocente());
+        int resultado = db.update("DOCENTE",contentValues,"IDDOCENTE = ?",id);
+
+        if(resultado>0){
+            registroActualizado += idDocente+ " se actualizo";
+        }else{
+            registroActualizado = "No se encuentra registro";
+        }
+        return registroActualizado;
+    }
+
+
     public Docente consultarDocente(String idDocente)
     {
         String [] id = {idDocente};
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query("docente", camposDocente, "iddocente = ?", id, null, null, null);
+        Cursor cursor = db.query("DOCENTE", camposDocente, "IDDOCENTE = ?", id, null, null, null);
         if(cursor.moveToFirst())
         {
             Docente docente = new Docente();
@@ -761,9 +798,9 @@ public class controlDB extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("IDACTIVIDAD",actividad.getIdActividad());
-        contentValues.put("IDTIPOACTIVIDAD", actividad.getTipoActividad());
-        contentValues.put("IDDOCENTE", actividad.getIdDocente());
-        contentValues.put("NOMACTIVIDAD", actividad.getNomActividad());
+        contentValues.put("IDTIPOACTIVIDAD",actividad.getTipoActividad());
+        contentValues.put("IDDOCENTE",actividad.getIdDocente());
+        contentValues.put("NOMACTIVIDAD",actividad.getNomActividad());
         contador = db.insert("ACTIVIDAD", null,contentValues);
         if(contador == -1 || contador == 0){
             regInsertado = "Ya existe la actividad." + actividad.getIdActividad();
@@ -772,6 +809,41 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return regInsertado;
     }
+
+    public String eliminarActividad(Actividad actividad)
+    {
+        String regEliminado = "Se elimino la actividad #";
+        SQLiteDatabase db = this.getWritableDatabase();
+        String idActividad = String.valueOf(actividad.getIdActividad());
+        String [] id = {idActividad};
+        int res = db.delete("ACTIVIDAD", "IDACTIVIDAD = ?",id);
+
+        if(res>0){
+            regEliminado += idActividad;
+        }else{
+            regEliminado = "Este registro no existe";
+        }
+        return regEliminado;
+    }
+
+    public String actualizarActividad(Actividad actividad)
+    {
+        String registroActualizado = "El Registro #";
+        String idActividad = String.valueOf(actividad.getIdActividad());
+        String [] id = {idActividad};
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues  = new ContentValues();
+        contentValues.put("IDACTIVIDAD", actividad.getIdActividad());
+        int resultado = db.update("ACTIVIDAD",contentValues,"IDACTIVIDAD = ?",id);
+
+        if(resultado>0){
+            registroActualizado += idActividad+ " se actualizo";
+        }else{
+            registroActualizado = "No se encuentra registro";
+        }
+        return registroActualizado;
+    }
+
 
     public  Actividad consultarActividad(String act) // lo necesitaba
     {
@@ -793,6 +865,61 @@ public class controlDB extends SQLiteOpenHelper{
             return null;
         }
     }
+
+    public  String insertTipoActividad(TipoActividad tipoActvidad)   // también lo necesitaba
+
+    {
+        String regInsertado = "TipoActividad: ";
+        long contador = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDTIPOACTIVIDAD",tipoActvidad.getIdTipoActividad());
+        contentValues.put("NOMTIPOACTIVIDAD", tipoActvidad.getNomTipoActividad());
+        contador = db.insert("TIPOACTIVIDAD",null,contentValues);
+        if(contador == -1 || contador == 0){
+            regInsertado = "Ya existe el tipo de actividad." + tipoActvidad.getIdTipoActividad();
+        }else{
+            regInsertado = regInsertado + contador;
+        }
+        return regInsertado;
+
+    }
+
+    public String eliminarTipoActividad(TipoActividad tipoactividad)
+    {
+        String regEliminado = "Se elimino el tipo actividad #";
+        SQLiteDatabase db = this.getWritableDatabase();
+        String idTipoActividad = String.valueOf(tipoactividad.getIdTipoActividad());
+        String [] id = {idTipoActividad};
+        int res = db.delete("TIPOACTIVIDAD", "IDTIPOACTIVIDAD = ?",id);
+
+        if(res>0){
+            regEliminado += idTipoActividad;
+        }else{
+            regEliminado = "Este registro no existe";
+        }
+        return regEliminado;
+    }
+
+    public String actualizarTpoActividad(TipoActividad tipoActividad)
+    {
+        String registroActualizado = "El Registro #";
+        String idTipoActividad = String.valueOf(tipoActividad.getIdTipoActividad());
+        String [] id = {idTipoActividad};
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues  = new ContentValues();
+        contentValues.put("IDTIPOACTIVIDAD", tipoActividad.getIdTipoActividad());
+        int resultado = db.update("TIPOACTIVIDAD",contentValues,"IDTIPOACTIVIDAD = ?",id);
+
+        if(resultado>0){
+            registroActualizado += idTipoActividad+ " se actualizo";
+        }else{
+            registroActualizado = "No se encuentra registro";
+        }
+        return registroActualizado;
+    }
+
 }
 
 
