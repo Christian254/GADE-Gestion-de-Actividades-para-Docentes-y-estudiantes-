@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Alumno;
+import sv.edu.ues.fia.gade.clases.Disponible;
 import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Horario;
 import sv.edu.ues.fia.gade.clases.Reserva;
@@ -735,6 +736,29 @@ public class controlDB extends SQLiteOpenHelper{
         else {
             return null;
         }
+    }
+
+
+    /*  TABLA DISPONIBLE */
+    public String insertarDisponible(Disponible disponible)
+    {
+        String regInsertado = "Registro insertado: ";
+        long contador = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("IDHORARIO", disponible.getIdHorario());
+        contentValues.put("IDLOCAL", disponible.getIdLocal());
+        contentValues.put("IDCICLO", disponible.getIdCiclo());
+        contentValues.put("IDRESERVA", disponible.getIdReserva());
+        contador = db.insert("DISPONIBLE",null,contentValues);
+        if(contador == -1 || contador == 0){
+            regInsertado = "Ya existe.";
+            disponible.setDisponible(2);
+        }else{
+            regInsertado = regInsertado + contador;
+            disponible.setDisponible(1);
+        }
+        return regInsertado;
     }
 }
 

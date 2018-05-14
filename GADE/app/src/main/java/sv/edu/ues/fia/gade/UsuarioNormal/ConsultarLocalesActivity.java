@@ -1,5 +1,6 @@
 package sv.edu.ues.fia.gade.UsuarioNormal;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
-public class ConsultarLocalesActivity extends ListActivity {
+public class ConsultarLocalesActivity extends Activity {
 
     private controlDB db;
     private ListView lista;
