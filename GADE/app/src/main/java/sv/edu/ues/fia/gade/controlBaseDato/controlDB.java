@@ -18,11 +18,10 @@ import sv.edu.ues.fia.gade.clases.Disponible;
 import sv.edu.ues.fia.gade.clases.Ciclo;
 
 import sv.edu.ues.fia.gade.clases.Docente;
-<<<<<<< HEAD
+
 import sv.edu.ues.fia.gade.clases.Participacion;
-=======
 import sv.edu.ues.fia.gade.clases.Horario;
->>>>>>> 397c249e6247d130b2a6240ae4d51d3c92adf815
+
 import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.clases.TipoActividad;
 import sv.edu.ues.fia.gade.model.AccesoUsuario;
