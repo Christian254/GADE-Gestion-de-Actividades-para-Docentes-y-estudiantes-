@@ -218,7 +218,7 @@ public class controlDB extends SQLiteOpenHelper{
             users.add(new Usuario("Carlos","Ch1q2",1));
             users.add(new Usuario("walter","1234",2));
             users.add(new Usuario("Katlheen","1234",2));
-            users.add(new Usuario("mauricio","admin",2));
+            users.add(new Usuario("maury","admin",2));
 
             ciclos.add(new Ciclo(1,"Ciclo 1"));
             ciclos.add(new Ciclo(2,"Ciclo 2"));
