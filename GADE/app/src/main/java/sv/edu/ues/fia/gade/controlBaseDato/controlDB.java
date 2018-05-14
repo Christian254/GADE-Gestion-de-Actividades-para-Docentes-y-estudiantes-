@@ -952,8 +952,7 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return registroActualizado;
     }
-
-<<<<<<< HEAD
+    
     public TipoActividad consultarTipoActividad(String idTipoActividad)
     {
         String [] id = {idTipoActividad};
@@ -971,9 +970,6 @@ public class controlDB extends SQLiteOpenHelper{
             return null;
         }
     }
-=======
->>>>>>> 82600e5bb6a55b99c7153dda094d347bcb08e728
-
 }
 
 
