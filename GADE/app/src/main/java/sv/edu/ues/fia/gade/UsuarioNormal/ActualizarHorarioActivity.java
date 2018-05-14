@@ -12,7 +12,7 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class ActualizarHorarioActivity extends Activity {
     controlDB helper;
-    EditText editIdHorario, editHorarioDesde, editHorarioHasta;
+    EditText editIdHorario, editDia, editHorarioDesde, editHorarioHasta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class ActualizarHorarioActivity extends Activity {
         setContentView(R.layout.activity_actualizar_horario);
         helper = new controlDB(this);
         editIdHorario = (EditText) findViewById(R.id.editIdHorario);
+        editDia = (EditText) findViewById(R.id.editDia);
         editHorarioDesde = (EditText) findViewById(R.id.editHorarioDesde);
         editHorarioHasta = (EditText) findViewById(R.id.editHorarioHasta);
     }
@@ -27,6 +28,7 @@ public class ActualizarHorarioActivity extends Activity {
         Horario horario = new Horario();
 
         horario.setIdHorario(Integer.parseInt(editIdHorario.getText().toString()));
+        horario.setDia(editDia.getText().toString());
         horario.setHorarioDesde(editHorarioDesde.getText().toString());
         horario.setHorarioHasta(editHorarioHasta.getText().toString());
         helper.abrir();
@@ -36,6 +38,7 @@ public class ActualizarHorarioActivity extends Activity {
     }
     public void limpiarTexto(View v) {
         editIdHorario.setText("");
+        editDia.setText("");
         editHorarioDesde.setText("");
         editHorarioHasta.setText("");
     }

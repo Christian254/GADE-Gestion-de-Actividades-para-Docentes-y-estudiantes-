@@ -5,31 +5,24 @@
     android:paddingTop="30dip"
     android:stretchColumns="1" >
     <TableRow>
-        <TextView android:text="@string/idHorario"/>
+        <TextView android:text="@string/idDocente"/>
         <EditText
-            android:id="@+id/editIdHorario"
+            android:id="@+id/editIdDoc"
             android:inputType="text"
             android:maxLength="7" />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/dia" />
+        <TextView android:text="@string/nombreDoc" />
         <EditText
-            android:id="@+id/editDia"
+            android:id="@+id/editNomDoc"
             android:inputType="text"
-            android:maxLength="12" />
+            android:maxLength="30" />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/horarioDesde" />
+        <TextView android:text="@string/idEscuela" />
         <EditText
-            android:id="@+id/editHorarioDesde"
-            android:inputType="time"
-            android:maxLength="5" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/horarioHasta" />
-        <EditText
-            android:id="@+id/editHorarioHasta"
-            android:inputType="time"
+            android:id="@+id/editIdEscuela"
+            android:inputType="text"
             android:maxLength="5" />
     </TableRow>
 
@@ -39,7 +32,7 @@
 
     <TableRow>
         <Button
-            android:onClick="insertarHorario"
+            android:onClick="insertarDocente"
             android:text="@string/insertar" />
         <Button
             android:onClick="limpiarTexto"

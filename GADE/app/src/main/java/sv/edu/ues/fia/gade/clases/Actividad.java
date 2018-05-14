@@ -1,7 +1,7 @@
 package sv.edu.ues.fia.gade.clases;
 
 /**
- * Created by Christian on 10/5/2018.
+ * Created by MauryOG on 10/5/2018.
  */
 
 public class Actividad {
@@ -13,7 +13,8 @@ public class Actividad {
     public Actividad() {
     }
 
-    public Actividad(int idActividad, int tipoActividad, int idDocente, String nomActividad) {
+    public Actividad(int idActividad, int tipoActividad, int idDocente, String nomActividad)
+    {
         this.idActividad = idActividad;
         this.tipoActividad = tipoActividad;
         this.idDocente = idDocente;

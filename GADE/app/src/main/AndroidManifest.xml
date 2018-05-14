@@ -36,7 +36,26 @@
         <activity android:name=".UsuarioNormal.ConsultarHorarioActivity" />
         <activity android:name=".UsuarioNormal.ActualizarHorarioActivity" />
         <activity android:name=".UsuarioNormal.EliminarHorarioActivity" />
-        <activity android:name=".UsuarioNormal.MostrarHorarioActivity"></activity>
+        <activity android:name=".UsuarioNormal.MostrarHorarioActivity" />
+
+        <activity android:name=".UsuarioNormal.MostrarCicloActivity"></activity>
+
+        <activity android:name=".UsuarioNormal.DocenteInsertarActivity" />
+        <activity android:name=".UsuarioNormal.DocenteEliminarActivity" />
+        <activity android:name=".UsuarioNormal.DocenteConsultarActivity" />
+        <activity android:name=".UsuarioNormal.DocenteActualizarActivity" />
+        <activity android:name=".UsuarioNormal.DocenteGestionarActivity" />
+        <activity android:name=".UsuarioNormal.ActividadInsertarActivity" />
+        <activity android:name=".UsuarioNormal.ActividadEliminarActivity" />
+        <activity android:name=".UsuarioNormal.ActividadActualizarActivity" />
+        <activity android:name=".UsuarioNormal.ActividadConsultarActivity" />
+        <activity android:name=".UsuarioNormal.ActividadGestionarActivity" />
+        <activity android:name=".UsuarioNormal.TipoActividadInsertarActivity" />
+        <activity android:name=".UsuarioNormal.TipoActividadEliminarActivity" />
+        <activity android:name=".UsuarioNormal.TipoActividadActualizarActivity" />
+        <activity android:name=".UsuarioNormal.TipoActividadConsultarActivity" />
+        <activity android:name=".UsuarioNormal.TipoActividadGestionarActivity"></activity>
+
     </application>
 
 </manifest>
