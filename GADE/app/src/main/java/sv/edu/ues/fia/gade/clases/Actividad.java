@@ -4,7 +4,8 @@ package sv.edu.ues.fia.gade.clases;
  * Created by MauryOG on 10/5/2018.
  */
 
-public class Actividad {
+public class Actividad
+{
     private int idActividad;
     private int tipoActividad;
     private int idDocente;

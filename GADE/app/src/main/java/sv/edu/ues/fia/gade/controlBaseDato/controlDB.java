@@ -47,6 +47,7 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
     private static final String [] camposDocente = new String[] {"iddocente","idescuela","nomdocente"};
+    private static final String [] camposTipoActividad = new String[] {"idtipoactividad","nomTipoActividad"};
     public static final String delete_escuela_administrador = "CREATE TRIGGER if not exists delete_escuela_administrador AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
     public static final String delete_escuela_estudiante = "CREATE TRIGGER if not exists delete_escuela_estudiante AFTER DELETE ON escuela for each row BEGIN DELETE FROM estudiante WHERE idescuela = old.idescuela; END";
 
@@ -210,6 +211,7 @@ public class controlDB extends SQLiteOpenHelper{
             users.add(new Usuario("Carlos","Ch1q2",1));
             users.add(new Usuario("walter","1234",2));
             users.add(new Usuario("Katlheen","1234",2));
+            users.add(new Usuario("mauricio","admin",2));
 
             option.add(new OpcionCrud("CREAR USUARIO",1,1));
             option.add(new OpcionCrud("EDITAR USUARIO",2,2));
@@ -867,7 +869,7 @@ public class controlDB extends SQLiteOpenHelper{
         return regEliminado;
     }
 
-    public String actualizarTpoActividad(TipoActividad tipoActividad)
+    public String actualizarTipoActividad(TipoActividad tipoActividad)
     {
         String registroActualizado = "El Registro #";
         String idTipoActividad = String.valueOf(tipoActividad.getIdTipoActividad());
@@ -883,6 +885,24 @@ public class controlDB extends SQLiteOpenHelper{
             registroActualizado = "No se encuentra registro";
         }
         return registroActualizado;
+    }
+
+    public TipoActividad consultarTipoActividad(String idTipoActividad)
+    {
+        String [] id = {idTipoActividad};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("TIPOACTIVIDAD", camposTipoActividad, "IDTIPOACTIVIDAD = ?", id, null, null, null);
+        if(cursor.moveToFirst())
+        {
+            TipoActividad tipoActividad = new TipoActividad();
+            tipoActividad.setIdTipoActividad(cursor.getInt(0));;
+            tipoActividad.setNomTipoActividad(cursor.getString(1));
+            return  tipoActividad;
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }

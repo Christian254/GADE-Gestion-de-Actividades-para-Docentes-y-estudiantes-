@@ -30,9 +30,9 @@
     <string name="actividadActualizar">Actualizar Actividad</string>
     <string name="actividadConsultar">Consultar Actividad</string>
 
-    <string name="idActividad">id actividad</string>
-    <string name="tipoActividad">tipo actividad</string>
-    <string name="nomTipoActividad">Nombre tipo actividad</string>
+    <string name="idActividad">Id Actividad</string>
+    <string name="tipoActividad">Tipo Actividad</string>
+    <string name="nomTipoActividad">Nombre Tipo Actividad</string>
 
     <string name="tipoactividadInsertar">Insertar Tipo Actividad</string>
     <string name="tipoactividadEliminar">Eliminar Tipo Actividad</string>
