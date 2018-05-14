@@ -64,6 +64,14 @@
     <string name="carnet">Carnet:</string>
     <string name="nombreEstudiante">Estudiante:</string>
 
+    <string name="participacionInsertar">Insertar Participación</string>
+    <string name="participacionActualizar">Actualizar Participación</string>
+    <string name="participacionConsultar">Consultar Participación</string>
+    <string name="participacionEliminar">Eliminar Participación</string>
+    <string name="valoracion">Valoración:</string>
+    <string name="comentario">Comentario:</string>
+    <string name="idAct">ID Actividad:</string>
+
     <string name="opciones">Opciones:</string>
     <string name="limpiar">Limpiar</string>
     <string name="consultar">Consultar</string>
