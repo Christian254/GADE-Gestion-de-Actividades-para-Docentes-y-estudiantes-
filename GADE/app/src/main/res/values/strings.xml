@@ -76,6 +76,7 @@
     <string name="carnetEst">Carnet de Estudiante</string>
 
     <string name="idHorario">Id de horario</string>
+    <string name="dia">Dia</string>
     <string name="horarioDesde">Hora de inicio</string>
     <string name="horarioHasta">Hora de finalización</string>
 
@@ -94,5 +95,6 @@
     <string name="nomDoc">nombre del docente</string>
     <string name="idDoc">id Docente</string>
     <string name="nomActividad">Nombre de la Actividad</string>
+    <string name="headerlocal">Locales</string>
 
 </resources>

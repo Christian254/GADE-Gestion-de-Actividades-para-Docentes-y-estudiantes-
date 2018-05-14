@@ -37,6 +37,9 @@
         <activity android:name=".UsuarioNormal.ActualizarHorarioActivity" />
         <activity android:name=".UsuarioNormal.EliminarHorarioActivity" />
         <activity android:name=".UsuarioNormal.MostrarHorarioActivity" />
+
+        <activity android:name=".UsuarioNormal.MostrarCicloActivity"></activity>
+
         <activity android:name=".UsuarioNormal.DocenteInsertarActivity" />
         <activity android:name=".UsuarioNormal.DocenteEliminarActivity" />
         <activity android:name=".UsuarioNormal.DocenteConsultarActivity" />
@@ -52,6 +55,7 @@
         <activity android:name=".UsuarioNormal.TipoActividadActualizarActivity" />
         <activity android:name=".UsuarioNormal.TipoActividadConsultarActivity" />
         <activity android:name=".UsuarioNormal.TipoActividadGestionarActivity"></activity>
+
     </application>
 
 </manifest>
