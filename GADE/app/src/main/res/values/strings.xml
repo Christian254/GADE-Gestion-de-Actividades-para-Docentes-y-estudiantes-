@@ -17,6 +17,30 @@
     <string name="adminLocal">administrador:</string>
     <string name="nombreAdmin">nombre</string>
 
+    <string name="docenteInsertar">Insertar Docente</string>
+    <string name="docenteEliminar">Eliminar Docente</string>
+    <string name="docenteActualizar">Actualizar Docente</string>
+    <string name="docenteConsultar">Consultar Docente</string>
+
+    <string name="idDocente">Id docente</string>
+    <string name="nombreDoc">Nombre Docente</string>
+
+    <string name="actividadInsertar">Insertar Actividad</string>
+    <string name="actividadEliminar">Eliminar Actividad</string>
+    <string name="actividadActualizar">Actualizar Actividad</string>
+    <string name="actividadConsultar">Consultar Actividad</string>
+
+    <string name="idActividad">Id Actividad</string>
+    <string name="tipoActividad">Tipo Actividad</string>
+    <string name="nomTipoActividad">Nombre Tipo Actividad</string>
+
+    <string name="tipoactividadInsertar">Insertar Tipo Actividad</string>
+    <string name="tipoactividadEliminar">Eliminar Tipo Actividad</string>
+    <string name="tipoactividadActualizar">Actualizar Tipo Actividad</string>
+    <string name="tipoactividadConsultar">Consultar Tipo Actividad</string>
+
+    <string name="idTipoActividad">Id Tipo Actividad</string>
+
     <string name="local">id local</string>
     <string name="nombreLocal">local:</string>
     <string name="idAdmin">id admin</string>
@@ -42,14 +66,19 @@
 
     <string name="opciones">Opciones:</string>
     <string name="limpiar">Limpiar</string>
+    <string name="consultar">Consultar</string>
 
 
     <string name="insertar">Insertar</string>
     <string name="numReserva">Reserva #</string>
-    <string name="idActividad">Id Actividad</string>
     <string name="actualizar">Actualizar</string>
     <string name="eliminar">Eliminar</string>
     <string name="carnetEst">Carnet de Estudiante</string>
+
+    <string name="idHorario">Id de horario</string>
+    <string name="dia">Dia</string>
+    <string name="horarioDesde">Hora de inicio</string>
+    <string name="horarioHasta">Hora de finalización</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -66,6 +95,6 @@
     <string name="nomDoc">nombre del docente</string>
     <string name="idDoc">id Docente</string>
     <string name="nomActividad">Nombre de la Actividad</string>
-    <string name="tipoActividad">Tipo de Actividad</string>
+    <string name="headerlocal">Locales</string>
 
 </resources>

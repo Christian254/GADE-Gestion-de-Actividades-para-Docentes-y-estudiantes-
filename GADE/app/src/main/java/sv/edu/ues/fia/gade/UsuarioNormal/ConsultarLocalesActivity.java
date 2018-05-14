@@ -1,35 +1,75 @@
 package sv.edu.ues.fia.gade.UsuarioNormal;
 
+import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import sv.edu.ues.fia.gade.IndexActivity;
 import sv.edu.ues.fia.gade.R;
+import sv.edu.ues.fia.gade.adapter.AdapterLocal;
+import sv.edu.ues.fia.gade.adapter.UsersAdapter;
+import sv.edu.ues.fia.gade.clases.Local;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
+import sv.edu.ues.fia.gade.model.Usuario;
+import sv.edu.ues.fia.gade.view.VerUserActivity;
 
-public class ConsultarLocalesActivity extends AppCompatActivity {
 
-    private controlDB db;
+
+public class ConsultarLocalesActivity extends Activity {
+
+
     private ListView lista;
+    private controlDB db;
+    private Cursor locales;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_locales);
         db = new controlDB(this);
-        lista = (ListView)findViewById(R.id.listaLocales);
-        Cursor c = db.getData("LOCAL");
-        ArrayList<String> datos = new ArrayList<String>();
-        if(c!=null && c.getCount()>0){
-            while (c.moveToNext()){
-                datos.add(c.getString(0)+": "+c.getString(2));
+        locales = db.getData("LOCAL");
+        ArrayList<Local> adap = new ArrayList<>();
+        if(locales!=null && locales.getCount()>0){
+            while (locales.moveToNext()){
+                adap.add(new Local(locales.getInt(0),locales.getString(2),locales.getInt(3)));
             }
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,datos);
+
+        AdapterLocal adapter = new AdapterLocal(this,adap);
+        View header = (View)getLayoutInflater().inflate(R.layout.list_header_local,null);
+        lista = (ListView)findViewById(R.id.listaLocales);
+        lista.addHeaderView(header);
         lista.setAdapter(adapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView t = (TextView)view.findViewById(R.id.txlocal2);
+                String ids = t.getHint().toString();
+                verLocal(ids);
+            }
+        });
+
     }
+
+    private void verLocal(String ids) {
+        //aqui la actividad que queres lanzar
+        Intent i = new Intent(this, MostrarCicloActivity.class);
+        i.putExtra("id",ids);
+        startActivity(i);
+        //finish();
+    }
+
 }
 
