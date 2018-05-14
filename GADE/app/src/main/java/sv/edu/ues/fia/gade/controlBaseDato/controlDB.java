@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Alumno;
 import sv.edu.ues.fia.gade.clases.Docente;
+import sv.edu.ues.fia.gade.clases.Participacion;
 import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.model.AccesoUsuario;
 import sv.edu.ues.fia.gade.model.Escuela;
@@ -73,7 +74,7 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table RESERVA(IDRESERVA INTEGER not null,ESTADO INTEGER not null,IDACTIVIDAD INTEGER not null,primary key (IDRESERVA))");
             db.execSQL("create table DISPONIBLE(IDHORARIO INTEGER not null,IDLOCAL INTEGER not null,IDCICLO INTEGER not null,IDRESERVA INTEGER not null, DISPONIBLE  INTEGER not null, primary key (IDHORARIO, IDLOCAL, IDCICLO, IDRESERVA))");
             db.execSQL("create table ESTUDIANTE(CARNET TEXT not null,IDESCUELA INTEGER not null,NOMESTUDIANTE TEXT not null,primary key (CARNET))");
-            db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD)) ");
+            db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD,CARNET)) ");
 
 
             /* Trigger */
@@ -607,6 +608,20 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return regEl;
 
+    }
+
+    //Tabla Participación.
+    /*  db.execSQL("create table PARTICIPACION(IDACTIVIDAD INTEGER not null,CARNET INTEGER not null,VALORACION INTEGER not null,COMENTARIO TEXT not null, primary key (IDACTIVIDAD, CARNET)) ");*/
+
+    public String insertParticipacion(Participacion participacion){
+        String regIns = "Registro de participación #";
+        long contador = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        return regIns;
     }
 
 
