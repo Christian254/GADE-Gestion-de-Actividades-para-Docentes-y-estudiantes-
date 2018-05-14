@@ -95,5 +95,6 @@
     <string name="nomDoc">nombre del docente</string>
     <string name="idDoc">id Docente</string>
     <string name="nomActividad">Nombre de la Actividad</string>
+    <string name="headerlocal">Locales</string>
 
 </resources>

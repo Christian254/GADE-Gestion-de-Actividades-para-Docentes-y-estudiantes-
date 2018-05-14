@@ -27,6 +27,11 @@ public class MostrarCicloActivity extends ListActivity {
 
         Cursor c = db.getDataCiclo();
         ArrayList<String> datos = new ArrayList<String>();
+        //borras esta parte xq solo es para demostracion
+        String id =getIntent().getStringExtra("id");
+        datos.add("Id introducido en el activity anterior es: "+id);
+        datos.add("REcordas borrar esta parte que es solo prueba");
+        //Hasta aqui borras kike
         if(c!=null && c.getCount()>0){
             while (c.moveToNext()){
                 datos.add(c.getString(1));
