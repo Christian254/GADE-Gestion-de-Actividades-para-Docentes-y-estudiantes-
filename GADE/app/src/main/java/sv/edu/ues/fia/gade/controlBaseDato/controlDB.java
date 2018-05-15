@@ -783,6 +783,21 @@ public class controlDB extends SQLiteOpenHelper{
     }
 
 
+    public String deleteParticipacion(int idActividad, String carnet){
+        String regEl = "Registro a eliminar: ";
+        String idActStr = String.valueOf(idActividad);
+        String id[] = {idActStr, carnet};
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int res = db.delete("participacion","idactividad = ? AND carnet = ?", id);
+        if(res>0){
+            regEl += res;
+        }else{
+            regEl = "No existe, participacion.";
+        }
+        return regEl;
+    }
+
     public  String insertDocente(Docente docente)   // también lo necesitaba
 
     {

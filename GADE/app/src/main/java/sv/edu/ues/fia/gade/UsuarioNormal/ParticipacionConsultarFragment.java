@@ -21,7 +21,7 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 public class ParticipacionConsultarFragment extends Fragment implements View.OnClickListener {
     private controlDB db;
     EditText edtIdAct, edtCarnet, edtVal, edtCom;
-    Button edtLimpiar, edtConsutar;
+    Button btnLimpiar, btnConsutar;
 
     public ParticipacionConsultarFragment() {
         // Required empty public constructor
@@ -41,11 +41,11 @@ public class ParticipacionConsultarFragment extends Fragment implements View.OnC
        edtVal = (EditText) v.findViewById(R.id.valoracionPar);
        edtCom = (EditText) v.findViewById(R.id.comentarioPar);
 
-       edtConsutar = (Button) v.findViewById(R.id.btnConsultarParticipacionDatos);
-       edtConsutar.setOnClickListener(this);
+       btnConsutar = (Button) v.findViewById(R.id.btnConsultarParticipacionDatos);
+       btnConsutar.setOnClickListener(this);
 
-       edtLimpiar = (Button) v.findViewById(R.id.btnLimpiarParticipacionDatos);
-       edtLimpiar.setOnClickListener(this);
+       btnLimpiar = (Button) v.findViewById(R.id.btnLimpiarParticipacionDatos);
+       btnLimpiar.setOnClickListener(this);
 
        return v;
     }
@@ -61,9 +61,10 @@ public class ParticipacionConsultarFragment extends Fragment implements View.OnC
                     Toast.makeText(v.getContext(), "Rellene campos vacíos",Toast.LENGTH_SHORT).show();
                 }else{
                     int idAct = Integer.valueOf(idActStr);
+                    Cursor cAct = db.getDataActividad(idAct);
                     Cursor cCarnet = db.getDataAlumno(carnet);
 
-                    if(cCarnet != null && cCarnet.getCount()>0){
+                    if(cAct != null && cAct.getCount()>0 && cCarnet != null && cCarnet.getCount()>0){
                         Participacion part = db.consultarParticipacion(idAct, carnet);
                         if(part!= null){
                             edtVal.setText(String.valueOf(part.getValoracion()));
