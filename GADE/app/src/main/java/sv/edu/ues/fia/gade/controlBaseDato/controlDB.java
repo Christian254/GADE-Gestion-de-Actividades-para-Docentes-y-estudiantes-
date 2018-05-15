@@ -58,6 +58,7 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposParticipacion = new String [] {"idactividad", "carnet", "valoracion", "comentario"};
     private static final String [] camposDocente = new String[] {"iddocente","idescuela","nomdocente"};
     private static final String [] camposTipoActividad = new String[] {"idtipoactividad","nomTipoActividad"};
+    private static final String [] camposDisponible = new String[] {"idHorario", "idCiclo", "idLocal", "idReserva", "disponible"};
     public static final String delete_escuela_administrador = "CREATE TRIGGER if not exists delete_escuela_administrador AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
     public static final String delete_escuela_estudiante = "CREATE TRIGGER if not exists delete_escuela_estudiante AFTER DELETE ON escuela for each row BEGIN DELETE FROM estudiante WHERE idescuela = old.idescuela; END";
 
@@ -978,6 +979,28 @@ public class controlDB extends SQLiteOpenHelper{
             disponible.setDisponible(1);
         }
         return regInsertado;
+    }
+
+    public Disponible consultarDisponible(String idHorario)
+    {
+        String [] id = {idHorario};
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("disponible", camposDisponible, "idhorario = ?", id, null,null,null);
+        if (cursor.moveToFirst())
+        {
+            Disponible disponible = new Disponible();
+            disponible.setIdHorario(cursor.getInt(0));
+            disponible.setIdLocal(cursor.getInt(1));
+            disponible.setIdCiclo(cursor.getInt(2));
+            disponible.setIdReserva(cursor.getInt(3));
+            disponible.setDisponible(cursor.getInt(4));
+            return disponible;
+        }
+        else
+        {
+            return null;
+        }
+
     }
 
     public  String insertTipoActividad(TipoActividad tipoActvidad)   // también lo necesitaba
