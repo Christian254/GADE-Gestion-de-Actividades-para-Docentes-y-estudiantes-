@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">GADE @PDM115</string>
+    <string name="inicio">Log in</string>
+    <string name="username">user</string>
+    <string name="password">password</string>
+    <string name="login">Log in</string>
+    <string name="inicializar">initialize users</string>
+    <string name="salir">get out</string>
+    <string name="verUsuarios">see user</string>
+    <string name="lista">list</string>
+    <string name="name">name</string>
+    <string name="header">users</string>
+    <string name="userNormal">Normal user</string>
+    <string name="userAdmin">Administrator</string>
+    <string name="agregarU">add users</string>
+    <string name="title_admin">Admin's Management of premises</string>
+    <string name="adminLocal">Administrator:</string>
+    <string name="nombreAdmin">name</string>
+
+    <string name="docenteInsertar">Insert Teacher</string>
+    <string name="docenteEliminar">delete Teacher</string>
+    <string name="docenteActualizar">Teacher update</string>
+    <string name="docenteConsultar">see Teacher</string>
+
+    <string name="idDocente">Id Teacher</string>
+    <string name="nombreDoc">name Teacher</string>
+
+    <string name="actividadInsertar">Insert activity</string>
+    <string name="actividadEliminar">eliminate activity</string>
+    <string name="actividadActualizar">update activity</string>
+    <string name="actividadConsultar">see activity</string>
+
+    <string name="idActividad">Id activity</string>
+    <string name="tipoActividad">type activity</string>
+    <string name="nomTipoActividad">name type activity</string>
+
+    <string name="tipoactividadInsertar">insert type activity</string>
+    <string name="tipoactividadEliminar">remove type activity</string>
+    <string name="tipoactividadActualizar">update type activity</string>
+    <string name="tipoactividadConsultar">see type activity</string>
+
+    <string name="idTipoActividad">Id type activity</string>
+
+    <string name="local">id local</string>
+    <string name="nombreLocal">local:</string>
+    <string name="idAdmin">id admin</string>
+    <string name="idCupo">quota</string>
+    <string name="nombreAdministrador">administrator</string>
+
+    <string name="escuelaInsertar">insert school</string>
+    <string name="escuelaActualizar">update school</string>
+    <string name="escuelaConsultar">see school</string>
+    <string name="escuelaEliminar">remove school</string>
+
+    <string name="nombreEscuela">school:</string>
+    <string name="idEscuela">code school:</string>
+    <string name="insertarEscuela">insert school</string>
+
+    <string name="estudianteInsertar">insert student</string>
+    <string name="estudianteActualizar">update student</string>
+    <string name="estudianteConsultar">see student</string>
+    <string name="estudianteEliminar">remove student</string>
+
+    <string name="carnet">license:</string>
+    <string name="nombreEstudiante">student:</string>
+
+    <string name="participacionInsertar">insert participation</string>
+    <string name="participacionActualizar">update participation</string>
+    <string name="participacionConsultar">see participation</string>
+    <string name="participacionEliminar">delete participation</string>
+    <string name="valoracion">Assessment:</string>
+    <string name="comentario">Commentary:</string>
+    <string name="idAct">ID Activity:</string>
+
+    <string name="opciones">Options:</string>
+    <string name="limpiar">Clear</string>
+    <string name="consultar">See</string>
+
+
+    <string name="insertar">Insert</string>
+    <string name="numReserva">Reservation #</string>
+    <string name="actualizar">Update</string>
+    <string name="eliminar">Delete</string>
+    <string name="carnetEst">license Student</string>
+
+    <string name="idHorario">Id of schedule</string>
+    <string name="dia">day</string>
+    <string name="horarioDesde">Start time</string>
+    <string name="horarioHasta">Ending time</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="NombreEstudiante">student name</string>
+    <string name="nomDocente">Teacher's name</string>
+    <string name="icono">icon</string>
+
+    <string name="idEsc">Id School</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nomDoc">Teacher's name</string>
+    <string name="idDoc">id Teacher</string>
+    <string name="nomActividad">Activity name</string>
+    <string name="headerlocal">Local</string>
+
+</resources>

@@ -205,14 +205,6 @@
                     android:text="Borrar"
                     android:onClick="borrar"
                     />
-                <TextView
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/btnEliminar1"
-                    android:layout_marginTop="50sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="@string/desarrollador1"/>
             </RelativeLayout>
         </ScrollView>
     </LinearLayout>

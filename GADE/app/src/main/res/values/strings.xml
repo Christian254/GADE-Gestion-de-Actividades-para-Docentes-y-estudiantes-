@@ -92,7 +92,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="NombreEstudiante">nombre del estudiante</string>
     <string name="nomDocente">Nombre del docente</string>
-    <string name="desarrollador1">Pantalla por: Walter Marroquin</string>
     <string name="icono">icono</string>
 
     <string name="idEsc">Id Escuela</string>
