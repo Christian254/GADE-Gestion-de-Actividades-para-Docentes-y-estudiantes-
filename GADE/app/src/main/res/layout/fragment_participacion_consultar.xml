@@ -80,8 +80,7 @@
             android:layout_marginRight="50dp" />
         <EditText
             android:id="@+id/valoracionPar"
-            android:inputType="text"
-            android:maxLength="70"
+            android:inputType="number"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:enabled ="false"

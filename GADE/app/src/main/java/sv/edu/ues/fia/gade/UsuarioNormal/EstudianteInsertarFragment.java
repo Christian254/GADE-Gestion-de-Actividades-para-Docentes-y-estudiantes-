@@ -62,12 +62,12 @@ public class EstudianteInsertarFragment extends Fragment implements View.OnClick
                     Cursor c = db.getDataEscuela(codEscuela);
 
                     if(c!=null && c.getCount()>0){
-                        Alumno estudiante = new Alumno();
+                       /* Alumno estudiante = new Alumno();
                         estudiante.setCarnet(carnet);
                         estudiante.setIdEscuela(codEscuela);
-                        estudiante.setNombre(nombreEst);
+                        estudiante.setNombre(nombreEst); */
 
-                        String regInsertado = db.insertAlum(estudiante);
+                        String regInsertado = db.insertAlum(new Alumno(carnet,codEscuela,nombreEst));
                         Toast.makeText(v.getContext(), regInsertado, Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(v.getContext(),"Escuela no registrada.",Toast.LENGTH_SHORT).show();
