@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.adapter.SpinnerAdapter;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 import sv.edu.ues.fia.gade.model.Escuela;
-import sv.edu.ues.fia.gade.model.Usuario;
 
 public class GestionarAdminActivity extends AppCompatActivity {
 

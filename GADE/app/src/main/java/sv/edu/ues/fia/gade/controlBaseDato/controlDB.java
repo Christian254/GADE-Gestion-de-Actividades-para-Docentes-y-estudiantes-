@@ -85,7 +85,7 @@ public class controlDB extends SQLiteOpenHelper{
             db.execSQL("create table ESCUELA(IDESCUELA INTEGER not null,NOMESCUELA TEXT not null unique,primary key (IDESCUELA))");
             db.execSQL("create table ADMINISTRADOR(IDADMIN INTEGER primary key, IDESCUELA INTEGER not null, NOMADMIN TEXT not null)");
             db.execSQL("create table CICLO(IDCICLO INTEGER not null,NUMCICLO DATE not null, primary key (IDCICLO))");
-            db.execSQL("create table HORARIO(IDHORARIO INTEGER not null,DIA TEXT not null, HORARIODESDE DATE not null,HORARIOHASTA DATE not null,primary key (IDHORARIO))");
+            db.execSQL("create table HORARIO(IDHORARIO INTEGER not null,DIA TEXT not null, HORARIODESDE TEXT not null,HORARIOHASTA TEXT not null,primary key (IDHORARIO))");
             db.execSQL("create table LOCAL(IDLOCAL INTEGER primary key autoincrement,IDADMIN INTEGER not null,NUMLOCAL TEXT not null,CUPO INTEGER not null)");
             db.execSQL("create table RESERVA(IDRESERVA INTEGER not null,ESTADO INTEGER not null,IDACTIVIDAD INTEGER not null,primary key (IDRESERVA))");
             db.execSQL("create table DISPONIBLE(IDHORARIO INTEGER not null,IDLOCAL INTEGER not null,IDCICLO INTEGER not null,IDRESERVA INTEGER not null, DISPONIBLE  INTEGER not null, primary key (IDHORARIO, IDLOCAL, IDCICLO, IDRESERVA))");
@@ -262,7 +262,8 @@ public class controlDB extends SQLiteOpenHelper{
             for (Ciclo c : ciclos){
                 insertarCiclo(c.getIdCiclo(),c.getNumCiclo());
             }
-           // insertarReservas(1,1,1);
+            Horario horario = new Horario(1, "miercoles", "7:00", "9:00");
+            insertar(horario);
 
 
             return true;
@@ -443,7 +444,7 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return regAc;
     }
-    
+
 
     public String deleteEscuela(Escuela escuela){
         String regEscuelaElim = "Registro eliminado, escuela #";
@@ -569,7 +570,7 @@ public class controlDB extends SQLiteOpenHelper{
 
         if(contador==-1 || contador==0)
         {
-            regInsertados= "Error al Insertar el horario";
+            regInsertados= "Horario ya existe" + horario.getIdHorario();
         }
         else {
             regInsertados=regInsertados+contador;
@@ -1077,7 +1078,7 @@ public class controlDB extends SQLiteOpenHelper{
         }
         return registroActualizado;
     }
-    
+
     public TipoActividad consultarTipoActividad(String idTipoActividad)
     {
         String [] id = {idTipoActividad};
@@ -1095,6 +1096,7 @@ public class controlDB extends SQLiteOpenHelper{
             return null;
         }
     }
+
 }
 
 

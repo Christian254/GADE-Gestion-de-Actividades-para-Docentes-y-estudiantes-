@@ -3,19 +3,14 @@ package sv.edu.ues.fia.gade.view;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
-import sv.edu.ues.fia.gade.model.Usuario;
 
 public class VerUserActivity extends AppCompatActivity {
 

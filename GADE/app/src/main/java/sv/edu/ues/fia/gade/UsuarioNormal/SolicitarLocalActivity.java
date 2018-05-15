@@ -1,8 +1,6 @@
 package sv.edu.ues.fia.gade.UsuarioNormal;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;

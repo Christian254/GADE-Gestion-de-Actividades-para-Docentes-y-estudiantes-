@@ -1,7 +1,6 @@
 package sv.edu.ues.fia.gade.UsuarioNormal;
 
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;

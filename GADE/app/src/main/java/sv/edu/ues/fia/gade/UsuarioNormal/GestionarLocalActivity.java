@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sv.edu.ues.fia.gade.R;
-import sv.edu.ues.fia.gade.adapter.SpinnerAdapter;
 import sv.edu.ues.fia.gade.adapter.SpinnerAdminAdapter;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 import sv.edu.ues.fia.gade.model.Escuela;

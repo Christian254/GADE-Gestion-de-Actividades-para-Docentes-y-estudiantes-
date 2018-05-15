@@ -1,29 +1,20 @@
 package sv.edu.ues.fia.gade.UsuarioNormal;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import sv.edu.ues.fia.gade.IndexActivity;
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.adapter.AdapterLocal;
-import sv.edu.ues.fia.gade.adapter.UsersAdapter;
 import sv.edu.ues.fia.gade.clases.Local;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
-import sv.edu.ues.fia.gade.model.Usuario;
-import sv.edu.ues.fia.gade.view.VerUserActivity;
-
 
 
 public class ConsultarLocalesActivity extends Activity {

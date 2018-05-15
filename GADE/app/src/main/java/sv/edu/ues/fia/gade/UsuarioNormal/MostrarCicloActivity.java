@@ -3,8 +3,6 @@ package sv.edu.ues.fia.gade.UsuarioNormal;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,7 +10,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class MostrarCicloActivity extends ListActivity {

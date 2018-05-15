@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import sv.edu.ues.fia.gade.adapter.UsersAdapter;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 import sv.edu.ues.fia.gade.view.NewUserActivity;
 import sv.edu.ues.fia.gade.view.UsersActivity;
@@ -22,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     TextInputEditText txtusername, txtpassword;
     private Button btnLogin;
     private controlDB db;
+
     private FloatingActionButton add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

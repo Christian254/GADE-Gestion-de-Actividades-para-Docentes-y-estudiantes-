@@ -12,11 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import sv.edu.ues.fia.gade.R;
-import sv.edu.ues.fia.gade.adapter.Adaptador;
 import sv.edu.ues.fia.gade.adapter.UsersAdapter;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
-import sv.edu.ues.fia.gade.model.AccesoUsuario;
-import sv.edu.ues.fia.gade.model.OpcionCrud;
 import sv.edu.ues.fia.gade.model.Usuario;
 
 public class UsersActivity extends AppCompatActivity {

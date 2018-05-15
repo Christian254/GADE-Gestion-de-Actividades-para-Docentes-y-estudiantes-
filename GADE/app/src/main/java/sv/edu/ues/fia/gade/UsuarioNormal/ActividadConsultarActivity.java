@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.clases.Actividad;
-import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class ActividadConsultarActivity extends Activity
