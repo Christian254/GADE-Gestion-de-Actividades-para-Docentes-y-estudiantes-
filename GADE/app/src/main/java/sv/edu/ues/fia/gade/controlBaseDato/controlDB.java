@@ -799,6 +799,27 @@ public class controlDB extends SQLiteOpenHelper{
         return regEl;
     }
 
+    public String updateParticipacion(Participacion participacion){
+        String regAc = "Registro actualizado #";
+        String idActStr = String.valueOf(participacion.getIdActividad());
+        String carnet = participacion.getCarnet();
+        String id[] = {idActStr,carnet};
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("valoracion", participacion.getValoracion());
+        cv.put("comentario", participacion.getComentario());
+        int contador = db.update("participacion", cv, "idactividad = ? AND carnet = ?", id);
+
+        if(contador>0){
+            regAc = regAc + contador;
+        }else{
+            regAc = "Registro no existe. Verificar carnet";
+        }
+        return regAc;
+    }
+
+
     public  String insertDocente(Docente docente)   // también lo necesitaba
 
     {
