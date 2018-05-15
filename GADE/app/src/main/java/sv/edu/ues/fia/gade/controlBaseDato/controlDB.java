@@ -55,6 +55,7 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposCiclo = new String [] {"idHorario","numCiclo"};
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
+    private static final String[]camposParticipacion = new String [] {"idactividad", "carnet", "valoracion", "comentario"};
     private static final String [] camposDocente = new String[] {"iddocente","idescuela","nomdocente"};
     private static final String [] camposTipoActividad = new String[] {"idtipoactividad","nomTipoActividad"};
     public static final String delete_escuela_administrador = "CREATE TRIGGER if not exists delete_escuela_administrador AFTER DELETE ON escuela for each row BEGIN DELETE FROM administrador WHERE idescuela = old.idescuela; END";
@@ -654,23 +655,34 @@ public class controlDB extends SQLiteOpenHelper{
     public  String insertAlum(Alumno alumno)    //lo necesitaba
     {
         String regInsertado = "Alumno: ";
-        long contador = 0;
+
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("CARNET",alumno.getCarnet());
         contentValues.put("IDESCUELA", alumno.getIdEscuela());
         contentValues.put("NOMESTUDIANTE", alumno.getNombre());
-        contador = db.insert("ESTUDIANTE",null,contentValues);
+        long contador = db.insert("ESTUDIANTE",null,contentValues);
         db.close();
 
-        if(contador == -1 || contador == 0){
-            regInsertado = "Ya existe el alumno." + alumno.getCarnet();
-        }else{
+        if(contador > 0){
             regInsertado = regInsertado + contador;
+        }else{
+            regInsertado = "Ya existe el alumno." + alumno.getCarnet();
         }
         return regInsertado;
     }
+
+    public Cursor getDataAlumno(String carnet){
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("Select * from  ESTUDIANTE where CARNET= \""+carnet+"\"",null);
+            return cursor;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
 
     public String updateAlumno(Alumno estudiante){
         String regAc = "Registro actualizado #";
@@ -735,8 +747,39 @@ public class controlDB extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
+        cv.put("idactividad", participacion.getIdActividad());
+        cv.put("carnet", participacion.getCarnet());
+        cv.put("valoracion", participacion.getValoracion());
+        cv.put("comentario", participacion.getComentario());
+
+        contador = db.insert("participacion", null, cv);
+
+        if(contador == -1 || contador == 0){
+            regIns = "Ya existe participación con, ID ACTIVIDAD " + participacion.getIdActividad() + " y CARNET " + participacion.getCarnet();
+        }else{
+            regIns = regIns + contador;
+        }
 
         return regIns;
+    }
+
+    public Participacion consultarParticipacion(int idAct, String carnet){
+        String idActStr = String.valueOf(idAct);
+        String id[] = {idActStr, carnet};
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("participacion", camposParticipacion, "idactividad = ? AND carnet = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Participacion participacion = new Participacion();
+            participacion.setIdActividad(cursor.getInt(0));
+            participacion.setCarnet(cursor.getString(1));
+            participacion.setValoracion(cursor.getInt(2));
+            participacion.setComentario(cursor.getString(3));
+            return participacion;
+        }else{
+            return null;
+        }
+
     }
 
 
@@ -834,6 +877,12 @@ public class controlDB extends SQLiteOpenHelper{
             regInsertado = regInsertado + contador;
         }
         return regInsertado;
+    }
+
+    public Cursor getDataActividad(int idActividad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from ACTIVIDAD WHERE IDACTIVIDAD= "+idActividad,null);
+        return cursor;
     }
 
     public String eliminarActividad(Actividad actividad)

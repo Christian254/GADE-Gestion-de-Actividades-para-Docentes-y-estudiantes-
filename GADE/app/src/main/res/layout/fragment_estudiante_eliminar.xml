@@ -24,7 +24,8 @@
             android:layout_marginRight="50dp" />
         <EditText
             android:id="@+id/carnetEst"
-            android:inputType="number"
+            android:inputType="text"
+            android:maxLength="70"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"/>
     </TableRow>
