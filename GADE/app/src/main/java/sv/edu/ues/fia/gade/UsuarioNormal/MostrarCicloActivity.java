@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class MostrarCicloActivity extends ListActivity {
@@ -26,8 +28,7 @@ public class MostrarCicloActivity extends ListActivity {
         ArrayList<String> datos = new ArrayList<String>();
         //borras esta parte xq solo es para demostracion
         String id =getIntent().getStringExtra("id");
-        datos.add("Id introducido en el activity anterior es: "+id);
-        datos.add("REcordas borrar esta parte que es solo prueba");
+        datos.add(id);
         //Hasta aqui borras kike
         if(c!=null && c.getCount()>0){
             while (c.moveToNext()){
@@ -44,6 +45,8 @@ public class MostrarCicloActivity extends ListActivity {
         try {
             Class<?> clase = Class.forName("sv.edu.ues.fia.gade.UsuarioNormal.MostrarHorarioActivity");
             Intent inte = new Intent(this, clase);
+            inte.putExtra("idLocal",id);
+
             this.startActivity(inte);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

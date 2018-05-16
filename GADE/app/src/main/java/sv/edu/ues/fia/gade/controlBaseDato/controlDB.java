@@ -19,6 +19,7 @@ import sv.edu.ues.fia.gade.clases.Ciclo;
 
 import sv.edu.ues.fia.gade.clases.Docente;
 
+import sv.edu.ues.fia.gade.clases.Local;
 import sv.edu.ues.fia.gade.clases.Participacion;
 import sv.edu.ues.fia.gade.clases.Horario;
 
@@ -52,7 +53,7 @@ public class controlDB extends SQLiteOpenHelper{
     private static final String[]camposReserva = new String [] {"idreserva","estado", "idactividad"};
     private static final String[]camposEscuela = new String [] {"idescuela","nomescuela"};
     private static final String[]camposHorario = new String [] {"idHorario","dia","horarioDesde", "horarioHasta"};
-    private static final String[]camposCiclo = new String [] {"idHorario","numCiclo"};
+    private static final String[]camposCiclo = new String [] {"idCiclo","numCiclo"};
     private static final String[]camposEstudiante = new String [] {"carnet","idescuela","nomestudiante"};
     private static final String[]camposActividad = new String [] {"idactividad", "idtipoactividad", "iddocente", "nomactividad"};
     private static final String[]camposParticipacion = new String [] {"idactividad", "carnet", "valoracion", "comentario"};
@@ -264,6 +265,14 @@ public class controlDB extends SQLiteOpenHelper{
             }
             Horario horario = new Horario(1, "miercoles", "7:00", "9:00");
             insertar(horario);
+
+            insertLocal(1,1,"C32",50);
+            insertAdministrador(1,1,"Walter");
+
+            Escuela escuela=new Escuela(1, "EISI");
+            insertEscuela(escuela);
+
+
 
 
             return true;
@@ -642,6 +651,15 @@ public class controlDB extends SQLiteOpenHelper{
         try {
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery("Select * from  CICLO", null);
+            return cursor;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public Cursor getDataHorario() {
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("Select * from  HORARIO", null);
             return cursor;
         } catch (Exception e) {
             return null;
