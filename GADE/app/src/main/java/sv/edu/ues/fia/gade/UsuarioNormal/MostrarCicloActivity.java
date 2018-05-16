@@ -1,57 +1,87 @@
 package sv.edu.ues.fia.gade.UsuarioNormal;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import sv.edu.ues.fia.gade.R;
+import sv.edu.ues.fia.gade.adapter.AdapterLH;
+import sv.edu.ues.fia.gade.adapter.AdapterLocal;
+import sv.edu.ues.fia.gade.adapter.ArrayAdapterLH;
+import sv.edu.ues.fia.gade.clases.Local;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
-public class MostrarCicloActivity extends ListActivity {
+public class MostrarCicloActivity extends Activity {
 
-    private controlDB db;
+
     private ListView lista;
+    private controlDB db;
+    private Cursor ciclos;
+    private String idLocal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = new controlDB(this);
-        ListView listView = getListView();
+        setContentView(R.layout.activity_mostrar_ciclo);
 
-        Cursor c = db.getDataCiclo();
-        ArrayList<String> datos = new ArrayList<String>();
-        //borras esta parte xq solo es para demostracion
-        String id =getIntent().getStringExtra("id");
-        datos.add(id);
-        //Hasta aqui borras kike
-        if(c!=null && c.getCount()>0){
-            while (c.moveToNext()){
-                datos.add(c.getString(1));
+        db = new controlDB(this);
+
+        db.insertarCiclo(1,"Ciclo I");
+        db.insertarCiclo(2,"Ciclo II");
+        db.insertarCiclo(3,"Ciclo III");
+        db.insertarCiclo(4,"Ciclo IV");
+
+
+        ciclos = db.getData("CICLO");
+        idLocal = getIntent().getExtras().getString("id");
+        ArrayList<AdapterLH> adap = new ArrayList<AdapterLH>();
+
+        if(ciclos!=null && ciclos.getCount()>0){
+            while (ciclos.moveToNext()){
+                adap.add(new AdapterLH(ciclos.getInt(0),ciclos.getString(1)));
             }
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,datos);
-        setListAdapter(adapter);
+        ArrayAdapterLH adapter = new ArrayAdapterLH(this,adap);
+        lista = (ListView)findViewById(R.id.listaCiclo);
+
+        lista.setAdapter(adapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView t = (TextView)view.findViewById(R.id.txl_h_c);
+                String ids = t.getHint().toString();
+                verHorario(ids);
+            }
+        });
+
     }
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
 
-        try {
-            Class<?> clase = Class.forName("sv.edu.ues.fia.gade.UsuarioNormal.MostrarHorarioActivity");
-            Intent inte = new Intent(this, clase);
-            inte.putExtra("idLocal",id);
-
-            this.startActivity(inte);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+    private void verHorario(String ids) {
+        //aqui la actividad que queres lanzar
+        if(idLocal!=null){
+            Intent i = new Intent(this, MostrarHorarioActivity.class);
+            i.putExtra("idLocal",idLocal);
+            i.putExtra("idCiclo",ids);
+            startActivity(i);
+            finish();
+        }else{
+            Toast.makeText(this,"Error inseperado trate de nuevo",Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
-
 }
+
+

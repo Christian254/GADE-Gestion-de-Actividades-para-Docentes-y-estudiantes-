@@ -38,9 +38,7 @@ public class ConsultarLocalesActivity extends Activity {
         }
 
         AdapterLocal adapter = new AdapterLocal(this,adap);
-        View header = (View)getLayoutInflater().inflate(R.layout.list_header_local,null);
         lista = (ListView)findViewById(R.id.listaLocales);
-        lista.addHeaderView(header);
         lista.setAdapter(adapter);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,7 +57,7 @@ public class ConsultarLocalesActivity extends Activity {
         Intent i = new Intent(this, MostrarCicloActivity.class);
         i.putExtra("id",ids);
         startActivity(i);
-        //finish();
+        finish();
     }
 
 }

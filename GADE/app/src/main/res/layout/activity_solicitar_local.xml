@@ -7,8 +7,11 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-
-
+    <TextView
+        android:id="@+id/borrarEsteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
     <TextView
         android:layout_width="wrap_content"
