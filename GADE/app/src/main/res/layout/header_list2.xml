@@ -6,11 +6,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/headerlocal"
-        android:textSize="25dp"
+        android:text="@string/L_H"
+        android:textSize="35dp"
         android:layout_marginTop="25dp"
-        android:gravity="center_horizontal"
+        android:background="@color/colorUpdate"
+        android:textColor="#FFF"
         android:onClick="none"
+        android:gravity="center_horizontal"
         />
 
 </LinearLayout>

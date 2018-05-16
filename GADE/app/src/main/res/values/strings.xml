@@ -103,5 +103,9 @@
     <string name="idDoc">id Docente</string>
     <string name="nomActividad">Nombre de la Actividad</string>
     <string name="headerlocal">Locales</string>
+    <string name="L_H">Seleccione una opcion</string>
+    <string name="consultarAdmin">Administradores</string>
+    <string name="consultarLocales">Consultar locales</string>
+    <string name="Seleccionar">Seleccione una opcion</string>
 
 </resources>

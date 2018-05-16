@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import sv.edu.ues.fia.gade.R;
@@ -16,11 +17,21 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class SolicitarLocalActivity extends Activity {
     controlDB helper;
+    private String idLocal, idCiclo, idHorario;
     EditText editIdReserva, editIdAct,editAlumno, editEscuela, editNombre, editNomDoc, editIdDoc, editTipoAct, editNombreAct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitar_local);
+
+        idLocal = getIntent().getExtras().getString("idLocal");
+        idCiclo = getIntent().getExtras().getString("idCiclo");
+        idHorario = getIntent().getExtras().getString("idHorario");
+        //Borrar esta parte junto al textView que involucra
+        TextView tx = (TextView)findViewById(R.id.borrarEsteTextView);
+        tx.setText("IdLocal= "+idLocal+ " idCiclo = "+idCiclo+ " idHorario = "+idHorario);
+        //Has aqui borrar
+
         helper = new controlDB(this);
         editIdReserva = (EditText) findViewById(R.id.editIdReserva);
         editIdAct = (EditText) findViewById(R.id.editIdActividad);

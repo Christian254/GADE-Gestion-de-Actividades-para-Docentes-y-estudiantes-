@@ -13,6 +13,7 @@
         android:background="#23F485"
         android:textColor="#FFF"
         android:gravity="center_horizontal"
+        android:onClick="none"
         />
 
 </LinearLayout>
