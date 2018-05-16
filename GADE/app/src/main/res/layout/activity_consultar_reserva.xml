@@ -16,6 +16,17 @@
         android:id="@+id/editId"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/carnetEst"/>
+    <EditText
+        android:id="@+id/carnetBuscar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:inputType="text"
         android:maxLength="7" />
     <LinearLayout

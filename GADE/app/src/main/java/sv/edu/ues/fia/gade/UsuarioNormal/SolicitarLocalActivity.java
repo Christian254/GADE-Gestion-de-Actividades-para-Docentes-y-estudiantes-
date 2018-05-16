@@ -10,6 +10,7 @@ import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Alumno;
 import sv.edu.ues.fia.gade.clases.Docente;
+import sv.edu.ues.fia.gade.clases.Participacion;
 import sv.edu.ues.fia.gade.clases.Reserva;
 import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
@@ -72,8 +73,13 @@ public class SolicitarLocalActivity extends Activity {
             actividad.setTipoActividad(Integer.parseInt(tipoActividad));
             actividad.setNomActividad(nombreActividad);
 
+            Participacion participacion = new Participacion();
+            participacion.setCarnet(alumnoCarnet);
+            participacion.setIdActividad(Integer.parseInt(idAct));
+            participacion.setComentario(" ");
+            participacion.setValoracion(1);
 
-            String regInsert = helper.insertReserva(reserva, alumno, docente, actividad);
+            String regInsert = helper.insertReserva(reserva, alumno, docente, actividad, participacion);
             Toast.makeText(this, regInsert, Toast.LENGTH_SHORT).show();
         }
     }

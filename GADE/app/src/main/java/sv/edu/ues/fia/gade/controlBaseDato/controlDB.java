@@ -325,6 +325,18 @@ public class controlDB extends SQLiteOpenHelper{
         return cursor;
     }
 
+    public Cursor getDataReserva(int idReserva, String carnet)
+    {try {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from reserva inner join actividad on reserva.IDACTIVIDAD=actividad.IDACTIVIDAD inner join participacion on actividad.IDACTIVIDAD = participacion.IDACTIVIDAD inner join estudiante on estudiante.CARNET = participacion.CARNET inner join docente on estudiante.IDESCUELA = docente.IDESCUELA where estudiante.CARNET=\""+carnet.toString().trim()+"\""+"AND reserva.IDRESERVA="+idReserva,null);
+        return cursor;
+    }catch (Exception e)
+    {
+        return  null;
+    }
+
+    }
+
     public boolean updateAdmin(int id, int escuela,String nombre){
         boolean retorno = false;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -486,7 +498,7 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     //CRUD para las reservas
-    public  String insertReserva(Reserva reserva, Alumno alumno, Docente docente, Actividad actividad)
+    public  String insertReserva(Reserva reserva, Alumno alumno, Docente docente, Actividad actividad, Participacion participacion)
     {
         String regInsertado = "Registro Reserva #";
         long contador = 0;
@@ -505,6 +517,7 @@ public class controlDB extends SQLiteOpenHelper{
             insertAlum(alumno);
             insertDocente(docente);
             insertActividad(actividad);
+            insertParticipacion(participacion);
             regInsertado = regInsertado + contador + " " + alumno.getCarnet() + " "+docente.getNombreDoc() +" Actividad" + actividad.getIdActividad() ;
 
         }
@@ -789,6 +802,25 @@ public class controlDB extends SQLiteOpenHelper{
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query("participacion", camposParticipacion, "idactividad = ? AND carnet = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Participacion participacion = new Participacion();
+            participacion.setIdActividad(cursor.getInt(0));
+            participacion.setCarnet(cursor.getString(1));
+            participacion.setValoracion(cursor.getInt(2));
+            participacion.setComentario(cursor.getString(3));
+            return participacion;
+        }else{
+            return null;
+        }
+
+    }
+
+    public Participacion consultarParticipacion1(int idAct){
+        String idActStr = String.valueOf(idAct);
+        String id[] = {idActStr};
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("participacion", camposParticipacion, "idactividad = ?", id, null, null, null);
         if(cursor.moveToFirst()){
             Participacion participacion = new Participacion();
             participacion.setIdActividad(cursor.getInt(0));
