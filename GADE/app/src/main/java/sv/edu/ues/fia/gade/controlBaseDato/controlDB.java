@@ -328,7 +328,7 @@ public class controlDB extends SQLiteOpenHelper{
     public Cursor getDataReserva(int idReserva, String carnet)
     {try {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from reserva inner join actividad on reserva.IDACTIVIDAD=actividad.IDACTIVIDAD inner join participacion on actividad.IDACTIVIDAD = participacion.IDACTIVIDAD inner join estudiante on estudiante.CARNET = participacion.CARNET inner join docente on estudiante.IDESCUELA = docente.IDESCUELA where estudiante.CARNET=\""+carnet.toString().trim()+"\""+"AND reserva.IDRESERVA="+idReserva,null);
+        Cursor cursor = db.rawQuery("Select * from reserva inner join actividad on reserva.IDACTIVIDAD=actividad.IDACTIVIDAD inner join participacion on actividad.IDACTIVIDAD = participacion.IDACTIVIDAD inner join estudiante on estudiante.CARNET = participacion.CARNET inner join docente on estudiante.IDESCUELA = docente.IDESCUELA inner join disponible on disponible.IDRESERVA = reserva.IDRESERVA inner join local on disponible.IDLOCAL=local.IDLOCAL inner join horario on disponible.IDHORARIO=horario.IDHORARIO inner join ciclo on ciclo.IDCICLO = disponible.IDCICLO where estudiante.CARNET=\""+carnet.toString().trim()+"\""+"AND reserva.IDRESERVA="+idReserva,null);
         return cursor;
     }catch (Exception e)
     {
@@ -518,7 +518,7 @@ public class controlDB extends SQLiteOpenHelper{
             insertDocente(docente);
             insertActividad(actividad);
             insertParticipacion(participacion);
-            regInsertado = regInsertado + contador + " " + alumno.getCarnet() + " "+docente.getNombreDoc() +" Actividad" + actividad.getIdActividad() ;
+            regInsertado = regInsertado + contador + " " + alumno.getCarnet() + " "+docente.getNombreDoc() +" Actividad" + actividad.getIdActividad() + "Registro en disponible ";
 
         }
         return regInsertado;
@@ -551,7 +551,7 @@ public class controlDB extends SQLiteOpenHelper{
         String [] id = {idReserva};
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues  = new ContentValues();
-        contentValues.put("IDACTIVIDAD", reserva.getIdActividad());
+        contentValues.put("ESTADO", reserva.getEstado());
         int resultado = db.update("RESERVA",contentValues,"IDRESERVA = ?",id);
 
         if(resultado>0){
@@ -815,24 +815,7 @@ public class controlDB extends SQLiteOpenHelper{
 
     }
 
-    public Participacion consultarParticipacion1(int idAct){
-        String idActStr = String.valueOf(idAct);
-        String id[] = {idActStr};
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query("participacion", camposParticipacion, "idactividad = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            Participacion participacion = new Participacion();
-            participacion.setIdActividad(cursor.getInt(0));
-            participacion.setCarnet(cursor.getString(1));
-            participacion.setValoracion(cursor.getInt(2));
-            participacion.setComentario(cursor.getString(3));
-            return participacion;
-        }else{
-            return null;
-        }
-
-    }
 
 
     public String deleteParticipacion(int idActividad, String carnet){
@@ -1034,7 +1017,7 @@ public class controlDB extends SQLiteOpenHelper{
     /*  TABLA DISPONIBLE */
     public String insertarDisponible(Disponible disponible)
     {
-        String regInsertado = "Registro insertado: ";
+        String regInsertado = "Registro insertado en disponible: ";
         long contador = 0;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -1042,13 +1025,12 @@ public class controlDB extends SQLiteOpenHelper{
         contentValues.put("IDLOCAL", disponible.getIdLocal());
         contentValues.put("IDCICLO", disponible.getIdCiclo());
         contentValues.put("IDRESERVA", disponible.getIdReserva());
+        contentValues.put("DISPONIBLE", disponible.getDisponible());
         contador = db.insert("DISPONIBLE",null,contentValues);
         if(contador == -1 || contador == 0){
             regInsertado = "Ya existe.";
-            disponible.setDisponible(2);
         }else{
             regInsertado = regInsertado + contador;
-            disponible.setDisponible(1);
         }
         return regInsertado;
     }

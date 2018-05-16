@@ -119,8 +119,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Local" />
+        android:text="@string/local" />
     <EditText
+        android:id="@+id/editLocalConsulta"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -132,9 +133,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hora" />
+        android:text="@string/Hora" />
     <EditText
-        android:layout_width="100dp"
+        android:id="@+id/editHoraConsulta"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:enabled ="false"
@@ -142,5 +144,26 @@
         android:focusableInTouchMode="false"
         android:cursorVisible="false"
         android:longClickable="false" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dia"/>
+    <EditText
+        android:id="@+id/editDiaConsultar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ciclo"/>
+    <EditText
+        android:id="@+id/editCicloConsultar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"/>
+
+
+
 </LinearLayout>
 </ScrollView>

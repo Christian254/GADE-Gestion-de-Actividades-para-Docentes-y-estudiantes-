@@ -107,5 +107,8 @@
     <string name="consultarAdmin">Administradores</string>
     <string name="consultarLocales">Consultar locales</string>
     <string name="Seleccionar">Seleccione una opcion</string>
+    <string name="Hora">Hora</string>
+    <string name="ciclo">ciclo</string>
+    <string name="estado">Estado de la actividad</string>
 
 </resources>

@@ -30,13 +30,13 @@ public class IndexActivity extends ListActivity {
     **/
     private void cargarMenu(int t) {
         if(t==2){ //si es administrador podra:
-            String[] menu1= {"Gestionar Escuela", "Gestionar Estudiante", "Gestionar Participación" ,"Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Gestionar Administrador","Gestionar Local","Gestionar Horario","Gestionar Docente","Gestionar Actividad","Gestionar Tipo Actividad"};
-            String[] valores1={"EscuelaGestionarActivity", "EstudianteGestionarActivity", "ParticipacionGestionarActivity" ,"SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","GestionarAdminActivity","GestionarLocalActivity","GestionarHorarioActivity","DocenteGestionarActivity","ActividadGestionarActivity","TipoActividadGestionarActivity"};
+            String[] menu1= {"Gestionar Escuela", "Gestionar Estudiante", "Gestionar Participación" , "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Gestionar Administrador","Gestionar Local","Gestionar Horario","Gestionar Docente","Gestionar Actividad","Gestionar Tipo Actividad"};
+            String[] valores1={"EscuelaGestionarActivity", "EstudianteGestionarActivity", "ParticipacionGestionarActivity" , "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","GestionarAdminActivity","GestionarLocalActivity","GestionarHorarioActivity","DocenteGestionarActivity","ActividadGestionarActivity","TipoActividadGestionarActivity"};
             this.menu=menu1;
             this.valores=valores1;
         }else{
-            String[] menu1= {"Solicitar Local", "Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Consultar administradores","Consultar locales"};
-            String[] valores1={"SolicitarLocalActivity", "ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","ConsultarAdminActivity","ConsultarLocalesActivity"};
+            String[] menu1= {"Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Consultar administradores","Consultar locales"};
+            String[] valores1={"ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","ConsultarAdminActivity","ConsultarLocalesActivity"};
             this.menu=menu1;
             this.valores=valores1;
         }

@@ -12,7 +12,7 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 
 public class ModificarReservaActivity extends Activity {
     private controlDB helper;
-    private EditText editRes, editAct;
+    private EditText editRes, editEstado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,19 +20,19 @@ public class ModificarReservaActivity extends Activity {
         setContentView(R.layout.activity_modificar_reserva);
         helper = new controlDB(this);
         editRes = (EditText) findViewById(R.id.editId);
-        editAct = (EditText) findViewById(R.id.editAct);
+        editEstado = (EditText) findViewById(R.id.editEstadoModificar);
     }
     public void modificarReserva(View v)
     {
         Reserva reserva = new Reserva();
         reserva.setIdReserva(Integer.parseInt(editRes.getText().toString()));
-        reserva.setIdActividad(Integer.parseInt(editAct.getText().toString()));
+        reserva.setEstado(Integer.parseInt(editEstado.getText().toString()));
         String regAct = helper.modificarReserva(reserva);
         Toast.makeText(this,regAct,Toast.LENGTH_SHORT).show();
     }
     public void limpiarTexto(View v){
         editRes.setText("");
-        editAct.setText("");
+        editEstado.setText("");
     }
 
 }

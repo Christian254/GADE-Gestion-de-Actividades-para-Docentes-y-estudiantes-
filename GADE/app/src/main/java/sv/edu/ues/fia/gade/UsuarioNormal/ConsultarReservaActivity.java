@@ -18,7 +18,7 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 public class ConsultarReservaActivity extends Activity {
     controlDB helper;
     EditText editId, buscar, buscarCarnet;
-    EditText editEstado, editAct, editNomActividad, editNomDoc, editNomEst;
+    EditText editEstado, editAct, editNomActividad, editNomDoc, editNomEst, editLocal, editHora, editDia, editCiclo;
 
 
     @Override
@@ -35,6 +35,10 @@ public class ConsultarReservaActivity extends Activity {
         editNomDoc = (EditText) findViewById(R.id.editNombreDocente);
         editNomEst = (EditText) findViewById(R.id.editNomEstudiante);
         buscarCarnet = (EditText) findViewById(R.id.carnetBuscar);
+        editLocal = (EditText) findViewById(R.id.editLocalConsulta);
+        editHora = (EditText) findViewById(R.id.editHoraConsulta);
+        editDia = (EditText) findViewById(R.id.editDiaConsultar);
+        editCiclo = (EditText) findViewById(R.id.editCicloConsultar);
     }
 
     public void consultaReserva(View v)
@@ -70,6 +74,11 @@ public class ConsultarReservaActivity extends Activity {
             editNomActividad.setText(cursor.getString(6));
             editNomDoc.setText(cursor.getString(16));
             editNomEst.setText(cursor.getString(13));
+            editLocal.setText(cursor.getString(24));
+            editDia.setText(cursor.getString(27));
+            editCiclo.setText(cursor.getString(30));
+            editHora.setText("Desde: "+cursor.getString(28)+" Hasta: "+ cursor.getString(29));
+
         }
         else
         {
@@ -97,6 +106,10 @@ public class ConsultarReservaActivity extends Activity {
         editNomActividad.setText("");
         editNomDoc.setText("");
         editNomEst.setText("");
+        editLocal.setText("");
+        editDia.setText("");
+        editCiclo.setText("");
+        editHora.setText("");
 
     }
 

@@ -9,16 +9,16 @@
 
         <EditText
             android:id="@+id/editId"
-            android:inputType="text"
-            android:maxLength="7" />
+            android:inputType="number"
+             />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/idActividad" />
+        <TextView android:text="@string/estado" />
 
         <EditText
-            android:id="@+id/editAct"
-            android:inputType="text"
-            android:maxLength="7" />
+            android:id="@+id/editEstadoModificar"
+            android:inputType="number"
+            />
     </TableRow>
     <TableRow>
 

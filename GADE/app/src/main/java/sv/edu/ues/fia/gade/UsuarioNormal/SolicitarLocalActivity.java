@@ -10,6 +10,7 @@ import android.widget.Toast;
 import sv.edu.ues.fia.gade.R;
 import sv.edu.ues.fia.gade.clases.Actividad;
 import sv.edu.ues.fia.gade.clases.Alumno;
+import sv.edu.ues.fia.gade.clases.Disponible;
 import sv.edu.ues.fia.gade.clases.Docente;
 import sv.edu.ues.fia.gade.clases.Participacion;
 import sv.edu.ues.fia.gade.clases.Reserva;
@@ -90,8 +91,16 @@ public class SolicitarLocalActivity extends Activity {
             participacion.setComentario(" ");
             participacion.setValoracion(1);
 
+            Disponible disponible = new Disponible();
+            disponible.setIdReserva(Integer.parseInt(idReserva));
+            disponible.setIdHorario(Integer.parseInt(idHorario));
+            disponible.setIdLocal(Integer.parseInt(idLocal));
+            disponible.setIdCiclo(Integer.parseInt(idCiclo));
+            disponible.setDisponible(1);
+
             String regInsert = helper.insertReserva(reserva, alumno, docente, actividad, participacion);
-            Toast.makeText(this, regInsert, Toast.LENGTH_SHORT).show();
+            String dis =helper.insertarDisponible(disponible);
+            Toast.makeText(this, regInsert + dis, Toast.LENGTH_SHORT).show();
         }
     }
 }
