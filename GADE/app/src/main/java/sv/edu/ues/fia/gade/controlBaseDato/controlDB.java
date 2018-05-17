@@ -287,6 +287,13 @@ public class controlDB extends SQLiteOpenHelper{
         return cursor;
     }
 
+    public Cursor getDataDisponible(int idHorario, int idCiclo, int idLocal)
+    {
+        SQLiteDatabase db= this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from disponible where idhorario="+idHorario+" and idciclo="+idCiclo+" and idlocal="+idLocal, null);
+        return cursor;
+    }
+
     public Cursor getDataUsuarios(String usuario) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();

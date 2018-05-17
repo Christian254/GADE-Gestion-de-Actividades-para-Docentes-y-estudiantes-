@@ -110,5 +110,6 @@
     <string name="Hora">Hora</string>
     <string name="ciclo">ciclo</string>
     <string name="estado">Estado de la actividad</string>
+    <string name="disponible">Disponible</string>
 
 </resources>

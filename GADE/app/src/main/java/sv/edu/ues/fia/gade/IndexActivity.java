@@ -35,8 +35,8 @@ public class IndexActivity extends ListActivity {
             this.menu=menu1;
             this.valores=valores1;
         }else{
-            String[] menu1= {"Consultar Reservas","Modificar Reserva", "Eliminar Reservas","Consultar administradores","Consultar locales"};
-            String[] valores1={"ConsultarReservaActivity","ModificarReservaActivity", "EliminarReservaActivity","ConsultarAdminActivity","ConsultarLocalesActivity"};
+            String[] menu1= {"Consultar Reservas", "Eliminar Reservas","Consultar administradores","Consultar locales"};
+            String[] valores1={"ConsultarReservaActivity", "EliminarReservaActivity","ConsultarAdminActivity","ConsultarLocalesActivity"};
             this.menu=menu1;
             this.valores=valores1;
         }

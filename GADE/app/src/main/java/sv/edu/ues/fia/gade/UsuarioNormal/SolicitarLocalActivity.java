@@ -1,8 +1,10 @@
 package sv.edu.ues.fia.gade.UsuarioNormal;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +21,8 @@ import sv.edu.ues.fia.gade.controlBaseDato.controlDB;
 public class SolicitarLocalActivity extends Activity {
     controlDB helper;
     private String idLocal, idCiclo, idHorario;
-    EditText editIdReserva, editIdAct,editAlumno, editEscuela, editNombre, editNomDoc, editIdDoc, editTipoAct, editNombreAct;
+    EditText editIdReserva, editIdAct,editAlumno, editEscuela, editNombre, editNomDoc, editIdDoc, editTipoAct, editNombreAct, editDisponible;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +31,7 @@ public class SolicitarLocalActivity extends Activity {
         idLocal = getIntent().getExtras().getString("idLocal");
         idCiclo = getIntent().getExtras().getString("idCiclo");
         idHorario = getIntent().getExtras().getString("idHorario");
-        //Borrar esta parte junto al textView que involucra
-        TextView tx = (TextView)findViewById(R.id.borrarEsteTextView);
-        tx.setText("IdLocal= "+idLocal+ " idCiclo = "+idCiclo+ " idHorario = "+idHorario);
-        //Has aqui borrar
+
 
         helper = new controlDB(this);
         editIdReserva = (EditText) findViewById(R.id.editIdReserva);
@@ -43,6 +43,18 @@ public class SolicitarLocalActivity extends Activity {
         editNomDoc = (EditText) findViewById(R.id.editNomDoc);
         editTipoAct = (EditText) findViewById(R.id.editTipoActividad);
         editNombreAct = (EditText) findViewById(R.id.editNomActividad);
+        editDisponible = (EditText) findViewById(R.id.editDisponible);
+        button = (Button) findViewById(R.id.btnInsertarReserva);
+        Cursor c = helper.getDataDisponible(Integer.parseInt(idHorario),Integer.parseInt(idCiclo), Integer.parseInt(idLocal));
+        if(c.moveToFirst())
+        {
+            editDisponible.setText("NO");
+            button.setEnabled(false);
+        }
+        else
+        {
+            editDisponible.setText("SI");
+        }
     }
 
     public void insertarReserva(View v)
