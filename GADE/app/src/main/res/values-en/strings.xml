@@ -103,5 +103,13 @@
     <string name="idDoc">id Teacher</string>
     <string name="nomActividad">Activity name</string>
     <string name="headerlocal">Local</string>
+    <string name="L_H">Select an option</string>
+    <string name="consultarAdmin">Administrators</string>
+    <string name="consultarLocales">Consult local</string>
+    <string name="Seleccionar">Select an Option</string>
+    <string name="Hora">Hour</string>
+    <string name="ciclo">Semester</string>
+    <string name="estado">Activity status</string>
+    <string name="disponible">available</string>
 
 </resources>
