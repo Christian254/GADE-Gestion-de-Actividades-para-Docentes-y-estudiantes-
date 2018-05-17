@@ -25,17 +25,21 @@ public class ConsultarHorarioActivity extends Activity {
         editHorarioHasta = (EditText) findViewById(R.id.editHorarioHasta);
     }
     public void consultarHorario(View v) {
-        helper.abrir();
-        Horario horario =
-                helper.consultarHorario(editIdHorario.getText().toString());
-        helper.close();
-        if(horario == null)
-            Toast.makeText(this, "Id " + editIdHorario.getText().toString() +
-                    " no encontrado", Toast.LENGTH_LONG).show();
-        else{
-            editDia.setText(horario.getDia());
-            editHorarioDesde.setText(horario.getHorarioDesde());
-            editHorarioHasta.setText(horario.getHorarioHasta());
+        if(editIdHorario.getText().toString().isEmpty()){
+            Toast.makeText(v.getContext(), "Escribir id que desea a consultar.", Toast.LENGTH_SHORT).show();
+        }else {
+            helper.abrir();
+            Horario horario =
+                    helper.consultarHorario(editIdHorario.getText().toString());
+            helper.close();
+            if (horario == null)
+                Toast.makeText(this, "Id " + editIdHorario.getText().toString() +
+                        " no encontrado", Toast.LENGTH_LONG).show();
+            else {
+                editDia.setText(horario.getDia());
+                editHorarioDesde.setText(horario.getHorarioDesde());
+                editHorarioHasta.setText(horario.getHorarioHasta());
+            }
         }
     }
     public void limpiarTexto(View v){

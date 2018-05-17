@@ -23,15 +23,18 @@ public class EliminarHorarioActivity extends Activity
         controlhelper=new controlDB (this);
         editIdHorario=(EditText)findViewById(R.id.editIdHorario);
     }
-    public void eliminarHorario(View v)
-    {
-        String regEliminadas;
-        Horario horario=new Horario();
-        horario.setIdHorario(Integer.parseInt(editIdHorario.getText().toString()));
-        controlhelper.abrir();
-        regEliminadas=controlhelper.eliminar(horario);
-        controlhelper.close();
-        Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+    public void eliminarHorario(View v) {
+        if (editIdHorario.getText().toString().isEmpty()) {
+            Toast.makeText(v.getContext(), "Escribir id que desea eliminar.", Toast.LENGTH_SHORT).show();
+        } else {
+            String regEliminadas;
+            Horario horario = new Horario();
+            horario.setIdHorario(Integer.parseInt(editIdHorario.getText().toString()));
+            controlhelper.abrir();
+            regEliminadas = controlhelper.eliminar(horario);
+            controlhelper.close();
+            Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

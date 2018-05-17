@@ -38,8 +38,6 @@ public class MostrarCicloActivity extends Activity {
 
         db.insertarCiclo(1,"Ciclo I");
         db.insertarCiclo(2,"Ciclo II");
-        db.insertarCiclo(3,"Ciclo III");
-        db.insertarCiclo(4,"Ciclo IV");
 
 
         ciclos = db.getData("CICLO");

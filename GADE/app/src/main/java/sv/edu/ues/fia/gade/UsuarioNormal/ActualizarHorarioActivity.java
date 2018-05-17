@@ -26,15 +26,19 @@ public class ActualizarHorarioActivity extends Activity {
     }
     public void actualizarHorario(View v) {
         Horario horario = new Horario();
+        if(editIdHorario.getText().toString().isEmpty()){
+            Toast.makeText(v.getContext(), "Escribir id que desea actualizar.", Toast.LENGTH_SHORT).show();
+        }else {
 
-        horario.setIdHorario(Integer.parseInt(editIdHorario.getText().toString()));
-        horario.setDia(editDia.getText().toString());
-        horario.setHorarioDesde(editHorarioDesde.getText().toString());
-        horario.setHorarioHasta(editHorarioHasta.getText().toString());
-        helper.abrir();
-        String estado = helper.actualizar(horario);
-        helper.close();
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+            horario.setIdHorario(Integer.parseInt(editIdHorario.getText().toString()));
+            horario.setDia(editDia.getText().toString());
+            horario.setHorarioDesde(editHorarioDesde.getText().toString());
+            horario.setHorarioHasta(editHorarioHasta.getText().toString());
+            helper.abrir();
+            String estado = helper.actualizar(horario);
+            helper.close();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        }
     }
     public void limpiarTexto(View v) {
         editIdHorario.setText("");

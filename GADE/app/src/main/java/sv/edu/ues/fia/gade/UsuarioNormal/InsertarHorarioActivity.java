@@ -26,20 +26,24 @@ public class InsertarHorarioActivity extends Activity
         editHorarioHasta = (EditText) findViewById(R.id.editHorarioHasta);
     }
     public void insertarHorario(View v){
-        int idHorario=Integer.parseInt(editIdHorario.getText().toString());
-        String dia=editDia.getText().toString();
-        String horarioDesde=editHorarioDesde.getText().toString();
-        String horarioHasta=editHorarioHasta.getText().toString();
-        String regInsertados;
-        Horario horario=new Horario();
-        horario.setIdHorario(idHorario);
-        horario.setDia(dia);
-        horario.setHorarioDesde(horarioDesde);
-        horario.setHorarioHasta(horarioHasta);
-        helper.abrir();
-        regInsertados=helper.insertar(horario);
-        helper.close();
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        if(editIdHorario.getText().toString().isEmpty() || editDia.getText().toString().isEmpty()||editHorarioDesde.getText().toString().isEmpty() || editHorarioHasta.getText().toString().isEmpty() ){
+            Toast.makeText(v.getContext(), "Llenar campos vacíos.", Toast.LENGTH_SHORT).show();
+        }else {
+            int idHorario = Integer.parseInt(editIdHorario.getText().toString());
+            String dia = editDia.getText().toString();
+            String horarioDesde = editHorarioDesde.getText().toString();
+            String horarioHasta = editHorarioHasta.getText().toString();
+            String regInsertados;
+            Horario horario = new Horario();
+            horario.setIdHorario(idHorario);
+            horario.setDia(dia);
+            horario.setHorarioDesde(horarioDesde);
+            horario.setHorarioHasta(horarioHasta);
+            helper.abrir();
+            regInsertados = helper.insertar(horario);
+            helper.close();
+            Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        }
 
     }
     public void limpiarTexto(View v) {

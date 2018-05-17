@@ -110,9 +110,9 @@ public class MostrarHorarioActivity extends Activity {
 
         db = new controlDB(this);
 
-        db.insertar(new Horario(1,"1","8:20","9:50"));
-        db.insertar(new Horario(2,"2","8:20","9:50"));
-        db.insertar(new Horario(3,"3","8:20","9:50"));
+        db.insertar(new Horario(1,"Lunes","8:00","9:45"));
+        db.insertar(new Horario(2,"Martes","9:50","9:50"));
+        db.insertar(new Horario(3,"Miercoles","11:35","13:15"));
 
         horario = db.getData("HORARIO");
         idLocal = getIntent().getExtras().getString("idLocal");
