@@ -217,7 +217,19 @@ public class controlDB extends SQLiteOpenHelper{
         try {
             ArrayList<Usuario> users = new ArrayList<>();
             ArrayList<OpcionCrud> option = new ArrayList<>();
+
+
+            ArrayList<Actividad> actividades = new ArrayList<>();
+            ArrayList<Alumno> alumnos = new ArrayList<>();
             ArrayList<Ciclo> ciclos = new ArrayList<>();
+            ArrayList<Docente> docentes = new ArrayList<>();
+            ArrayList<Escuela> escuelas = new ArrayList<>();
+            ArrayList<Horario> horarios = new ArrayList<>();
+            ArrayList<Local> locales = new ArrayList<>();
+            ArrayList<Participacion> participaciones = new ArrayList<>();
+            ArrayList<TipoActividad> tiposAct = new ArrayList<>();
+
+
             ArrayList<AccesoUsuario> accesoUsuarios = new ArrayList<>();
             users.add(new Usuario("Herman","gD21d",1));
             users.add(new Usuario("Alberto","jA3f2",1));
@@ -265,6 +277,68 @@ public class controlDB extends SQLiteOpenHelper{
             }
             Horario horario = new Horario(1, "miercoles", "7:00", "9:00");
             insertar(horario);
+
+            //Actividad
+            actividades.add(new Actividad(1, 5, 5,"Ponencia"));
+            actividades.add(new Actividad(3, 5, 3,"Teorico"));
+
+            for(Actividad act: actividades){
+                insertActividad(act);
+            }
+
+
+            //Alumno
+            alumnos.add(new Alumno("PP10001", 115,"Pedro"));
+            alumnos.add(new Alumno("JP15003", 115,"Juan"));
+            alumnos.add(new Alumno("AA15000", 115,"Ana"));
+
+            for(Alumno alumno : alumnos){
+                insertAlum(alumno);
+            }
+
+            //Docentes
+            docentes.add(new Docente(3, 115, "Nelly"));
+            docentes.add(new Docente(5, 120, "Salvador Germán"));
+
+            for(Docente docente:docentes){
+                insertDocente(docente);
+            }
+
+
+            //Escuelas
+            escuelas.add(new Escuela(115,"Sistemas Informáticos"));
+            escuelas.add(new Escuela(120,"Eléctrica"));
+            escuelas.add(new Escuela(125,"Civil"));
+
+            for (Escuela escuela : escuelas){
+                insertEscuela(escuela);
+            }
+
+            //Horarios
+            horarios.add(new Horario(10, "Lunes", "8:05am", "9:50am"));
+            horarios.add(new Horario(20, "Martes", "6:20am", "8:00am"));
+
+            for(Horario hor:horarios){
+                insertar(hor);
+            }
+
+            //Participación
+            participaciones.add(new Participacion(3, "PP15001", 6, "Bueno"));
+            participaciones.add(new Participacion(5, "AA15000", 5, "Regular"));
+
+            for(Participacion part:participaciones){
+                insertParticipacion(part);
+            }
+
+
+            //Tipos de Actividad.
+            tiposAct.add(new TipoActividad(3, "Ponencia"));
+            tiposAct.add(new TipoActividad(5, "Discusion"));
+
+            for (TipoActividad tipo: tiposAct){
+                insertTipoActividad(tipo);
+            }
+
 
             insertLocal(1,1,"C32",50);
             insertAdministrador(1,1,"Walter");
