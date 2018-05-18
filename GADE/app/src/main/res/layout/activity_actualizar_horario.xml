@@ -36,11 +36,27 @@
     <TableRow>
         <Button
             android:onClick="actualizarHorario"
-            android:text="@string/actualizar" />
+            android:text="@string/actualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/lapiz"
+            android:drawablePadding="8dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#ef9a9a"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
     </TableRow>
     <TableRow>
         <Button
             android:onClick="limpiarTexto"
-            android:text="@string/limpiar" />
+            android:text="@string/limpiar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/lapiz"
+            android:drawablePadding="8dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#ef9a9a"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
     </TableRow>
 </TableLayout>

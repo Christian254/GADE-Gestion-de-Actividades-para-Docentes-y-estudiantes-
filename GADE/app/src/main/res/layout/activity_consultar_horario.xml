@@ -19,16 +19,28 @@
         android:layout_height="wrap_content" >
         <Button
             android:id="@+id/botonConsultar"
+            android:text="@string/consultar"
+            android:onClick="consultarHorario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/consultar"
-            android:onClick="consultarHorario"/>
+            android:drawableLeft="@drawable/lapiz"
+            android:drawablePadding="8dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#ef9a9a"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
         <Button
             android:id="@+id/botonLimpiar"
+            android:text="@string/limpiar"
+            android:onClick="limpiarTexto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/limpiar"
-            android:onClick="limpiarTexto"/>
+            android:drawableLeft="@drawable/lapiz"
+            android:drawablePadding="8dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#ef9a9a"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"

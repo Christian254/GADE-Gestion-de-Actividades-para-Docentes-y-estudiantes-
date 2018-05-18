@@ -2,8 +2,9 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="30dip"
-    android:stretchColumns="1" >
+    android:stretchColumns="1">
     <TableRow>
         <TextView android:text="@string/idHorario"/>
         <EditText
@@ -40,9 +41,25 @@
     <TableRow>
         <Button
             android:onClick="insertarHorario"
-            android:text="@string/insertar" />
+            android:text="@string/insertar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/lapiz"
+            android:drawablePadding="8dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#ef9a9a"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
         <Button
             android:onClick="limpiarTexto"
-            android:text="@string/limpiar" />
+            android:text="@string/limpiar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/lapiz"
+            android:drawablePadding="8dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#ef9a9a"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
     </TableRow>
 </TableLayout>

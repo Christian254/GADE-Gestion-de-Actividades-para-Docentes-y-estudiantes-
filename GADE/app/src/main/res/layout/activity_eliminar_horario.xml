@@ -15,8 +15,14 @@
         android:inputType="text"
         android:maxLength="7"/>
     <Button
+        android:text="@string/eliminar"
+        android:onClick="eliminarHorario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/eliminar"
-        android:onClick="eliminarHorario"/>
+        android:drawableLeft="@drawable/lapiz"
+        android:drawablePadding="8dp"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#ef9a9a"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 </LinearLayout>
