@@ -140,7 +140,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="insertarReserva"
-        android:text="@string/insertar" />
+        android:text="@string/insertar"
+        android:drawableLeft="@drawable/lapiz"
+        android:backgroundTint="#ef9a9a"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 </LinearLayout>
 </ScrollView>
 

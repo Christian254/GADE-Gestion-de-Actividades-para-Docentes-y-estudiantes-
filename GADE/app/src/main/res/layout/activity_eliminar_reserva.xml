@@ -21,7 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="eliminar"
-        android:text="@string/eliminar" />
+        android:text="@string/eliminar"
+        android:drawableLeft="@drawable/lapiz"
+        android:backgroundTint="#ef9a9a"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
 
 </LinearLayout>
