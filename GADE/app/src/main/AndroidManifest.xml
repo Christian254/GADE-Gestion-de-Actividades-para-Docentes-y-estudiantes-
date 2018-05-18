@@ -53,7 +53,8 @@
         <activity android:name=".UsuarioNormal.TipoActividadActualizarActivity" />
         <activity android:name=".UsuarioNormal.TipoActividadConsultarActivity" />
         <activity android:name=".UsuarioNormal.TipoActividadGestionarActivity" />
-        <activity android:name=".UsuarioNormal.ParticipacionGestionarActivity"></activity>
+        <activity android:name=".UsuarioNormal.ParticipacionGestionarActivity" />
+        <activity android:name=".UsuarioNormal.GestionarReservaActivity"></activity>
     </application>
 
 </manifest>
