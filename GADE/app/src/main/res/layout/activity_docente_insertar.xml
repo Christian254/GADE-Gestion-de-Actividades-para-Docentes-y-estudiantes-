@@ -8,7 +8,7 @@
         <TextView android:text="@string/idDocente"/>
         <EditText
             android:id="@+id/editIdDoc"
-            android:inputType="text"
+            android:inputType="time"
             android:maxLength="7" />
     </TableRow>
     <TableRow>
@@ -22,7 +22,7 @@
         <TextView android:text="@string/idEscuela" />
         <EditText
             android:id="@+id/editIdEscuela"
-            android:inputType="text"
+            android:inputType="time"
             android:maxLength="5" />
     </TableRow>
 
