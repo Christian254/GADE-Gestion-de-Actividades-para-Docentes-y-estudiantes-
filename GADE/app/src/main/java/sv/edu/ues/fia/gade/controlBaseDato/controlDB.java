@@ -579,9 +579,9 @@ public class controlDB extends SQLiteOpenHelper{
 
 
     //CRUD para las reservas
-    public  String insertReserva(Reserva reserva, Alumno alumno, Docente docente, Actividad actividad, Participacion participacion)
+    public  int insertReserva(Reserva reserva)
     {
-        String regInsertado = "Registro Reserva #";
+        int regInsertado;
         long contador = 0;
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -593,13 +593,10 @@ public class controlDB extends SQLiteOpenHelper{
         db.close();
 
         if(contador == -1 || contador == 0){
-            regInsertado = "Ya existe la reserva";
+            regInsertado = 1;
         }else{
-            insertAlum(alumno);
-            insertDocente(docente);
-            insertActividad(actividad);
-            insertParticipacion(participacion);
-            regInsertado = regInsertado + contador + " " + alumno.getCarnet() + " "+docente.getNombreDoc() +" Actividad" + actividad.getIdActividad() + "Registro en disponible ";
+
+            regInsertado = 2;
 
         }
         return regInsertado;

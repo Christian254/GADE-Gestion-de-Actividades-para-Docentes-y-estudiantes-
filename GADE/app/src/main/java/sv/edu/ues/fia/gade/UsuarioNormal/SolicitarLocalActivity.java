@@ -108,11 +108,24 @@ public class SolicitarLocalActivity extends Activity {
             disponible.setIdHorario(Integer.parseInt(idHorario));
             disponible.setIdLocal(Integer.parseInt(idLocal));
             disponible.setIdCiclo(Integer.parseInt(idCiclo));
-            disponible.setDisponible(1);
+            disponible.setDisponible(2);
 
-            String regInsert = helper.insertReserva(reserva, alumno, docente, actividad, participacion);
-            String dis =helper.insertarDisponible(disponible);
-            Toast.makeText(this, regInsert + dis, Toast.LENGTH_SHORT).show();
+            int regInsert;
+
+            if((regInsert = helper.insertReserva(reserva)) == 1)
+            {
+                Toast.makeText(this,"Ya existe la reserva: "+reserva.getIdReserva(),Toast.LENGTH_SHORT).show();
+            }
+            else {
+
+                helper.insertAlum(alumno);
+                helper.insertDocente(docente);
+                helper.insertActividad(actividad);
+                helper.insertParticipacion(participacion);
+
+                String dis = helper.insertarDisponible(disponible);
+                Toast.makeText(this, "Reserva Insertada: "+reserva.getIdReserva()+" por el alumno con carnet: "+alumno.getCarnet()+" para la actividad: "+actividad.getNomActividad(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
