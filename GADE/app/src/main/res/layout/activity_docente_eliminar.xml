@@ -13,7 +13,7 @@
         android:id="@+id/editIdDoc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="time"
         android:maxLength="7"
         android:enabled="true" />
 

@@ -971,20 +971,23 @@ public class controlDB extends SQLiteOpenHelper{
 
     public String actualizarDocente(Docente docente)
     {
-        String registroActualizado = "El Registro #";
+        String regAc = "Registro Actualizado #";
         String idDocente = String.valueOf(docente.getIdDocente());
-        String [] id = {idDocente};
+        String[] id = {idDocente};
+
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues  = new ContentValues();
-        contentValues.put("IDDOCENTE", docente.getIdDocente());
-        int resultado = db.update("DOCENTE",contentValues,"IDDOCENTE = ?",id);
+        ContentValues cv = new ContentValues();
+        cv.put("nomdocente",docente.getNombreDoc());
+        cv.put("idescuela",docente.getIdEscuela());
+        int resultado = db.update("docente",cv,"iddocente = ?",id);
 
         if(resultado>0){
-            registroActualizado += idDocente+ " se actualizo";
+            regAc += idDocente;
         }else{
-            registroActualizado = "No se encuentra registro";
+            regAc = "No se encuentra registro Docente para ser actualizado";
         }
-        return registroActualizado;
+        return regAc;
+
     }
 
 
@@ -1052,20 +1055,23 @@ public class controlDB extends SQLiteOpenHelper{
 
     public String actualizarActividad(Actividad actividad)
     {
-        String registroActualizado = "El Registro #";
+        String regAc = "Registro Actualizado #";
         String idActividad = String.valueOf(actividad.getIdActividad());
-        String [] id = {idActividad};
+        String[] id = {idActividad};
+
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues  = new ContentValues();
-        contentValues.put("IDACTIVIDAD", actividad.getIdActividad());
-        int resultado = db.update("ACTIVIDAD",contentValues,"IDACTIVIDAD = ?",id);
+        ContentValues cv = new ContentValues();
+        cv.put("idtipoactividad",actividad.getTipoActividad());
+        cv.put("iddocente",actividad.getIdDocente());
+        cv.put("nomactividad",actividad.getNomActividad());
+        int resultado = db.update("actividad",cv,"idactividad = ?",id);
 
         if(resultado>0){
-            registroActualizado += idActividad+ " se actualizo";
+            regAc += idActividad;
         }else{
-            registroActualizado = "No se encuentra registro";
+            regAc = "No se encuentra registro Actividad para ser actualizado";
         }
-        return registroActualizado;
+        return regAc;
     }
 
 
@@ -1173,20 +1179,21 @@ public class controlDB extends SQLiteOpenHelper{
 
     public String actualizarTipoActividad(TipoActividad tipoActividad)
     {
-        String registroActualizado = "El Registro #";
+        String regAc = "Registro Actualizado #";
         String idTipoActividad = String.valueOf(tipoActividad.getIdTipoActividad());
-        String [] id = {idTipoActividad};
+        String[] id = {idTipoActividad};
+
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues  = new ContentValues();
-        contentValues.put("IDTIPOACTIVIDAD", tipoActividad.getIdTipoActividad());
-        int resultado = db.update("TIPOACTIVIDAD",contentValues,"IDTIPOACTIVIDAD = ?",id);
+        ContentValues cv = new ContentValues();
+        cv.put("nomtipoactividad",tipoActividad.getNomTipoActividad());
+        int resultado = db.update("tipoactividad",cv,"idtipoactividad = ?",id);
 
         if(resultado>0){
-            registroActualizado += idTipoActividad+ " se actualizo";
+            regAc += idTipoActividad;
         }else{
-            registroActualizado = "No se encuentra registro";
+            regAc = "No se encuentra registro Docente para ser actualizado";
         }
-        return registroActualizado;
+        return regAc;
     }
 
     public TipoActividad consultarTipoActividad(String idTipoActividad)

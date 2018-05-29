@@ -9,7 +9,7 @@
 
         <EditText
             android:id="@+id/editIdActividad"
-            android:inputType="text"
+            android:inputType="time"
             android:maxLength="7" />
     </TableRow>
     <TableRow>
@@ -17,7 +17,7 @@
 
         <EditText
             android:id="@+id/editTipoActividad"
-            android:inputType="text"
+            android:inputType="time"
             android:maxLength="7" />
     </TableRow>
     <TableRow>
@@ -25,7 +25,7 @@
 
         <EditText
             android:id="@+id/editIdDoc"
-            android:inputType="text"
+            android:inputType="time"
             android:maxLength="7" />
     </TableRow>
     <TableRow>
